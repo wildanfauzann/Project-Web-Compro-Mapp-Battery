@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Produk - PT. Multidaya Anugrah Perkasa</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
+    <x-navbar />
+
+    @php
+        $productCatalog = collect(config('product_catalog.items', []))
+            ->map(function ($item) {
+                $item['image'] = asset($item['image']);
+                return $item;
+            })
+            ->values()
+            ->all();
+    @endphp
+
+    <main>
+        <section class="reveal-on-scroll bg-[#eceef2] py-6 md:py-9 min-h-[calc(100svh-var(--navbar-height,0px))]">
+            <div class="max-w-400 mx-auto px-4 md:px-8">
+                <div class="grid gap-5 lg:grid-cols-[286px_minmax(0,1fr)] xl:grid-cols-[300px_minmax(0,1fr)]">
+                    <aside class="space-y-3 lg:sticky lg:top-[calc(var(--navbar-height,0px)+0.8rem)] lg:self-start">
+                        <div class="overflow-hidden rounded-2xl border border-[#d8dde8] bg-white shadow-sm">
+                            <div class="flex items-center gap-2.5 bg-[#f2cd00] px-3.5 py-3.5 text-[#0f1733]">
+                                <span class="grid h-9 w-9 place-items-center rounded-xl bg-[#10215a] text-white text-base font-bold">☰</span>
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-[0.14em]">Menu</p>
+                                    <h3 class="text-base font-bold leading-tight">Kategori Produk</h3>
+                                </div>
+                            </div>
+
+                            <div class="divide-y divide-[#e6eaf1]">
+                                <details open class="group px-3.5 py-3">
+                                    <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-[#23385e]">Battery <span class="text-[#5a6d8f] group-open:rotate-180 transition-transform">⌄</span></summary>
+                                    <ul class="mt-2 space-y-1 text-xs text-[#5a6d8f]">
+                                        <li>Traction Hawker</li>
+                                        <li>Traction Microtex</li>
+                                        <li>Semi Traction</li>
+                                        <li>Lithium</li>
+                                    </ul>
+                                </details>
+                                <details class="group px-3.5 py-3">
+                                    <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-[#23385e]">Charger <span class="text-[#5a6d8f] group-open:rotate-180 transition-transform">⌄</span></summary>
+                                    <ul class="mt-2 space-y-1 text-xs text-[#5a6d8f]">
+                                        <li>High Frequency</li>
+                                        <li>Low Frequency</li>
+                                    </ul>
+                                </details>
+                                <details class="group px-3.5 py-3">
+                                    <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-[#23385e]">Accessories <span class="text-[#5a6d8f] group-open:rotate-180 transition-transform">⌄</span></summary>
+                                    <ul class="mt-2 space-y-1 text-xs text-[#5a6d8f]">
+                                        <li>BFS & WaterTank</li>
+                                        <li>Connector</li>
+                                        <li>Plug / Socket</li>
+                                    </ul>
+                                </details>
+                                <a href="/layanan" class="block px-3.5 py-3 text-sm font-semibold text-[#23385e] hover:bg-[#f6f8fc]">Service & After Sales</a>
+                            </div>
+                        </div>
+
+                        <div class="rounded-xl bg-linear-to-br from-[#1c3d95] to-[#162c6f] p-3 text-white shadow-lg">
+                            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[#d2dfff]">Bantuan</p>
+                            <h4 class="mt-1.5 text-sm font-bold leading-snug">Butuh rekomendasi produk forklift?</h4>
+                            <a href="https://wa.me/6281234567890" class="mt-2.5 inline-flex w-full items-center justify-center rounded-lg bg-white px-3 py-1.5 text-xs font-bold text-[#16306f] transition hover:bg-[#f2cd00] hover:text-[#0f1733]">Hubungi Admin</a>
+                        </div>
+                    </aside>
+
+                    <div>
+                        <div class="mb-4 rounded-2xl border border-[#d8dde8] bg-white px-5 py-4 shadow-sm md:px-6 md:py-5">
+                            <div class="flex flex-col gap-3">
+                                <div>
+                                    <h1 class="text-[clamp(1.1rem,1.8vw,1.8rem)] font-bold uppercase tracking-tight text-[#10215a]">Kategori: Battery, Charger, dan Accessories Forklift</h1>
+                                    <p class="mt-1 text-xs md:text-sm font-semibold text-[#7b889f]">Menampilkan {{ count($productCatalog) }} produk unggulan untuk kebutuhan operasional Anda.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        @php
+                            $productCardGradients = [
+                                'linear-gradient(145deg, #f4f8ff 0%, #e7efff 54%, #dce8ff 100%)',
+                                'linear-gradient(145deg, #eef5ff 0%, #e2ecff 52%, #d5e4ff 100%)',
+                                'linear-gradient(145deg, #f5f9ff 0%, #e8f0ff 50%, #dce8ff 100%)',
+                                'linear-gradient(145deg, #edf4ff 0%, #e0ebff 52%, #d4e3ff 100%)',
+                            ];
+                        @endphp
+
+                        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                            @foreach ($productCatalog as $product)
+                                <article class="group overflow-hidden rounded-2xl border border-[#c9d8f2] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style="background-image: {{ $productCardGradients[$loop->index % count($productCardGradients)] }};">
+                                    <div class="relative h-44 overflow-hidden bg-[linear-gradient(160deg,#ffffff_0%,#edf4ff_100%)]">
+                                        <span class="absolute right-3 top-3 z-10 rounded-full bg-[#1f2e57] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-white">{{ strtoupper($product['category']) }}</span>
+                                        <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105" />
+                                    </div>
+                                    <div class="space-y-2 p-3.5">
+                                        <p class="text-[11px] font-bold uppercase tracking-widest text-[#274fba]">{{ $product['category'] }}</p>
+                                        <h2 class="text-[1.02rem] font-bold leading-snug text-[#0f1733]">{{ $product['name'] }}</h2>
+                                        <p class="text-xs font-semibold text-[#5f7091]">{{ $product['code'] }}</p>
+                                        <p class="text-xs leading-relaxed text-[#4c5f82] line-clamp-2">{{ $product['summary'] }}</p>
+                                        <a href="{{ '/produk/detail?item=' . urlencode($product['code']) }}" class="mt-2 inline-flex w-full items-center justify-center rounded-xl bg-white/85 px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[#1d376b] transition hover:bg-[#f2cd00] hover:text-[#0f1733]">Lihat Detail</a>
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <x-footer />
+</body>
+</html>
