@@ -1,0 +1,123 @@
+<?php
+
+return [
+    'items' => [
+        [
+            'category' => 'Battery',
+            'name' => 'Traction Battery Hawker Perfect Plus',
+            'code' => 'HWK-PP-48V',
+            'image' => 'images/product/tractionhawcker.png',
+            'gallery' => [
+                'images/product/tractionhawcker.png',
+                'images/product/tractionmicrotex.png',
+                'images/product/semitrac.png',
+            ],
+            'summary' => 'Daya tinggi dan stabil untuk aplikasi forklift single hingga multi-shift.',
+            'description' => 'Traction Battery Hawker Perfect Plus dirancang untuk aplikasi industri yang menuntut kestabilan arus, ketahanan siklus, dan performa konsisten pada operasional forklift harian maupun multi-shift.',
+        ],
+        [
+            'category' => 'Battery',
+            'name' => 'Traction Battery Microtex',
+            'code' => 'MTX-TB-40',
+            'image' => 'images/product/tractionmicrotex.png',
+            'gallery' => [
+                'images/product/tractionmicrotex.png',
+                'images/product/tractionhawcker.png',
+                'images/product/semitrac.png',
+            ],
+            'summary' => 'Standar kualitas Eropa dengan performa andal untuk operasional harian.',
+            'description' => 'Traction Battery Microtex diproduksi dengan standar kualitas tinggi untuk menjaga performa unit tetap optimal, efisien, dan siap digunakan pada berbagai pola kerja operasional.',
+        ],
+        [
+            'category' => 'Battery',
+            'name' => 'Semi Traction Battery',
+            'code' => 'MTX-ST-24',
+            'image' => 'images/product/semitrac.png',
+            'gallery' => [
+                'images/product/semitrac.png',
+                'images/product/tractionmicrotex.png',
+                'images/product/lithium.png',
+            ],
+            'summary' => 'Solusi semi-traksi ekonomis untuk kebutuhan unit dengan ritme menengah.',
+            'description' => 'Semi Traction Battery menjadi opsi tepat untuk kebutuhan ritme kerja menengah, dengan biaya perawatan yang terukur dan performa yang tetap stabil untuk mendukung produktivitas.',
+        ],
+        [
+            'category' => 'Battery',
+            'name' => 'Lithium Forklift Battery',
+            'code' => 'LFP-FLT-80',
+            'image' => 'images/product/lithium.png',
+            'gallery' => [
+                'images/product/lithium.png',
+                'images/product/tractionhawcker.png',
+                'images/product/chargerhigh.png',
+            ],
+            'summary' => 'Pengisian lebih cepat dengan siklus pakai panjang dan maintenance minimal.',
+            'description' => 'Lithium Forklift Battery mendukung charging cepat, umur pakai panjang, dan minim perawatan sehingga sangat cocok untuk kebutuhan operasional intensif yang menuntut efisiensi waktu.',
+        ],
+        [
+            'category' => 'Charger',
+            'name' => 'High Frequency Charger',
+            'code' => 'HFC-IND-60',
+            'image' => 'images/product/chargerhigh.png',
+            'gallery' => [
+                'images/product/chargerhigh.png',
+                'images/product/chargerlow.png',
+                'images/product/lithium.png',
+            ],
+            'summary' => 'Efisiensi charging tinggi dengan desain ringkas untuk area kerja modern.',
+            'description' => 'High Frequency Charger menggunakan teknologi modern untuk menghasilkan proses charging yang lebih efisien, ukuran unit lebih ringkas, dan performa pengisian yang konsisten.',
+        ],
+        [
+            'category' => 'Charger',
+            'name' => 'Low Frequency Charger',
+            'code' => 'LFC-TR-60',
+            'image' => 'images/product/chargerlow.png',
+            'gallery' => [
+                'images/product/chargerlow.png',
+                'images/product/chargerhigh.png',
+                'images/product/watertank.png',
+            ],
+            'summary' => 'Charger tangguh berbasis transformator untuk penggunaan industri intensif.',
+            'description' => 'Low Frequency Charger dikenal kuat dan stabil untuk penggunaan jangka panjang di area industri, khususnya untuk kebutuhan charging yang konsisten dan beban kerja tinggi.',
+        ],
+        [
+            'category' => 'Accessories',
+            'name' => 'BFS & WaterTank',
+            'code' => 'BFS-WT-01',
+            'image' => 'images/product/watertank.png',
+            'gallery' => [
+                'images/product/watertank.png',
+                'images/product/connector.png',
+                'images/product/Plug.png',
+            ],
+            'summary' => 'Sistem pengisian air otomatis untuk menjaga level elektrolit tetap optimal.',
+            'description' => 'BFS & WaterTank membantu proses perawatan baterai lebih praktis, menjaga level air elektrolit tetap ideal, serta mengurangi risiko human error saat pemeliharaan rutin.',
+        ],
+        [
+            'category' => 'Accessories',
+            'name' => 'Battery Connector',
+            'code' => 'CON-IC-12',
+            'image' => 'images/product/connector.png',
+            'gallery' => [
+                'images/product/connector.png',
+                'images/product/Plug.png',
+                'images/product/watertank.png',
+            ],
+            'summary' => 'Intercell connector berkualitas untuk arus yang stabil antar sel baterai.',
+            'description' => 'Battery Connector berfungsi sebagai penghubung arus antar sel dengan konduktivitas tinggi sehingga performa baterai tetap stabil dan aman untuk operasi forklift.',
+        ],
+        [
+            'category' => 'Accessories',
+            'name' => 'Plug / Socket Battery',
+            'code' => 'PLG-SCT-10',
+            'image' => 'images/product/Plug.png',
+            'gallery' => [
+                'images/product/Plug.png',
+                'images/product/connector.png',
+                'images/product/watertank.png',
+            ],
+            'summary' => 'Konektor utama baterai-ke-unit forklift atau ke charger yang aman dan kuat.',
+            'description' => 'Plug / Socket Battery menjadi titik terminal utama untuk koneksi yang kuat dan aman antara baterai, unit forklift, dan charger pada sistem kelistrikan industri.',
+        ],
+    ],
+];
