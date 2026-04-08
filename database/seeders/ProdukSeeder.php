@@ -47,41 +47,46 @@ class ProdukSeeder extends Seeder
             ]
         );
 
-        Produk::create([
-            'kategori_id' => 1,
+        Produk::updateOrCreate([
             'kode_produk' => 'SMT-TB-48V',
+        ], [
+            'kategori_id' => 1,
             'nama_produk' => 'Semitrac Battery',
             'img' => 'images/product/semitrac.png',
             'deskripsi' => 'Semitrac Battery dirancang khusus untuk aplikasi industri berat dengan kapasitas tinggi dan ketahanan luar biasa.'
         ]);
 
-        Produk::create([
-            'kategori_id' => 2,
+        Produk::updateOrCreate([
             'kode_produk' => 'CHG-HGH-48V',
+        ], [
+            'kategori_id' => 2,
             'nama_produk' => 'High Frequency Charger',
             'img' => 'images/product/chargerhigh.png',
             'deskripsi' => 'Charger frekuensi tinggi untuk pengisian baterai forklift yang lebih efisien dan cepat.'
         ]);
 
-        Produk::create([
-            'kategori_id' => 2,
+        Produk::updateOrCreate([
             'kode_produk' => 'CHG-LOW-24V',
+        ], [
+            'kategori_id' => 2,
             'nama_produk' => 'Low Frequency Charger',
             'img' => 'images/product/chargerlow.png',
             'deskripsi' => 'Charger frekuensi rendah yang tangguh dan handal untuk pengisian baterai industri secara optimal.'
         ]);
 
-        Produk::create([
-            'kategori_id' => 3,
+        Produk::updateOrCreate([
             'kode_produk' => 'ACC-PLG-001',
+        ], [
+            'kategori_id' => 3,
             'nama_produk' => 'Plug & Connector',
             'img' => 'images/product/connector.png',
             'deskripsi' => 'Plug dan konektor berkualitas tinggi untuk koneksi baterai forklift yang aman dan tahan lama.'
         ]);
 
-        Produk::create([
-            'kategori_id' => 3,
+        Produk::updateOrCreate([
             'kode_produk' => 'ACC-WTK-001',
+        ], [
+            'kategori_id' => 3,
             'nama_produk' => 'Water Tank & Accessories',
             'img' => 'images/product/watertank.png',
             'deskripsi' => 'Tangki air dan aksesori pelengkap untuk perawatan dan pemeliharaan baterai forklift secara rutin.'

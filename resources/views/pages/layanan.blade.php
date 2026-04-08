@@ -12,42 +12,422 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-gradient reveal-on-scroll min-h-[calc(100vh-140px)] flex items-center justify-center">
-            <div class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20 w-full text-center">
-                <h1 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 tracking-tight leading-tight">PT. Multidaya Anugrah Perkasa</h1>
-                <p class="text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-slate-700">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-                </p>
+        <section class="layanan-hero-section reveal-on-scroll min-h-[calc(100vh-140px)] flex items-center justify-center">
+            <div class="layanan-hero-orb layanan-hero-orb-left" aria-hidden="true"></div>
+            <div class="layanan-hero-orb layanan-hero-orb-right" aria-hidden="true"></div>
+            <div class="layanan-hero-grid" aria-hidden="true"></div>
+
+            <div class="max-w-7xl mx-auto px-4 md:px-8 py-14 md:py-20 w-full">
+                <div class="layanan-hero-shell relative mx-auto max-w-4xl overflow-hidden rounded-4xl border border-slate-200/80 bg-white/82 px-5 py-14 md:px-12 md:py-16 shadow-[0_24px_70px_rgba(15,23,42,0.12)] backdrop-blur-md">
+                    <div class="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-[#b9c9e6] to-transparent"></div>
+                    <div class="absolute inset-x-12 top-6 h-20 rounded-full bg-[#f2cd00]/12 blur-3xl"></div>
+
+                    <div class="relative text-center">
+                        <h1 class="layanan-hero-title text-[clamp(2rem,4vw,3.75rem)] font-bold leading-[1.05] tracking-tight text-slate-900">
+                            PT. Multidaya Anugrah Perkasa
+                        </h1>
+                        <p class="layanan-hero-copy mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-lg md:leading-8">
+                            PT Multidaya Anugrah Perkasa hadir sebagai solusi terpercaya untuk kebutuhan forklift, dengan menghadirkan layanan terbaik seperti penyediaan barang baru maupun bekas berkualitas, dukungan teknisi profesional, serta berbagai solusi servis yang andal. Semua layanan ini dirancang untuk menjaga performa tetap optimal dan memastikan operasional berjalan lancar.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Section 1: Services Grid -->
-        <section class="py-8 md:py-12 section-muted reveal-on-scroll">
-            <div class="max-w-7xl mx-auto px-4 md:px-8">
-                <div class="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    @for ($i = 1; $i <= 6; $i++)
-                        <a href="/layanan/detail" class="card-elevated group bg-white rounded-xl overflow-hidden {{ $i > 4 ? 'sm:col-span-1' : '' }}">
-                            <div class="h-40 md:h-48 bg-slate-200 shimmer"></div>
-                            <div class="p-4 md:p-5">
-                                <p class="text-xs md:text-sm leading-5 mb-3 text-slate-700">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
-                                <div class="w-6 h-6 rounded-full bg-slate-900 ml-auto grid place-items-center text-white text-xs transition-transform group-hover:translate-x-0.5">
-                                    →
-                                </div>
-                            </div>
-                        </a>
-                    @endfor
+        @php
+            $services = [
+                [
+                    'slug' => 'after-sales-services',
+                    'title' => 'After Sales Services',
+                    'image' => asset('images/layanan/layanan1.png'),
+                    'description' => 'Program purnajual 3 kali per tahun (setiap 4 bulan) mencakup preventive maintenance, cek level air aki, pembersihan korosi, cek voltase serta BJ, termasuk monitoring data pengisian dan evaluasi umur baterai untuk menekan risiko downtime.',
+                    'detail_intro' => 'Layanan After Sales Services (ASS) kami dirancang untuk memastikan baterai forklift tetap dalam kondisi prima, aman digunakan, dan memiliki usia pakai yang optimal pada operasional harian gudang.',
+                    'detail_points' => [
+                        'Program preventive maintenance dilakukan secara berkala setiap empat bulan untuk pengecekan kondisi fisik dan performa baterai.',
+                        'Pembersihan korosi dan pemeriksaan konektor membantu menjaga aliran listrik tetap stabil saat unit beroperasi.',
+                        'Pengukuran voltase, BJ, dan arus pengisian memberikan data akurat untuk evaluasi kesehatan baterai.',
+                        'Laporan teknis dan rekomendasi tindakan kami susun agar tim Anda dapat merencanakan perawatan berikutnya dengan lebih tepat.',
+                    ],
+                    'side_image' => asset('images/layanan/layanan1.png'),
+                    'gallery' => [
+                        asset('images/layanan/layanan1.png'),
+                        asset('images/artikel/artikel2.png'),
+                        asset('images/layanan/layanan1.png'),
+                    ],
+                    'recommendations' => ['training-battery', 'trade-in'],
+                ],
+                [
+                    'slug' => 'training-battery',
+                    'title' => 'Training Battery',
+                    'image' => asset('images/artikel/artikel2.png'),
+                    'description' => 'Pelatihan teknis dan kebiasaan kerja operator untuk pengisian, perawatan, dan penggunaan baterai yang benar agar umur pakai lebih panjang, performa stabil, dan biaya operasional gudang lebih terkendali.',
+                    'detail_intro' => 'Program Training Battery membantu operator memahami standar penggunaan baterai forklift yang benar sejak pengisian hingga penyimpanan, sehingga risiko kerusakan dini dapat ditekan.',
+                    'detail_points' => [
+                        'Materi praktik mencakup SOP pengisian baterai, waktu istirahat baterai, dan prosedur keamanan area charging.',
+                        'Tim teknis membagikan panduan inspeksi harian yang mudah diterapkan oleh operator lapangan.',
+                        'Peserta mendapatkan simulasi kasus umum agar mampu mengambil keputusan cepat saat terjadi indikasi gangguan.',
+                        'Hasil pelatihan difokuskan pada efisiensi energi, umur pakai baterai yang lebih panjang, dan biaya operasional yang lebih terkendali.',
+                    ],
+                    'side_image' => asset('images/artikel/artikel2.png'),
+                    'gallery' => [
+                        asset('images/artikel/artikel2.png'),
+                        asset('images/layanan/layanan1.png'),
+                        asset('images/artikel/artikel2.png'),
+                    ],
+                    'recommendations' => ['after-sales-services', 'trade-in'],
+                ],
+                [
+                    'slug' => 'trade-in',
+                    'title' => 'Trade In',
+                    'image' => asset('images/layanan/layanan1.png'),
+                    'description' => 'Solusi tukar tambah baterai lama ke unit yang lebih siap pakai dengan proses evaluasi kondisi yang transparan, sehingga perencanaan anggaran penggantian aset menjadi lebih ringan dan terukur.',
+                    'detail_intro' => 'Skema Trade In kami memberikan jalur upgrade baterai yang lebih efisien, dengan proses penilaian kondisi unit lama secara transparan dan berbasis kebutuhan operasional Anda.',
+                    'detail_points' => [
+                        'Tim kami melakukan asesmen awal kondisi baterai lama untuk menentukan nilai tukar yang realistis.',
+                        'Rekomendasi unit pengganti disesuaikan dengan ritme kerja forklift, durasi shift, dan kapasitas beban operasional.',
+                        'Proses administrasi dibuat ringkas agar transisi unit lama ke unit baru berjalan lebih cepat.',
+                        'Pendekatan ini membantu perusahaan menjaga cash flow sambil tetap meningkatkan keandalan armada forklift.',
+                    ],
+                    'side_image' => asset('images/layanan/layanan1.png'),
+                    'gallery' => [
+                        asset('images/layanan/layanan1.png'),
+                        asset('images/artikel/artikel2.png'),
+                        asset('images/layanan/layanan1.png'),
+                    ],
+                    'recommendations' => ['after-sales-services', 'training-battery'],
+                ],
+            ];
+        @endphp
+
+        <!-- Section 2: Layanan Showcase -->
+        <section id="layanan" class="scroll-fade-section layanan-showcase-section py-8 md:py-10 min-h-[calc(110svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
+            <div class="scroll-fade-content produk-showcase-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">
+                <div class="text-center max-w-4xl mx-auto mb-5 md:mb-6">
+                    <span class="inline-flex items-center rounded-full bg-[#f2cd00] text-[#0f1733] px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.16em]">Layanan Unggulan</span>
+                    <h2 class="mt-2.5 text-[clamp(1.4rem,2.7vw,2.25rem)] leading-tight font-bold text-white">Tiga Layanan Utama untuk Operasional Gudang</h2>
+                    <p class="mt-1.5 text-[clamp(0.78rem,0.95vw,0.92rem)] leading-relaxed text-[#cfd9ff]">
+                        Fokus pada keberlanjutan performa baterai forklift melalui layanan purnajual terjadwal, edukasi operator, dan skema trade in yang lebih efisien.
+                    </p>
                 </div>
-                <div class="mt-6 flex justify-end">
-                    <a href="/layanan/detail" class="btn-outline interactive-press text-sm inline-flex items-center gap-2">Lorem ipsum. <span aria-hidden="true">→</span></a>
+
+                <div class="grid gap-3 md:gap-4 lg:grid-cols-3">
+                    @foreach ($services as $service)
+                        <article class="layanan-card-trigger produk-showcase-card group relative overflow-hidden rounded-[1.6rem] border border-[#31479a] bg-[#0d173b] min-h-60 md:min-h-72 shadow-[0_16px_34px_rgba(0,0,0,0.22)] cursor-pointer" data-service-slug="{{ $service['slug'] }}" role="button" tabindex="0" aria-label="Buka detail {{ $service['title'] }}">
+                            <img src="{{ $service['image'] }}" alt="{{ $service['title'] }}" class="produk-showcase-image absolute inset-0 h-full w-full object-cover" />
+                            <div class="absolute inset-0 bg-linear-to-t from-[#081027f7] via-[#0d1a45b2] to-[#0f17331f]"></div>
+
+                            <div class="produk-showcase-content relative z-10 h-full flex flex-col justify-end p-4 md:p-5">
+                                <span class="produk-showcase-line mb-1.5 inline-block h-1.5 w-8 rounded-full bg-[#f2cd00]"></span>
+                                <h3 class="produk-showcase-title text-[1.32rem] md:text-[1.68rem] leading-none font-bold text-white">{{ $service['title'] }}</h3>
+                                <p class="produk-showcase-desc mt-1.5 text-[11px] md:text-[13px] leading-5 md:leading-6 text-[#d7e0ff] line-clamp-3">
+                                    {{ $service['description'] }}
+                                </p>
+                                <button type="button" class="layanan-detail-trigger produk-showcase-btn mt-3 inline-flex w-fit items-center rounded-full border border-[#f2cd00] px-3.5 py-1 text-[10px] md:text-[11px] font-semibold uppercase tracking-wide text-[#f2cd00]" data-service-slug="{{ $service['slug'] }}">
+                                    Selengkapnya
+                                </button>
+                            </div>
+                        </article>
+                    @endforeach
                 </div>
             </div>
-        </section>     
+        </section>
+
+        <section id="layanan-detail-section" class="hidden py-8 md:py-12 bg-[linear-gradient(180deg,#f5f8ff_0%,#e9f0ff_100%)]">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div id="layanan-detail-card" class="layanan-detail-card relative overflow-hidden rounded-4xl border border-[#3555ac] bg-[linear-gradient(145deg,#081a5a_0%,#0c014c_52%,#114aa8_100%)] shadow-[0_24px_52px_rgba(8,18,48,0.32)]">
+                    <button type="button" id="layanan-detail-close-top" class="layanan-detail-close absolute right-4 top-4 z-20 inline-flex items-center justify-center rounded-full border border-[#b8cdf7] bg-white/90 px-4 py-1.5 text-xs md:text-sm font-semibold text-[#16306f] transition-colors hover:bg-white" aria-label="Tutup detail layanan">
+                        Tutup
+                    </button>
+
+                    <div class="px-5 pt-12 pb-8 md:px-10 md:pt-12 md:pb-10 text-center">
+                        <h3 id="layanan-detail-title" class="text-2xl md:text-4xl font-bold tracking-tight text-white"></h3>
+                        <p id="layanan-detail-intro" class="mx-auto mt-3 max-w-3xl text-sm md:text-base leading-relaxed text-[#d8e5ff]"></p>
+                    </div>
+
+                    <div class="px-5 py-7 md:px-10 md:py-10">
+                        <div class="grid gap-6 md:gap-8 md:grid-cols-[1.08fr_0.92fr] items-stretch">
+                            <div class="layanan-detail-carousel relative rounded-2xl bg-[linear-gradient(145deg,#081a5a_0%,#0c014c_55%,#114aa8_100%)] px-4 py-8 md:px-6 md:py-9">
+                                <button type="button" id="layanan-detail-prev" class="layanan-detail-nav absolute left-3 top-1/2 -translate-y-1/2 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#b7cdf7] bg-white/95 text-2xl leading-none text-[#355295] transition-all hover:-translate-y-[52%] hover:border-[#f2cd00] hover:text-[#0f1733]" aria-label="Gambar sebelumnya">‹</button>
+                                <div class="mx-auto w-full max-w-2xl overflow-hidden rounded-2xl border border-[#3450a5] bg-[#0d173b] shadow-[0_14px_30px_rgba(0,0,0,0.32)]">
+                                    <img id="layanan-detail-carousel-image" src="" alt="Galeri layanan" class="h-56 w-full object-cover md:h-88" />
+                                </div>
+                                <button type="button" id="layanan-detail-next" class="layanan-detail-nav absolute right-3 top-1/2 -translate-y-1/2 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#b7cdf7] bg-white/95 text-2xl leading-none text-[#355295] transition-all hover:-translate-y-[52%] hover:border-[#f2cd00] hover:text-[#0f1733]" aria-label="Gambar berikutnya">›</button>
+                            </div>
+
+                            <div>
+                                <p class="layanan-detail-label text-[11px] md:text-xs font-bold uppercase tracking-[0.16em] text-[#8eb9ff]">Detail Layanan</p>
+                                <p id="layanan-detail-body" class="mt-2 text-sm md:text-base leading-relaxed text-[#e5eeff]"></p>
+                                <p class="layanan-detail-assist mt-4 text-sm leading-relaxed text-[#c7d6f8]">
+                                    Tim kami siap membantu proses evaluasi kebutuhan, perencanaan perawatan, hingga implementasi teknis agar layanan berjalan efektif di lapangan.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-7 grid gap-6 md:gap-8 md:grid-cols-[1.35fr_0.95fr] items-start">
+                            <div>
+                                <ul id="layanan-detail-points" class="space-y-2.5 text-sm md:text-[15px] leading-relaxed text-[#d8e5ff]"></ul>
+                                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 rounded-full bg-[#f2cd00] px-5 py-2.5 text-xs md:text-sm font-bold uppercase tracking-[0.08em] text-[#0f1733] shadow-[0_12px_24px_rgba(242,205,0,0.3)] transition-all hover:-translate-y-0.5 hover:bg-[#ffda2f]">
+                                    Chat Sales
+                                    <span aria-hidden="true">↗</span>
+                                </a>
+                            </div>
+                            <div class="overflow-hidden rounded-2xl border border-[#3e5caf] bg-[#10245f] shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
+                                <img id="layanan-detail-side-image" src="" alt="Gambar pendukung layanan" class="h-56 w-full object-cover md:h-full md:min-h-72" />
+                            </div>
+                        </div>
+
+                        <div class="mt-8 border-t border-[#3959b3] pt-6">
+                            <h4 class="layanan-detail-reco-title text-lg md:text-2xl font-bold text-white">Rekomendasi Layanan</h4>
+                            <div id="layanan-detail-recommendations" class="mt-4 grid gap-4 md:grid-cols-2"></div>
+                        </div>
+
+                        <div class="mt-8 text-center">
+                            <button type="button" id="layanan-detail-close-bottom" class="layanan-detail-close inline-flex items-center justify-center gap-2 rounded-full border border-[#b8cdf7] bg-white/90 px-6 py-2.5 text-sm font-bold text-[#16306f] transition-all hover:bg-white">
+                                Tutup Detail
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: CTA -->
+        <section id="cta" class="scroll-fade-section layanan-cta-section relative overflow-hidden py-14 md:py-16 min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f2f6ff 55%, #e5edff 100%)" data-nav-glow="rgba(120, 144, 255, 0.2)">
+            <div class="pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" style="background-image: radial-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px); background-size: 24px 24px; background-position: 0 0;"></div>
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.06),transparent_34%),radial-gradient(circle_at_20%_25%,rgba(242,205,0,0.14),transparent_18%),radial-gradient(circle_at_80%_75%,rgba(47,128,237,0.08),transparent_24%)]" aria-hidden="true"></div>
+            <div class="scroll-fade-content relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
+                <div class="mx-auto flex max-w-4xl flex-col items-center text-center px-4 md:px-6 py-10 md:py-14">
+                    <span class="inline-flex items-center rounded-full border border-[#b9c9e6] bg-white px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.18em] text-[#1d4ed8] shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
+                        Konsultasi & Dukungan
+                    </span>
+                    <h2 class="mt-4 text-[clamp(2rem,4vw,3.9rem)] font-bold leading-[1.05] tracking-tight text-[#0f1733]">
+                        Jangan Biarkan Kendala Operasional
+                        <span class="block text-[#1d4ed8]">Menghambat Produktivitas Anda.</span>
+                    </h2>
+                    <p class="mt-5 max-w-2xl text-sm md:text-lg leading-relaxed text-[#4f5f7e]">
+                        Dapatkan solusi yang sesuai kebutuhan bersama tim kami. Kami siap membantu dari konsultasi awal hingga rekomendasi langkah terbaik untuk bisnis Anda.
+                    </p>
+                    <a href="/layanan" class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#f2cd00] px-6 py-3 text-sm md:text-base font-bold text-[#0f1733] shadow-[0_14px_30px_rgba(242,205,0,0.28)] transition-transform hover:-translate-y-0.5 hover:bg-[#ffda2f]">
+                        Konsultasi Lebih Lanjut
+                        <span aria-hidden="true" class="text-base">→</span>
+                    </a>
+                    <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] md:text-sm text-[#5f6f8f]">
+                        <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-[#f2cd00]"></span>Respon cepat dan ramah</span>
+                        <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-[#f2cd00]"></span>Konsultasi sesuai kebutuhan</span>
+                        <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-[#f2cd00]"></span>Solusi yang relevan</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <x-footer />
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layananData = @json($services);
+            const dataMap = Object.fromEntries(layananData.map((item) => [item.slug, item]));
+
+            const detailSection = document.getElementById('layanan-detail-section');
+            const detailCard = document.getElementById('layanan-detail-card');
+            const layananSection = document.getElementById('layanan');
+            const titleEl = document.getElementById('layanan-detail-title');
+            const introEl = document.getElementById('layanan-detail-intro');
+            const bodyEl = document.getElementById('layanan-detail-body');
+            const pointsEl = document.getElementById('layanan-detail-points');
+            const sideImageEl = document.getElementById('layanan-detail-side-image');
+            const carouselImageEl = document.getElementById('layanan-detail-carousel-image');
+            const recommendationsEl = document.getElementById('layanan-detail-recommendations');
+
+            const triggerButtons = Array.from(document.querySelectorAll('.layanan-detail-trigger'));
+            const cardTriggers = Array.from(document.querySelectorAll('.layanan-card-trigger'));
+            const closeTopButton = document.getElementById('layanan-detail-close-top');
+            const closeBottomButton = document.getElementById('layanan-detail-close-bottom');
+            const prevButton = document.getElementById('layanan-detail-prev');
+            const nextButton = document.getElementById('layanan-detail-next');
+
+            let activeServiceSlug = null;
+            let activeGallery = [];
+            let activeGalleryIndex = 0;
+
+            const getNavbarOffset = () => {
+                const cssValue = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) || 0;
+                const navbarHeight = document.querySelector('nav.sticky.top-0')?.offsetHeight || 0;
+                return Math.max(cssValue, navbarHeight);
+            };
+
+            const scrollToDetailTop = () => {
+                const target = detailCard || detailSection;
+                if (!target) {
+                    return;
+                }
+
+                const top = target.getBoundingClientRect().top + window.scrollY - getNavbarOffset() - 10;
+                window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+            };
+
+            const renderGallery = () => {
+                if (!carouselImageEl || activeGallery.length === 0) {
+                    return;
+                }
+
+                carouselImageEl.src = activeGallery[activeGalleryIndex];
+            };
+
+            const renderRecommendations = (service) => {
+                if (!recommendationsEl) {
+                    return;
+                }
+
+                const recommendationSlugs = (service.recommendations || []).filter((slug) => dataMap[slug]);
+                const fallback = layananData.filter((item) => item.slug !== service.slug).slice(0, 2).map((item) => item.slug);
+                const finalSlugs = recommendationSlugs.length > 0 ? recommendationSlugs : fallback;
+
+                recommendationsEl.innerHTML = finalSlugs
+                    .map((slug) => {
+                        const item = dataMap[slug];
+                        if (!item) {
+                            return '';
+                        }
+
+                        return `
+                            <article class="layanan-reco-card group overflow-hidden rounded-2xl border border-[#4362b8] bg-[linear-gradient(150deg,#0f2a70_0%,#153687_100%)] shadow-[0_10px_24px_rgba(0,0,0,0.26)]">
+                                <div class="relative h-40 overflow-hidden bg-[#10245f]">
+                                    <img src="${item.image}" alt="${item.title}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                </div>
+                                <div class="p-4 md:p-5">
+                                    <h5 class="text-base md:text-lg font-bold text-white">${item.title}</h5>
+                                    <p class="mt-1 text-xs md:text-sm leading-relaxed text-[#d5e2ff] line-clamp-3">${item.description}</p>
+                                    <button type="button" class="layanan-reco-trigger mt-3 inline-flex items-center gap-2 rounded-full border border-[#f2cd00] px-3.5 py-1.5 text-[11px] md:text-xs font-semibold uppercase tracking-wide text-[#f2cd00] transition-all hover:bg-[#f2cd00] hover:text-[#0f1733]" data-service-slug="${item.slug}">Buka Detail <span aria-hidden="true">→</span></button>
+                                </div>
+                            </article>
+                        `;
+                    })
+                    .join('');
+
+                recommendationsEl.querySelectorAll('.layanan-reco-trigger').forEach((button) => {
+                    button.addEventListener('click', () => {
+                        const slug = button.getAttribute('data-service-slug');
+                        if (slug) {
+                            openDetail(slug, true);
+                        }
+                    });
+                });
+            };
+
+            const openDetail = (slug, shouldScroll = true) => {
+                const service = dataMap[slug];
+                if (!service || !detailSection) {
+                    return;
+                }
+
+                activeServiceSlug = slug;
+                activeGallery = Array.isArray(service.gallery) && service.gallery.length > 0 ? service.gallery : [service.image];
+                activeGalleryIndex = 0;
+
+                if (titleEl) titleEl.textContent = service.title;
+                if (introEl) introEl.textContent = service.detail_intro || '';
+                if (bodyEl) bodyEl.textContent = service.description || '';
+                if (sideImageEl) sideImageEl.src = service.side_image || service.image;
+
+                if (pointsEl) {
+                    pointsEl.innerHTML = (service.detail_points || [])
+                        .map((point) => `<li class="flex items-start gap-2.5"><span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#f2cd00]"></span><span>${point}</span></li>`)
+                        .join('');
+                }
+
+                renderGallery();
+                renderRecommendations(service);
+
+                detailSection.classList.remove('hidden');
+
+                if (shouldScroll) {
+                    requestAnimationFrame(() => {
+                        scrollToDetailTop();
+                    });
+                }
+            };
+
+            const closeDetail = () => {
+                if (!detailSection) {
+                    return;
+                }
+
+                detailSection.classList.add('hidden');
+                activeServiceSlug = null;
+
+                if (layananSection) {
+                    const top = layananSection.getBoundingClientRect().top + window.scrollY - getNavbarOffset() - 10;
+                    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+                }
+            };
+
+            triggerButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const slug = button.getAttribute('data-service-slug');
+                    if (slug) {
+                        openDetail(slug);
+                    }
+                });
+            });
+
+            cardTriggers.forEach((card) => {
+                card.addEventListener('click', (event) => {
+                    if (event.target.closest('.layanan-detail-trigger')) {
+                        return;
+                    }
+
+                    const slug = card.getAttribute('data-service-slug');
+                    if (slug) {
+                        openDetail(slug);
+                    }
+                });
+
+                card.addEventListener('keydown', (event) => {
+                    if (event.key !== 'Enter' && event.key !== ' ') {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    const slug = card.getAttribute('data-service-slug');
+                    if (slug) {
+                        openDetail(slug);
+                    }
+                });
+            });
+
+            closeTopButton?.addEventListener('click', closeDetail);
+            closeBottomButton?.addEventListener('click', closeDetail);
+
+            prevButton?.addEventListener('click', () => {
+                if (activeGallery.length === 0) {
+                    return;
+                }
+
+                activeGalleryIndex = (activeGalleryIndex - 1 + activeGallery.length) % activeGallery.length;
+                renderGallery();
+            });
+
+            nextButton?.addEventListener('click', () => {
+                if (activeGallery.length === 0) {
+                    return;
+                }
+
+                activeGalleryIndex = (activeGalleryIndex + 1) % activeGallery.length;
+                renderGallery();
+            });
+
+            const searchParams = new URLSearchParams(window.location.search);
+            const requestedService = searchParams.get('service');
+            const hashTarget = (window.location.hash || '').replace('#', '');
+
+            if (requestedService && dataMap[requestedService]) {
+                openDetail(requestedService, true);
+            } else if (hashTarget === 'layanan-detail-section' && layananData[0]?.slug) {
+                openDetail(layananData[0].slug, true);
+            }
+        });
+    </script>
 </body>
 </html>

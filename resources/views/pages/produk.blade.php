@@ -11,8 +11,10 @@
     <x-navbar />
 
     @php
-        // Konfigurasi dummy image tidak lagi digunakan secara utama, 
-        // tapi kita biarkan blok php kosong atau komentarnya
+        $categories = $produks
+            ->map(fn ($item) => optional($item->kategori)->nama_kategori ?? 'Uncategorized')
+            ->unique()
+            ->values();
     @endphp
 
     <main>
@@ -29,31 +31,15 @@
                                 </div>
                             </div>
 
-                            <div class="divide-y divide-[#e6eaf1]">
-                                <details open class="group px-3.5 py-3">
-                                    <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-[#23385e]">Battery <span class="text-[#5a6d8f] group-open:rotate-180 transition-transform">⌄</span></summary>
-                                    <ul class="mt-2 space-y-1 text-xs text-[#5a6d8f]">
-                                        <li>Traction Hawker</li>
-                                        <li>Traction Microtex</li>
-                                        <li>Semi Traction</li>
-                                        <li>Lithium</li>
-                                    </ul>
-                                </details>
-                                <details class="group px-3.5 py-3">
-                                    <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-[#23385e]">Charger <span class="text-[#5a6d8f] group-open:rotate-180 transition-transform">⌄</span></summary>
-                                    <ul class="mt-2 space-y-1 text-xs text-[#5a6d8f]">
-                                        <li>High Frequency</li>
-                                        <li>Low Frequency</li>
-                                    </ul>
-                                </details>
-                                <details class="group px-3.5 py-3">
-                                    <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-[#23385e]">Accessories <span class="text-[#5a6d8f] group-open:rotate-180 transition-transform">⌄</span></summary>
-                                    <ul class="mt-2 space-y-1 text-xs text-[#5a6d8f]">
-                                        <li>BFS & WaterTank</li>
-                                        <li>Connector</li>
-                                        <li>Plug / Socket</li>
-                                    </ul>
-                                </details>
+                            <div class="space-y-2 px-3.5 py-3">
+                                <button type="button" data-category="all" class="category-filter-btn w-full rounded-xl border border-[#bcc8de] bg-[#10215a] px-3 py-2 text-left text-sm font-semibold text-white transition hover:bg-[#1b3278]">
+                                    Semua Kategori
+                                </button>
+                                @foreach ($categories as $category)
+                                    <button type="button" data-category="{{ strtolower($category) }}" class="category-filter-btn w-full rounded-xl border border-[#d8dde8] bg-white px-3 py-2 text-left text-sm font-semibold text-[#23385e] transition hover:border-[#9aaed6] hover:bg-[#f6f8fc]">
+                                        {{ $category }}
+                                    </button>
+                                @endforeach
                                 <a href="/layanan" class="block px-3.5 py-3 text-sm font-semibold text-[#23385e] hover:bg-[#f6f8fc]">Service & After Sales</a>
                             </div>
                         </div>
@@ -69,8 +55,8 @@
                         <div class="mb-4 rounded-2xl border border-[#d8dde8] bg-white px-5 py-4 shadow-sm md:px-6 md:py-5">
                             <div class="flex flex-col gap-3">
                                 <div>
-                                    <h1 class="text-[clamp(1.1rem,1.8vw,1.8rem)] font-bold uppercase tracking-tight text-[#10215a]">Kategori: Battery, Charger, dan Accessories Forklift</h1>
-                                    <p class="mt-1 text-xs md:text-sm font-semibold text-[#7b889f]">Menampilkan {{ count($produks) }} produk unggulan untuk kebutuhan operasional Anda.</p>
+                                    <h1 id="selected-category-title" class="text-[clamp(1.1rem,1.8vw,1.8rem)] font-bold uppercase tracking-tight text-[#10215a]">Kategori: Semua Produk Forklift</h1>
+                                    <p class="mt-1 text-xs md:text-sm font-semibold text-[#7b889f]">Menampilkan <span id="visible-product-count">{{ count($produks) }}</span> produk unggulan untuk kebutuhan operasional Anda.</p>
                                 </div>
                             </div>
                         </div>
@@ -84,13 +70,21 @@
                             ];
                         @endphp
 
-                        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                        <div id="produk-grid" class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                             @foreach ($produks as $product)
                                 @php
                                     $categoryName = $product->kategori ? $product->kategori->nama_kategori : 'Uncategorized';
+                                    $categoryKey = strtolower($categoryName);
                                     $img = asset($product->img ?? 'images/product/tractionhawcker.png');
                                 @endphp
-                                <article class="group overflow-hidden rounded-2xl border border-[#c9d8f2] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style="background-image: {{ $productCardGradients[$loop->index % count($productCardGradients)] }};">
+                                <article
+                                    data-category="{{ $categoryKey }}"
+                                    data-detail-url="{{ url('/produk/detail?item=' . urlencode($product->kode_produk)) }}"
+                                    tabindex="0"
+                                    role="link"
+                                    class="product-card group cursor-pointer overflow-hidden rounded-2xl border border-[#c9d8f2] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                    style="background-image: {{ $productCardGradients[$loop->index % count($productCardGradients)] }};"
+                                >
                                     <div class="relative h-44 overflow-hidden bg-[linear-gradient(160deg,#ffffff_0%,#edf4ff_100%)]">
                                         <span class="absolute right-3 top-3 z-10 rounded-full bg-[#1f2e57] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-white">{{ strtoupper($categoryName) }}</span>
                                         <img src="{{ $img }}" alt="{{ $product->nama_produk }}" class="h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105" />
@@ -112,5 +106,91 @@
     </main>
 
     <x-footer />
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.category-filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            const selectedCategoryTitle = document.getElementById('selected-category-title');
+            const visibleProductCount = document.getElementById('visible-product-count');
+
+            function updateActiveButton(activeButton) {
+                filterButtons.forEach((button) => {
+                    button.classList.remove('bg-[#10215a]', 'text-white', 'border-[#bcc8de]');
+                    button.classList.add('bg-white', 'text-[#23385e]', 'border-[#d8dde8]');
+                });
+
+                activeButton.classList.remove('bg-white', 'text-[#23385e]', 'border-[#d8dde8]');
+                activeButton.classList.add('bg-[#10215a]', 'text-white', 'border-[#bcc8de]');
+            }
+
+            function applyCategoryFilter(categoryValue, categoryLabel) {
+                let totalVisible = 0;
+
+                productCards.forEach((card) => {
+                    const cardCategory = card.getAttribute('data-category');
+                    const shouldShow = categoryValue === 'all' || cardCategory === categoryValue;
+
+                    card.style.display = shouldShow ? '' : 'none';
+                    if (shouldShow) totalVisible += 1;
+                });
+
+                const titleLabel = categoryValue === 'all' ? 'Semua Produk Forklift' : categoryLabel;
+                selectedCategoryTitle.textContent = 'Kategori: ' + titleLabel;
+                visibleProductCount.textContent = String(totalVisible);
+            }
+
+            productCards.forEach((card) => {
+                card.addEventListener('click', function (event) {
+                    if (event.target.closest('a, button')) {
+                        return;
+                    }
+
+                    const detailUrl = card.getAttribute('data-detail-url');
+                    if (detailUrl) {
+                        window.location.href = detailUrl;
+                    }
+                });
+
+                card.addEventListener('keydown', function (event) {
+                    if (event.key !== 'Enter' && event.key !== ' ') {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    const detailUrl = card.getAttribute('data-detail-url');
+                    if (detailUrl) {
+                        window.location.href = detailUrl;
+                    }
+                });
+            });
+
+            filterButtons.forEach((button) => {
+                button.addEventListener('click', function () {
+                    const categoryValue = button.getAttribute('data-category');
+                    const categoryLabel = button.textContent.trim();
+
+                    updateActiveButton(button);
+                    applyCategoryFilter(categoryValue, categoryLabel);
+                });
+            });
+
+            const params = new URLSearchParams(window.location.search);
+            const requestedCategory = (params.get('category') || '').toLowerCase();
+            const categoryAliasMap = {
+                accessories: ['accessories', 'accesories'],
+                accesories: ['accessories', 'accesories'],
+            };
+
+            const candidateCategories = categoryAliasMap[requestedCategory] || [requestedCategory];
+            const matchedButton = filterButtons.length > 0
+                ? Array.from(filterButtons).find((button) => candidateCategories.includes(button.getAttribute('data-category')))
+                : null;
+
+            if (matchedButton) {
+                matchedButton.click();
+            }
+        });
+    </script>
 </body>
 </html>

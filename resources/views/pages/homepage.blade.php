@@ -12,16 +12,19 @@
         $products = [
             [
                 'name' => 'BATTERY',
+                'category' => 'battery',
                 'image' => asset('images/product/battery1.png'),
                 'description' => 'Dirancang khusus untuk aplikasi penggerak (traction) pada kendaraan listrik industri seperti forklift, scissor lift dll.',
             ],
             [
                 'name' => 'CHARGER',
+                'category' => 'charger',
                 'image' => asset('images/product/charger1.png'),
                 'description' => 'Pengisian cepat, aman, dan efisien untuk performa optimal.',
             ],
             [
                 'name' => 'ACCESSORIES',
+                'category' => 'accessories',
                 'image' => asset('images/product/accesoris.png'),
                 'description' => 'Pelengkap berkualitas untuk meningkatkan kinerja dan keamanan.',
             ],
@@ -214,7 +217,7 @@
 
                 <div class="grid gap-2.5 md:gap-3.5 md:grid-cols-3">
                     @foreach ($products as $product)
-                        <a href="/produk/detail" class="produk-showcase-card group relative overflow-hidden rounded-2xl border border-[#2d3d88] bg-[#0f1733] min-h-56 md:min-h-68 shadow-[0_14px_30px_rgba(0,0,0,0.25)]">
+                        <a href="{{ url('/produk?category=' . urlencode($product['category'])) }}" class="produk-showcase-card group relative overflow-hidden rounded-2xl border border-[#2d3d88] bg-[#0f1733] min-h-56 md:min-h-68 shadow-[0_14px_30px_rgba(0,0,0,0.25)]">
                             <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="produk-showcase-image absolute inset-0 h-full w-full object-cover" />
                             <div class="absolute inset-0 bg-linear-to-t from-[#090e25f5] via-[#0d1538b8] to-[#0f17331f]"></div>
 
@@ -247,16 +250,19 @@
                 @php
                     $services = [
                         [
+                            'slug' => 'after-sales-services',
                             'title' => 'After Sales Services',
                             'image' => asset('images/layanan/layanan1.png'),
                             'description' => 'Program purnajual 3 kali per tahun (setiap 4 bulan) mencakup preventive maintenance, cek level air aki, pembersihan korosi, cek voltase serta BJ, termasuk monitoring data pengisian dan evaluasi umur baterai untuk menekan risiko downtime.',
                         ],
                         [
+                            'slug' => 'training-battery',
                             'title' => 'Training Battery',
                             'image' => asset('images/artikel/artikel2.png'),
                             'description' => 'Pelatihan teknis dan kebiasaan kerja operator untuk pengisian, perawatan, dan penggunaan baterai yang benar agar umur pakai lebih panjang, performa stabil, dan biaya operasional gudang lebih terkendali.',
                         ],
                         [
+                            'slug' => 'trade-in',
                             'title' => 'Trade In',
                             'image' => asset('images/layanan/layanan1.png'),
                             'description' => 'Solusi tukar tambah baterai lama ke unit yang lebih siap pakai dengan proses evaluasi kondisi yang transparan, sehingga perencanaan anggaran penggantian aset menjadi lebih ringan dan terukur.',
@@ -266,7 +272,7 @@
 
                 <div class="grid gap-2.5 md:gap-3.5 md:grid-cols-3">
                     @foreach ($services as $service)
-                        <a href="/layanan/detail" class="produk-showcase-card group relative overflow-hidden rounded-2xl border border-[#2d3d88] bg-[#0f1733] min-h-56 md:min-h-68 shadow-[0_14px_30px_rgba(0,0,0,0.25)]">
+                        <a href="{{ url('/layanan?service=' . urlencode($service['slug']) . '#layanan-detail-section') }}" class="produk-showcase-card group relative overflow-hidden rounded-2xl border border-[#2d3d88] bg-[#0f1733] min-h-56 md:min-h-68 shadow-[0_14px_30px_rgba(0,0,0,0.25)]">
                             <img src="{{ $service['image'] }}" alt="{{ $service['title'] }}" class="produk-showcase-image absolute inset-0 h-full w-full object-cover" />
                             <div class="absolute inset-0 bg-linear-to-t from-[#090e25f5] via-[#0d1538b8] to-[#0f17331f]"></div>
 
