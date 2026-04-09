@@ -1240,6 +1240,14 @@ body {
 }
 
 .berita-runline-group span {
+    width: max-content;
+    align-items: center;
+    gap: 1.7rem;
+    padding: 0.72rem 0;
+    animation: berita-runline-move 24s linear infinite;
+}
+
+.berita-runline-track span {
     display: inline-flex;
     align-items: center;
     font-size: 0.73rem;
@@ -1249,7 +1257,7 @@ body {
     white-space: nowrap;
 }
 
-.berita-runline-group span::before {
+.berita-runline-track span::before {
     content: '';
     width: 0.42rem;
     height: 0.42rem;
@@ -1598,7 +1606,7 @@ body {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-100% - 1.7rem));
+        transform: translateX(-50%);
     }
 }
 

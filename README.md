@@ -25,9 +25,48 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-3. Jalankan project.
+3. Setup database (wajib agar web jalan normal).
+
+- Nyalakan `Apache` dan `MySQL` di XAMPP.
+- Buat database baru di phpMyAdmin, misalnya: `projectmagang`.
+- Buka file `.env`, lalu ubah bagian database menjadi seperti ini:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=projectmagang
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+4. Apply struktur dan data awal database.
 
 ```bash
+php artisan migrate --seed
+```
+
+5. Jalankan project.
+
+```bash
+php artisan serve
+npm run dev
+```
+
+6. Buka aplikasi di browser.
+
+- Backend Laravel: `http://127.0.0.1:8000`
+- Frontend Vite: `http://localhost:5173`
+
+### Quick Start (Tanpa Otak-Atik Manual)
+
+Setelah `.env` database diisi, cukup jalankan urutan ini:
+
+```bash
+composer install
+npm install
+php artisan key:generate
+php artisan migrate --seed
 php artisan serve
 npm run dev
 ```

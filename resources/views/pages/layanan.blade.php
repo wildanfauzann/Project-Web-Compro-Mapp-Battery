@@ -35,7 +35,6 @@
         </section>
 
 
-
         <!-- Section 2: Layanan Showcase -->
         <section id="layanan" class="scroll-fade-section layanan-showcase-section py-8 md:py-10 min-h-[calc(110svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="scroll-fade-content produk-showcase-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">

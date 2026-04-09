@@ -11,7 +11,6 @@
     <x-navbar />
 
     <main>
-
         <section class="berita-hero-section berita-screen-section berita-scroll-stage berita-transition-to-light reveal-on-scroll relative overflow-hidden flex items-end" style="background-image: linear-gradient(180deg, rgba(4, 11, 31, 0.25) 0%, rgba(5, 14, 38, 0.72) 76%, rgba(5, 14, 38, 0.9) 100%), url('{{ asset('images/hero/hero4.png') }}');">
             <div class="berita-hero-pattern" aria-hidden="true"></div>
             <div class="berita-hero-orb berita-hero-orb-left" aria-hidden="true"></div>
