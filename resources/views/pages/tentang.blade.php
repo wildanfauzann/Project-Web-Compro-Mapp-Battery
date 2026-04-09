@@ -234,7 +234,7 @@
                 <div class="about-office-layout grid gap-4 lg:grid-cols-[0.9fr_1.1fr] items-stretch">
                     <div class="about-office-info space-y-2.5 md:space-y-3">
                         @foreach ($offices as $index => $office)
-                            <article class="about-office-card group rounded-[1.1rem] border border-[#dbe4f4] bg-[#f8fbff] p-3 md:p-3.5 shadow-[0_10px_20px_rgba(15,23,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#2c4fa8] hover:shadow-[0_16px_26px_rgba(15,23,51,0.14)]" style="--stagger-index: {{ $index }};" data-office-item data-office-index="{{ $index }}" data-office-label="{{ $office['label'] }}" data-office-city="{{ $office['city'] }}" data-office-address="{{ $office['address'] }}" data-office-lat="{{ $office['lat'] }}" data-office-lng="{{ $office['lng'] }}" data-office-zoom="{{ $office['zoom'] }}">
+                            <article id="kantor-{{ strtolower($office['city']) }}" class="about-office-card group rounded-[1.1rem] border border-[#dbe4f4] bg-[#f8fbff] p-3 md:p-3.5 shadow-[0_10px_20px_rgba(15,23,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#2c4fa8] hover:shadow-[0_16px_26px_rgba(15,23,51,0.14)]" style="--stagger-index: {{ $index }};" data-office-item data-office-index="{{ $index }}" data-office-label="{{ $office['label'] }}" data-office-city="{{ $office['city'] }}" data-office-address="{{ $office['address'] }}" data-office-lat="{{ $office['lat'] }}" data-office-lng="{{ $office['lng'] }}" data-office-zoom="{{ $office['zoom'] }}">
                                 <div class="flex items-start gap-3">
                                     <div class="about-office-pin flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0c014c] text-white shadow-[0_10px_18px_rgba(12,1,76,0.18)]">
                                         <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
@@ -446,7 +446,18 @@
                 item.addEventListener('click', () => setActiveOffice(Number(item.dataset.officeIndex)));
             });
 
-            setActiveOffice(0);
+            const searchParams = new URLSearchParams(window.location.search);
+            const requestedOffice = (searchParams.get('office') || '').toLowerCase();
+            const hashOffice = (window.location.hash || '').replace('#', '').toLowerCase();
+
+            let initialOfficeIndex = 0;
+            if (requestedOffice === 'sidoarjo' || hashOffice === 'kantor-sidoarjo') {
+                initialOfficeIndex = 1;
+            } else if (requestedOffice === 'bekasi' || hashOffice === 'kantor-bekasi') {
+                initialOfficeIndex = 0;
+            }
+
+            setActiveOffice(initialOfficeIndex);
         });
     </script>
 </body>

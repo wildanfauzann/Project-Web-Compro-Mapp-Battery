@@ -1,6 +1,6 @@
 <nav class="sticky top-0 z-50 dynamic-navbar border-b border-[#cfcfcf] shadow-sm" aria-label="Navigasi utama">
     <!-- Top Row: Logo & Dropdowns -->
-    <div class="navbar-surface max-w-7xl mx-auto px-4 md:px-8 py-2 md:py-3">
+    <div class="navbar-surface relative z-90 max-w-7xl mx-auto px-4 md:px-8 py-2 md:py-3">
         <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <a href="/" class="inline-flex items-center gap-3"
                 ><img src="{{ asset('images/logo/LOGO_MAP-removebg-preview 1.png') }}" alt="Logo PT. Multidaya Anugrah Perkasa" class="h-8 md:h-9 w-auto object-contain hover-lift" />
@@ -10,17 +10,15 @@
             <div class="flex flex-col gap-1.5">
                 <!-- Top row: Dropdown buttons -->
                 <div class="flex items-center gap-3 text-[11px] md:text-xs text-[#1f1f1f] font-semibold">
-                    <!-- Dealer Dropdown -->
+                    <!-- Office Dropdown -->
                     <div class="relative" id="dealer-dropdown-container">
                         <button type="button" id="dealer-toggle" class="navbar-top-btn px-1 py-0.5 text-[#1f1f1f] rounded btn-hover flex items-center gap-1.5 hover:bg-[#efefef]">
-                            <img src="{{ asset('images/icon/image 25.png') }}" alt="Icon dealer" class="w-4 h-4 object-contain" />
-                            <span>Temukan Dealer Terdekat</span>
+                            <img src="{{ asset('images/icon/image 25.png') }}" alt="Icon kantor" class="w-4 h-4 object-contain" />
+                            <span>Temukan Kantor Kami</span>
                         </button>
-                        <div class="dealer-dropdown absolute right-0 top-full mt-1 bg-white border border-slate-300 rounded shadow-lg w-48 opacity-0 invisible transition-all duration-200">
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-slate-100">Jakarta</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-slate-100">Bandung</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-slate-100">Surabaya</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-slate-100">Medan</a>
+                        <div class="dealer-dropdown absolute right-0 top-full mt-1 bg-white border border-slate-300 rounded shadow-lg w-56 opacity-0 invisible transition-all duration-200">
+                            <a href="/tentang?office=bekasi#kantor-kami" class="block px-4 py-2 text-sm hover:bg-slate-100">Bekasi</a>
+                            <a href="/tentang?office=sidoarjo#kantor-kami" class="block px-4 py-2 text-sm hover:bg-slate-100">Sidoarjo</a>
                         </div>
                     </div>
 
@@ -54,7 +52,7 @@
     </div>
 
     <!-- Bottom Row: Menu Navigation -->
-    <div class="dynamic-nav-strip border-t border-[#cfcfcf]">
+    <div class="dynamic-nav-strip relative z-40 border-t border-[#cfcfcf]">
         <div class="max-w-7xl mx-auto px-4 md:px-8 relative" id="navbar-preview-area">
             <ul id="navbar-menu" class="navbar-menu-list flex items-center justify-between text-[11px] md:text-sm font-semibold text-[#161616]">
                 <li class="relative flex-1 text-center navbar-item {{ Request::is('/') ? 'active' : '' }}" data-preview-key="beranda">

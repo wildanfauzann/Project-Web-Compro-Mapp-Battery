@@ -23,18 +23,43 @@ document.addEventListener('DOMContentLoaded', () => {
 	const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
 	const isAboutPage = currentPath === '/tentang';
 	if (isAboutPage) {
+		const searchParams = new URLSearchParams(window.location.search);
+		const hashTarget = window.location.hash ? window.location.hash.slice(1) : '';
+		const hasDeepLinkTarget = Boolean(hashTarget) || Boolean(searchParams.get('office'));
+
 		if ('scrollRestoration' in window.history) {
 			window.history.scrollRestoration = 'manual';
 		}
 
-		window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-		requestAnimationFrame(() => {
+		if (!hasDeepLinkTarget) {
 			window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-		});
+			requestAnimationFrame(() => {
+				window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+			});
+		}
 
 		window.addEventListener('pageshow', () => {
-			window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+			if (!hasDeepLinkTarget) {
+				window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+			}
 		});
+
+		if (hasDeepLinkTarget) {
+			requestAnimationFrame(() => {
+				const targetId = !hashTarget || hashTarget === 'about-office-map' ? 'kantor-kami' : hashTarget;
+				const target = document.getElementById(targetId);
+				if (!target) {
+					return;
+				}
+
+				const navbarHeight = navbar?.offsetHeight || 0;
+				const sectionTop = target.getBoundingClientRect().top + window.scrollY;
+				window.scrollTo({
+					top: Math.max(sectionTop - navbarHeight - 12, 0),
+					behavior: 'smooth',
+				});
+			});
+		}
 	}
 
 	// Dealer Dropdown Toggle
