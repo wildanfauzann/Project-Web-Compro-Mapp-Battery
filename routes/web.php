@@ -45,7 +45,40 @@ Route::get('/unduhan', function () {
 });
 
 Route::get('/berita', function () {
-    return view('pages.berita');
+    $articles = config('newsroom.articles', []);
+    return view('pages.berita', compact('articles'));
+});
+
+Route::get('/berita/{slug}', function (string $slug) {
+    $articles = collect(config('newsroom.articles', []));
+    $article = $articles->firstWhere('slug', $slug);
+
+    if (!$article) {
+        abort(404);
+    }
+
+    $relatedArticles = $articles
+        ->where('category', $article['category'])
+        ->reject(fn ($item) => $item['slug'] === $article['slug'])
+        ->take(3)
+        ->values()
+        ->all();
+
+    if (count($relatedArticles) < 3) {
+        $additional = $articles
+            ->reject(fn ($item) => $item['slug'] === $article['slug'])
+            ->reject(fn ($item) => collect($relatedArticles)->pluck('slug')->contains($item['slug']))
+            ->take(3 - count($relatedArticles))
+            ->values()
+            ->all();
+
+        $relatedArticles = array_merge($relatedArticles, $additional);
+    }
+
+    return view('pages.detail-berita', [
+        'article' => $article,
+        'relatedArticles' => $relatedArticles,
+    ]);
 });
 
 Route::prefix('admin')->group(function () {

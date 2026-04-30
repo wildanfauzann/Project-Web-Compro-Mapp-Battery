@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PT. Multidaya Anugrah Perkasa - Homepage</title>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="{{ asset('images/hero/hero1.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
@@ -93,11 +94,17 @@
             <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="hero-stage">
                     <div class="scroll-fade-content hero-scroll-copy hero-copy-wrap w-full">
-                        <h1 class="hero-heading font-bold text-white mb-2 drop-shadow-lg">PT. Multidaya Anugrah Perkasa</h1>
-                        <p class="hero-tagline max-w-xl font-semibold uppercase tracking-wide text-slate-100 drop-shadow">POWERING MOBILITY ENERGIZING THE FUTURE</p>
-                        <p class="hero-lead max-w-xl text-slate-100 drop-shadow">
-                            Kami memberikan yang terbaik untuk konsumen, dalam bentuk solusi yang efektif dan efisien untuk seluruh kebutuhan energy terbarukan.
-                        </p>
+                        <div class="hero-copy-shell">
+                            <h1 class="hero-heading font-bold text-white mb-2 drop-shadow-lg">PT. Multidaya Anugrah Perkasa</h1>
+                            <p class="hero-tagline max-w-xl font-semibold uppercase tracking-wide text-slate-100 drop-shadow">POWERING MOBILITY ENERGIZING THE FUTURE</p>
+                            <p class="hero-lead text-slate-100 drop-shadow">
+                                Kami memberikan yang terbaik untuk konsumen, dalam bentuk solusi yang efektif dan efisien untuk seluruh kebutuhan energy terbarukan.
+                            </p>
+                            <a href="#produk" class="hero-mobile-cta md:hidden inline-flex items-center gap-2 rounded-full bg-[#d60812] px-4 py-2 text-[11px] font-semibold text-white">
+                                <span class="inline-block h-2.5 w-2.5 rounded-full bg-[#f2cd00]"></span>
+                                Selamat datang di Multidaya Anugerah Perkasa
+                            </a>
+                        </div>
                     </div>
 
                     <section id="tentang" class="scroll-fade-section scroll-fade-content hero-embedded-section" data-nav-gradient="linear-gradient(120deg, #fff9c4 0%, #f4f4f4 50%, #c8e6c9 100%)" data-nav-glow="rgba(185, 246, 202, 0.38)">
@@ -109,6 +116,16 @@
                             <figure class="hero-video-card overflow-hidden rounded-xl border border-[#d5d5d5] bg-[#0b1026] shadow-lg">
                                 <div class="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
                                     <div class="relative bg-black">
+                                        <div class="hero-metrics md:hidden">
+                                            <div class="hero-metric-card">
+                                                <strong>500+</strong>
+                                                <span>Produk</span>
+                                            </div>
+                                            <div class="hero-metric-card">
+                                                <strong>Ready</strong>
+                                                <span>Stok Gudang</span>
+                                            </div>
+                                        </div>
                                         <video
                                             class="hero-video-player aspect-video h-full w-full object-cover"
                                             data-hero-embedded-video
@@ -129,8 +146,11 @@
                                         </button>
                                     </div>
 
-                                    <figcaption class="flex h-full flex-col justify-center gap-2 bg-[#0b1026] px-4 py-4 text-left text-white md:px-5">
-                                        <span class="inline-flex w-fit items-center rounded-full bg-[#f2cd00] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#0f1733]">Microtex</span>
+                                    <figcaption class="hero-video-caption flex h-full flex-col justify-center gap-2 bg-[#0b1026] px-4 py-4 text-left text-white md:px-5">
+                                        <div class="hero-video-badges">
+                                            <span class="inline-flex w-fit items-center rounded-full bg-[#f2cd00] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#0f1733]">Microtex</span>
+                                            <span class="hero-video-badge-extra md:hidden inline-flex w-fit items-center rounded-full border border-white/25 bg-white/8 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white">Highlight</span>
+                                        </div>
                                         <h3 class="text-sm md:text-base font-bold leading-tight">{{ $heroVideo['title'] }}</h3>
                                         <p class="text-[10px] md:text-[11px] leading-5 text-[#d9e4ff] line-clamp-5">{{ $heroVideo['description'] }}</p>
                                     </figcaption>
@@ -142,7 +162,7 @@
             </div>
         </section>
 
-        <section class="scroll-fade-section layanan-showcase-section bg-[#0C014C] py-7 md:py-9 min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
+        <section class="scroll-fade-section layanan-showcase-section bg-[#0C014C] py-7 md:py-9 min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="scroll-fade-content max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="max-w-4xl mx-auto text-center mb-5 md:mb-6">
                     <span class="inline-flex items-center rounded-full bg-[#f2cd00] text-[#0f1733] px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.15em]">Keunggulan Kami</span>
@@ -205,7 +225,7 @@
             </div>
         </section>
 
-        <section id="produk" class="scroll-fade-section in-view produk-showcase-section bg-white py-6 md:py-7 min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f2f4f8 55%, #e9edf5 100%)" data-nav-glow="rgba(120, 144, 156, 0.28)" style="background-color:#ffffff;">
+        <section id="produk" class="scroll-fade-section in-view produk-showcase-section bg-white py-6 md:py-7 min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f2f4f8 55%, #e9edf5 100%)" data-nav-glow="rgba(120, 144, 156, 0.28)" style="background-color:#ffffff;">
             <div class="scroll-fade-content produk-showcase-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="text-center max-w-4xl mx-auto mb-4 md:mb-5">
                     <span class="inline-flex items-center rounded-full bg-[#0f1733] text-[#f2cd00] px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.16em]">Produk Unggulan</span>
@@ -218,7 +238,7 @@
                 <div class="grid gap-2.5 md:gap-3.5 md:grid-cols-3">
                     @foreach ($products as $product)
                         <a href="{{ url('/produk?category=' . urlencode($product['category'])) }}" class="produk-showcase-card group relative overflow-hidden rounded-2xl border border-[#2d3d88] bg-[#0f1733] min-h-56 md:min-h-68 shadow-[0_14px_30px_rgba(0,0,0,0.25)]">
-                            <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="produk-showcase-image absolute inset-0 h-full w-full object-cover" />
+                            <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="produk-showcase-image absolute inset-0 h-full w-full object-cover" width="640" height="480" loading="lazy" decoding="async" />
                             <div class="absolute inset-0 bg-linear-to-t from-[#090e25f5] via-[#0d1538b8] to-[#0f17331f]"></div>
 
                             <div class="produk-showcase-content relative z-10 h-full flex flex-col justify-end p-3.5 md:p-4">
@@ -237,7 +257,7 @@
             </div>
         </section>
 
-        <section id="layanan" class="scroll-fade-section layanan-showcase-section py-6 md:py-7 min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
+        <section id="layanan" class="scroll-fade-section layanan-showcase-section py-6 md:py-7 min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="scroll-fade-content produk-showcase-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="text-center max-w-4xl mx-auto mb-4 md:mb-5">
                     <span class="inline-flex items-center rounded-full bg-[#f2cd00] text-[#0f1733] px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.16em]">Layanan Unggulan</span>
@@ -273,7 +293,7 @@
                 <div class="grid gap-2.5 md:gap-3.5 md:grid-cols-3">
                     @foreach ($services as $service)
                         <a href="{{ url('/layanan?service=' . urlencode($service['slug']) . '#layanan-detail-section') }}" class="produk-showcase-card group relative overflow-hidden rounded-2xl border border-[#2d3d88] bg-[#0f1733] min-h-56 md:min-h-68 shadow-[0_14px_30px_rgba(0,0,0,0.25)]">
-                            <img src="{{ $service['image'] }}" alt="{{ $service['title'] }}" class="produk-showcase-image absolute inset-0 h-full w-full object-cover" />
+                            <img src="{{ $service['image'] }}" alt="{{ $service['title'] }}" class="produk-showcase-image absolute inset-0 h-full w-full object-cover" width="640" height="480" loading="lazy" decoding="async" />
                             <div class="absolute inset-0 bg-linear-to-t from-[#090e25f5] via-[#0d1538b8] to-[#0f17331f]"></div>
 
                             <div class="produk-showcase-content relative z-10 h-full flex flex-col justify-end p-3.5 md:p-4">
@@ -292,7 +312,7 @@
             </div>
         </section>
 
-        <section id="testimoni" class="scroll-fade-section py-10 md:py-14 bg-white min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f2f6ff 55%, #e5edff 100%)" data-nav-glow="rgba(120, 144, 255, 0.2)">
+        <section id="testimoni" class="scroll-fade-section py-10 md:py-14 bg-white min-h-[auto] md:min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f2f6ff 55%, #e5edff 100%)" data-nav-glow="rgba(120, 144, 255, 0.2)">
             <div class="scroll-fade-content max-w-7xl mx-auto px-4 md:px-8 w-full">
                 @php
                     $testimonialClients = [
@@ -303,39 +323,33 @@
                     ];
                 @endphp
 
-                <div class="homepage-testi-shell mx-auto max-w-6xl rounded-[1.8rem] border border-[#ccd8f2] bg-[linear-gradient(135deg,#0c2a73_0%,#1f4ea4_55%,#2f71dd_100%)] px-4 py-8 md:px-7 md:py-10 shadow-[0_18px_36px_rgba(15,23,51,0.14)]">
-                    <div class="text-center">
-                        <p class="text-[11px] md:text-xs font-bold uppercase tracking-[0.28em] text-[#f2cd00]">Testimonial</p>
-                        <h2 class="mt-3 text-[clamp(1.8rem,3.5vw,3.2rem)] font-bold tracking-tight text-white">Klien Kami</h2>
-                        <p class="mt-2 text-xs md:text-sm text-[#dce8ff]">Dipercaya berbagai perusahaan untuk kebutuhan energi dan layanan industri.</p>
+                <div class="homepage-testi-shell mx-auto max-w-5xl rounded-2xl bg-gradient-to-b from-[#0f1733] to-[#1a2548] px-6 py-10 md:px-8 md:py-12 shadow-[0_12px_30px_rgba(15,23,51,0.16)]">
+                    <div class="text-center mb-8 md:mb-10">
+                        <p class="text-[11px] md:text-xs font-bold uppercase tracking-[0.28em] text-[#f2cd00]">Klien Terpercaya</p>
+                        <h2 class="mt-2 text-[clamp(2rem,3.5vw,3rem)] font-bold tracking-tight text-white">Dipercaya Berbagai Perusahaan</h2>
+                        <p class="mt-2 text-sm md:text-base text-[#cbd5e6] max-w-2xl mx-auto">Solusi energi kami telah membantu meningkatkan produktivitas operasional berbagai mitra industri.</p>
                     </div>
 
-                    <div class="mt-7 md:mt-9 grid grid-cols-[auto_1fr_auto] items-center gap-2 md:gap-3">
-                        <button type="button" id="homepage-testi-prev" class="inline-flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full border border-[#b7cdf7] bg-white/95 text-2xl leading-none text-[#355295] transition-all hover:-translate-y-0.5 hover:border-[#f2cd00] hover:text-[#0f1733]" aria-label="Slide kiri testimoni">‹</button>
-
-                        <div id="homepage-testi-viewport" class="overflow-hidden [--logos-gap:0.75rem] md:[--logos-gap:1rem]">
-                            <div id="homepage-testi-track" class="flex items-center gap-(--logos-gap) will-change-transform">
-                                @foreach ($testimonialClients as $client)
-                                    <article class="homepage-testi-item flex shrink-0 items-center justify-center rounded-2xl border border-[#aac2ef] bg-[linear-gradient(160deg,#f7faff_0%,#e6efff_100%)] px-4 py-5 md:px-5 md:py-6 shadow-[0_10px_18px_rgba(7,26,67,0.16)]">
-                                        <img src="{{ $client['logo'] }}" alt="Logo {{ $client['name'] }}" class="homepage-testi-logo max-h-14 md:max-h-16 w-auto max-w-full object-contain" loading="lazy" />
-                                    </article>
-                                @endforeach
-                            </div>
+                    <div class="homepage-logo-loop" data-logo-loop data-speed="96" data-direction="left" data-hover-speed="0" aria-label="Logo klien PT MAP">
+                        <div class="homepage-logo-loop-track" data-logo-loop-track>
+                            @foreach ($testimonialClients as $client)
+                                <div class="homepage-logo-loop-item">
+                                    <img src="{{ $client['logo'] }}" alt="Logo {{ $client['name'] }}" class="homepage-logo-loop-image" width="320" height="180" loading="lazy" decoding="async" />
+                                </div>
+                            @endforeach
                         </div>
-
-                        <button type="button" id="homepage-testi-next" class="inline-flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full border border-[#b7cdf7] bg-white/95 text-2xl leading-none text-[#355295] transition-all hover:-translate-y-0.5 hover:border-[#f2cd00] hover:text-[#0f1733]" aria-label="Slide kanan testimoni">›</button>
                     </div>
 
-                    <div class="mt-7 flex justify-center">
-                        <a href="/tentang#testimoni" class="inline-flex items-center gap-2 rounded-full border border-[#f2cd00] bg-[#f2cd00] px-5 py-2 text-xs md:text-sm font-bold text-[#0f1733] transition-all hover:-translate-y-0.5 hover:bg-[#ffd63d]">
-                            Selengkapnya <span aria-hidden="true">→</span>
+                    <div class="mt-8 md:mt-10 flex justify-center">
+                        <a href="/tentang#testimoni" class="inline-flex items-center gap-2.5 rounded-full bg-[#f2cd00] px-6 md:px-8 py-2.5 text-xs md:text-sm font-semibold text-[#0f1733] transition-all hover:-translate-y-0.5 hover:bg-[#ffda2f] shadow-[0_8px_20px_rgba(242,205,0,0.24)]">
+                            Lihat Semua Testimoni <span aria-hidden="true">→</span>
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="berita" class="scroll-fade-section layanan-showcase-section py-6 md:py-7 bg-[#0C014C] min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
+        <section id="berita" class="scroll-fade-section layanan-showcase-section py-6 md:py-7 bg-[#0C014C] min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="scroll-fade-content berita-fit-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="max-w-4xl mx-auto mb-4 md:mb-5">
                     <div class="flex flex-col gap-4 items-center text-center w-full">
@@ -376,7 +390,7 @@
                     @foreach ($articles as $article)
                         <a href="/berita" class="berita-card grid grid-cols-[94px_1fr] md:grid-cols-[118px_1fr] gap-0 overflow-hidden rounded-xl border border-[#33448d] bg-[#f5f7ff] shadow-[0_8px_18px_rgba(0,0,0,0.14)]">
                             <div class="relative h-full min-h-28 md:min-h-29.5 overflow-hidden bg-[#efefef]">
-                                <img src="{{ $article['image'] }}" alt="{{ $article['title'] }}" class="berita-card-image h-full w-full object-cover" />
+                                <img src="{{ $article['image'] }}" alt="{{ $article['title'] }}" class="berita-card-image h-full w-full object-cover" width="640" height="480" loading="lazy" decoding="async" />
                                 <span class="absolute left-2 top-2 inline-flex items-center rounded-full bg-[#f2cd00] px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-[#0f1733]">
                                     {{ $article['category'] }}
                                 </span>
@@ -403,7 +417,7 @@
             </div>
         </section>
 
-        <section class="scroll-fade-section py-8 md:py-10 bg-white min-h-[calc(102svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f7f9ff 55%, #e5ecff 100%)" data-nav-glow="rgba(120, 144, 255, 0.16)">
+        <section class="scroll-fade-section py-8 md:py-10 bg-white min-h-[auto] md:min-h-[calc(102svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f7f9ff 55%, #e5ecff 100%)" data-nav-glow="rgba(120, 144, 255, 0.16)">
             <div class="scroll-fade-content max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="faq-header max-w-4xl mx-auto mb-6 md:mb-8 text-center">
                     <span class="inline-flex items-center rounded-full border border-[#f2cd00] bg-[#fff8d8] px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.14em] text-[#d47a00] shadow-[0_6px_14px_rgba(15,23,51,0.06)]">
@@ -456,7 +470,7 @@
             </div>
         </section>
 
-        <section id="unduhan" class="scroll-fade-section layanan-showcase-section relative overflow-hidden py-14 md:py-16 bg-[#0C014C] min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
+        <section id="unduhan" class="scroll-fade-section layanan-showcase-section relative overflow-hidden py-14 md:py-16 bg-[#0C014C] min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" style="background-image: radial-gradient(rgba(242, 205, 0, 0.18) 1px, transparent 1px); background-size: 24px 24px; background-position: 0 0;"></div>
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,205,0,0.16),transparent_34%),radial-gradient(circle_at_20%_25%,rgba(255,255,255,0.08),transparent_18%),radial-gradient(circle_at_80%_75%,rgba(47,128,237,0.18),transparent_24%)]" aria-hidden="true"></div>
             <div class="scroll-fade-content relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
@@ -493,9 +507,5 @@
     </div>
 
     <x-footer />
-
-    <a href="/kontak" class="fixed right-4 bottom-4 z-40 h-14 w-14 rounded-full bg-[#f2cd00] shadow-lg grid place-items-center hover:bg-[#e8c200] transition-colors group" title="Hubungi Kami">
-        <img src="{{ asset('images/icon/image 28.png') }}" alt="Hubungi Kami" class="h-8 w-8 object-contain group-hover:scale-110 transition-transform" />
-    </a>
 </body>
 </html>

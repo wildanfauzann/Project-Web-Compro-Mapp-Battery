@@ -6,6 +6,7 @@
     <title>Tentang Kami - PT. Multidaya Anugrah Perkasa</title>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="preload" as="image" href="{{ asset('images/hero/hero2.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
@@ -13,7 +14,7 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="reveal-on-scroll hero-bg-extended relative overflow-hidden min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center" style="background-image: url('{{ asset('images/hero/hero2.png') }}'); background-size: cover; background-position: center;">
+        <section class="reveal-on-scroll hero-bg-extended relative overflow-hidden min-h-[calc(78svh-var(--navbar-height,0px))] md:min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center" style="background-image: url('{{ asset('images/hero/hero2.png') }}'); background-size: cover; background-position: center;">
             <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(92deg,rgba(4,12,36,0.68)_0%,rgba(6,18,48,0.42)_42%,rgba(6,18,48,0.18)_68%,rgba(6,18,48,0.04)_100%)]"></div>
             <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center py-4 md:py-6">
@@ -33,7 +34,7 @@
                     <div id="about-hero-carousel" class="about-carousel-panel relative mx-auto w-full max-w-md lg:max-w-lg">
                         <div class="rounded-2xl border border-[#d9e3ff] bg-white p-3 md:p-4 shadow-[0_18px_34px_rgba(10,23,61,0.28)]">
                             <div class="relative overflow-hidden rounded-xl border border-[#d3def8]">
-                                <div id="about-slide-image" class="h-44 md:h-52 w-full bg-center bg-cover transition-all duration-500"></div>
+                                <div id="about-slide-image" class="aspect-[16/9] w-full bg-center bg-cover transition-all duration-500"></div>
                             </div>
 
                             <div class="mt-3 rounded-xl bg-[#f6f9ff] p-3 md:p-4">
@@ -55,7 +56,7 @@
         </section>
 
         <!-- Section 2: Sejarah Perusahaan -->
-        <section class="scroll-fade-section company-history-section mt-4 md:mt-6 py-6 md:py-8 min-h-[calc(106svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
+        <section class="scroll-fade-section company-history-section mt-4 md:mt-6 py-6 md:py-8 min-h-[auto] md:min-h-[calc(106svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="scroll-fade-content max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="text-center max-w-4xl mx-auto mb-6 md:mb-8">
                     {{-- <span class="inline-flex items-center rounded-full border border-[#f2cd0066] bg-[#f2cd0018] px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.16em] text-[#f7d84a]">
@@ -101,7 +102,7 @@
         </section>
 
         <!-- Section 3: Visi, Misi, dan Kredibilitas -->
-        <section class="scroll-fade-section about-vision-section mt-4 md:mt-6 py-4 md:py-5 min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center bg-white" data-nav-gradient="linear-gradient(180deg, #ffffff 0%, #ffffff 100%)" data-nav-glow="rgba(148, 163, 184, 0.18)">
+        <section class="scroll-fade-section about-vision-section mt-4 md:mt-6 py-4 md:py-5 min-h-[auto] md:min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center bg-white" data-nav-gradient="linear-gradient(180deg, #ffffff 0%, #ffffff 100%)" data-nav-glow="rgba(148, 163, 184, 0.18)">
             <div class="scroll-fade-content about-vision-content max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="about-vision-header text-center max-w-3xl mx-auto" style="--stagger-index: 0;">
                     {{-- <span class="about-vision-kicker">Fondasi Perusahaan</span> --}}
@@ -139,7 +140,7 @@
         </section>
 
         <!-- Section 4: Testimoni -->
-        <section id="testimoni" class="scroll-fade-section about-testimoni-section mt-4 md:mt-6 py-5 md:py-6 pb-10 md:pb-14 min-h-[calc(100svh-var(--navbar-height,0px))] flex items-start" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0c014c 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
+        <section id="testimoni" class="scroll-fade-section about-testimoni-section mt-4 md:mt-6 py-5 md:py-6 pb-10 md:pb-14 min-h-[auto] md:min-h-[calc(100svh-var(--navbar-height,0px))] flex items-start" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0c014c 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="scroll-fade-content about-testimoni-wrap max-w-7xl mx-auto px-4 md:px-8 w-full pt-2 md:pt-3">
                 <div class="about-testimoni-header max-w-3xl mx-auto mb-6 md:mb-8 text-center">
                     {{-- <span class="about-testimoni-kicker">Client Voices</span> --}}
@@ -178,7 +179,7 @@
                     @foreach ($aboutTestimonials as $index => $testimonial)
                         <article class="about-testimoni-item group grid grid-cols-[72px_minmax(0,1fr)] gap-2.5 items-center rounded-[0.95rem] border border-[#2d2a84] bg-[rgba(255,255,255,0.04)] px-3 py-3 shadow-[0_8px_18px_rgba(0,0,0,0.12)]" style="--stagger-index: {{ $index }};">
                             <div class="about-testimoni-logo-wrap flex h-16 items-center justify-center rounded-lg bg-white p-1.5 shadow-[0_8px_16px_rgba(0,0,0,0.1)] overflow-hidden">
-                                <img src="{{ $testimonial['logo'] }}" alt="{{ $testimonial['name'] }}" class="about-testimoni-logo max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-[1.04]" />
+                                <img src="{{ $testimonial['logo'] }}" alt="{{ $testimonial['name'] }}" class="about-testimoni-logo max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-[1.04]" width="320" height="180" loading="lazy" decoding="async" />
                             </div>
 
                             <div class="about-testimoni-text min-w-0 pr-1">
@@ -200,7 +201,7 @@
         </section>
 
         <!-- Section 5: Kantor Kami -->
-        <section id="kantor-kami" class="scroll-fade-section about-office-section mt-4 md:mt-6 py-5 md:py-7 min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center bg-white" data-nav-gradient="linear-gradient(180deg, #ffffff 0%, #ffffff 100%)" data-nav-glow="rgba(148, 163, 184, 0.18)">
+        <section id="kantor-kami" class="scroll-fade-section about-office-section mt-4 md:mt-6 py-5 md:py-7 min-h-[auto] md:min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center bg-white" data-nav-gradient="linear-gradient(180deg, #ffffff 0%, #ffffff 100%)" data-nav-glow="rgba(148, 163, 184, 0.18)">
             <div class="scroll-fade-content about-office-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="about-office-header max-w-3xl mx-auto text-center mb-5 md:mb-7" style="--stagger-index: 0;">
                     {{-- <span class="about-office-kicker">Lokasi Kami</span> --}}
@@ -324,7 +325,7 @@
                     @foreach ($articles as $article)
                         <a href="/berita" class="berita-card grid grid-cols-[94px_1fr] md:grid-cols-[118px_1fr] gap-0 overflow-hidden rounded-xl border border-[#33448d] bg-[#f5f7ff] shadow-[0_8px_18px_rgba(0,0,0,0.14)]">
                             <div class="relative h-full min-h-28 md:min-h-30 overflow-hidden bg-[#efefef]">
-                                <img src="{{ $article['image'] }}" alt="{{ $article['title'] }}" class="berita-card-image h-full w-full object-cover" />
+                                <img src="{{ $article['image'] }}" alt="{{ $article['title'] }}" class="berita-card-image h-full w-full object-cover" width="640" height="480" loading="lazy" decoding="async" />
                                 <span class="absolute left-2 top-2 inline-flex items-center rounded-full bg-[#f2cd00] px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-[#0f1733]">
                                     {{ $article['category'] }}
                                 </span>
