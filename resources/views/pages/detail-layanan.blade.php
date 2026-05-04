@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Detail Layanan - PT. Multidaya Anugrah Perkasa</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
-    <x-navbar />
+@extends('layouts.main')
 
+@section('title', 'Detail Layanan - PT. Multidaya Anugrah Perkasa')
+
+@section('content')
     <main>
         <!-- Section 1: Hero -->
         <section class="py-8 md:py-12 bg-white reveal-on-scroll">
@@ -81,8 +74,6 @@
         </section>  
     </main>
 
-    <x-footer />
-
     <script>
         // Service Detail Image Carousel
         document.addEventListener('DOMContentLoaded', () => {
@@ -121,5 +112,4 @@
             }
         });
     </script>
-</body>
-</html>
+@endsection

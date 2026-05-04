@@ -1,243 +1,77 @@
-# 🔋 PT. Multidaya Anugrah Perkasa - Web Profile
+# PT. Multidaya Anugrah Perkasa - Web Profile
 
-Platform digital profesional untuk **PT. Multidaya Anugrah Perkasa (PT MAP)**, distributor terpercaya solusi energi terbarukan dan peralatan forklift berkualitas. Website ini menampilkan katalog produk lengkap, layanan purna jual, dan informasi perusahaan dengan antarmuka modern dan responsif.
+Project ini adalah website profil perusahaan untuk PT. Multidaya Anugrah Perkasa yang berfokus pada penampilan informasi perusahaan, katalog produk, layanan, unduhan, dan berita dalam satu platform yang rapi dan responsif. Website ini dibangun dengan Laravel dan memanfaatkan Blade untuk tampilan halaman, sehingga mudah dikembangkan untuk kebutuhan company profile sekaligus katalog produk.
 
----
+## Gambaran Project
 
-## 📋 Ringkasan Teknologi
+Website ini dirancang untuk membantu pengunjung mengenal perusahaan, melihat produk yang tersedia, membaca informasi layanan, dan membuka detail produk secara lebih lengkap. Di sisi admin, project ini juga sudah disiapkan dengan resource controller untuk pengelolaan kategori, produk, dan detail produk.
+
+## Fitur Utama
+
+- Halaman beranda untuk menampilkan ringkasan perusahaan dan navigasi utama.
+- Halaman tentang kami untuk profil dan informasi perusahaan.
+- Halaman produk yang menampilkan daftar produk beserta relasinya ke kategori.
+- Halaman detail produk dengan informasi lengkap dan produk serupa.
+- Halaman layanan untuk menjelaskan layanan yang tersedia.
+- Halaman unduhan untuk file seperti brosur, katalog, atau dokumen pendukung.
+- Halaman berita untuk menampilkan artikel dan informasi terbaru.
+- Area admin untuk kategori, produk, dan detail produk.
+
+## Struktur Data
+
+Project ini menggunakan tiga model utama:
+
+- Kategori: menyimpan kelompok produk.
+- Produk: menyimpan data produk seperti kode, nama, gambar, dan deskripsi.
+- DetailProduk: menyimpan spesifikasi teknis dan informasi detail dari produk.
+
+Relasi yang dipakai:
+
+- Satu kategori memiliki banyak produk.
+- Satu produk memiliki satu detail produk.
+
+## Teknologi Yang Digunakan
 
 | Komponen | Teknologi |
-|----------|-----------|
-| **Framework Backend** | Laravel 12 |
-| **PHP Version** | 8.2+ |
-| **Frontend Build** | Vite + Tailwind CSS |
-| **View Layer** | Blade Template |
-| **Database** | MySQL |
-| **Styling** | Custom CSS + Tailwind Utilities |
-| **Animasi** | CSS Keyframes + Scroll Effects |
+| --- | --- |
+| Backend | Laravel |
+| Bahasa | PHP |
+| Frontend | Blade + Vite |
+| Styling | CSS / Tailwind |
+| Database | MySQL |
 
----
+## Halaman Utama
 
-## 🎯 Daftar Halaman & Fitur
+- `/` - beranda
+- `/tentang` - profil perusahaan
+- `/produk` - katalog produk
+- `/produk/detail?item=KODE_PRODUK` - detail produk
+- `/layanan` - daftar layanan
+- `/layanan/detail` - detail layanan
+- `/unduhan` - halaman file unduhan
+- `/berita` - daftar berita
+- `/berita/{slug}` - detail artikel berita
+- `/admin/kategori` - manajemen kategori
+- `/admin/produk` - manajemen produk
+- `/admin/detail-produk` - manajemen detail produk
 
-### 1️⃣ **HOMEPAGE (Beranda)** - `/`
+## Cara Menjalankan Project
 
-#### 📍 Tujuan
-Halaman pertama yang menampilkan identitas perusahaan dan produk unggulan dengan visual yang menarik.
+1. Install dependency PHP dan JavaScript.
+2. Copy file environment bila diperlukan dan sesuaikan konfigurasi database.
+3. Jalankan migrasi dan seeder jika data awal dibutuhkan.
+4. Jalankan server Laravel dan Vite untuk mode development.
 
-#### 🎨 Tampilan & Layout
-- **Hero Section** dengan background image full-width (`hero1.png`)
-- Overlay semi-transparan hitam untuk kontras teks
-- Heading besar "PT. Multidaya Anugrah Perkasa" dengan efek drop shadow
-- Tagline: "POWERING MOBILITY ENERGIZING THE FUTURE"
+Contoh perintah:
 
-#### ⚡ Fitur Utama
-- **Featured Products Carousel**: Menampilkan 9 produk unggulan (Battery, Charger, Accessories) dengan deskripsi singkat
-- **Product Category Grid**: 3 kategori utama (Battery, Charger, Accessories) yang dapat diklik
-- **Video Hero Section**: Embedded video "Microtex Exhibition March 2024" dengan deskripsi
-- **Quick Links**: Navigasi mudah ke halaman produk, layanan, unduhan
-- **Responsive Design**: Menyesuaikan tampilan untuk mobile, tablet, dan desktop
+```bash
+php artisan serve
+npm run dev
+```
 
-#### ✨ Efek Visual
-- Scroll fade animations untuk elemen yang muncul saat scroll
-- Smooth transitions pada hover di produktcard
-- Gradient backgrounds pada section
-- Drop shadow pada typography untuk readability
-- Image zoom effect pada hover product cards
+## Catatan
 
----
-
-### 2️⃣ **PRODUK (Halaman Katalog)** - `/produk`
-
-#### 📍 Tujuan
-Menampilkan daftar lengkap semua produk dengan sistem filter kategori yang intuitif.
-
-#### 🎨 Tampilan & Layout
-- **Sidebar Filter** (kiri): Panel dengan kategori produk yang dapat dipilih
-- **Main Content** (kanan): Grid produk yang responsif (2-4 kolom tergantung ukuran layar)
-- **Header Section**: Judul kategori aktif dan jumlah produk yang ditampilkan
-- **Sticky Sidebar**: Filter tetap terlihat saat scroll di desktop
-
-#### ⚡ Fitur Utama
-- **Dynamic Filter**: Filter produk berdasarkan kategori (Battery, Charger, Accessories, All)
-- **Product Card Grid**: Kartu produk dengan gradient background biru yang berbeda-beda
-- **Real-time Count**: Menampilkan jumlah produk yang sesuai filter
-- **Call-to-Action Button**: "Hubungi Admin" via WhatsApp
-- **Service Link**: Quick link ke halaman layanan dan after-sales
-- **Sticky Header**: Navbar tetap di atas saat scroll
-
-#### ✨ Efek Visual
-- Category Button Active State: Background berubah dari biru tua ke putih
-- Product Card Hover: Border dan background berubah
-- Smooth transitions pada filter
-- Animated category counters
-- Reveal-on-scroll animation saat page load
-- Gradient borders pada kategori
-
----
-
-### 3️⃣ **DETAIL PRODUK** - `/produk/detail?item=KODE_PRODUK`
-
-#### 📍 Tujuan
-Menampilkan informasi detail lengkap satu produk dengan spesifikasi teknis.
-
-#### 🎨 Tampilan & Layout
-- **Product Gallery**: Gambar utama dengan thumbnail carousel
-- **Product Info**: Nama, kode, kategori, deskripsi
-- **Specifications Table**: Tabel spesifikasi teknis lengkap
-- **Related Products**: 4 produk sejenis untuk cross-selling
-- **Back Navigation**: Link kembali ke halaman produk
-
-#### ⚡ Fitur Utama
-- **Image Carousel**: Navigasi gambar produk dengan previous/next buttons
-- **Specifications Display**: Detail teknis dalam format tabel terstruktur
-- **Breadcrumb Navigation**: Jalur navigasi untuk kemudahan user
-- **Related Products Sidebar**: Rekomendasi produk kategori sama
-- **Download/Share Options**: Tombol untuk download spesifikasi atau berbagi
-- **Stock Status**: Indikator ketersediaan produk
-
-#### ✨ Efek Visual
-- Fade transition pada image gallery
-- Smooth scroll to sections
-- Hover effects pada related products
-- Floating animation pada product images
-- Shadow effects pada product showcase
-
----
-
-### 4️⃣ **LAYANAN (Services)** - `/layanan`
-
-#### 📍 Tujuan
-Menampilkan berbagai layanan purna jual dan dukungan teknis yang ditawarkan.
-
-#### 🎨 Tampilan & Layout
-- **Hero Section** dengan animasi orb floating dan grid pattern background
-- **Gradient text title** dengan shimmer animation
-- **Service Cards** dalam grid layout
-- **Service Description**: Text content dengan formatting rapi
-- **CTA Buttons**: Link ke detail layanan individual
-
-#### ⚡ Fitur Utama
-- **After Sales Services**: Program maintenance berkala 3x setahun
-- **Training Battery**: Program pelatihan penggunaan baterai yang benar
-- **Trade-In Program**: Program tukar tambah baterai lama dengan baru
-- **Technical Support**: Dukungan teknis 24/7
-- **Service Cards**: Cards yang dapat diklik untuk melihat detail
-- **Accordion Details**: Informasi terurai dalam accordion expandable
-- **Service Gallery**: Galeri foto kegiatan servis
-
-#### ✨ Efek Visual
-- **Orb Float Animation**: 2 orb decorative yang bergerak naik-turun dengan delay berbeda
-- **Title Shimmer**: Efek gradient text yang bergerak seperti cahaya berkilau
-- **Grid Pattern Overlay**: Grid pattern yang fade ke bawah
-- **Hero Shell**: Glassmorphism effect dengan backdrop blur dan gradient border
-- **Floating Animation**: Card-card yang muncul dengan floating motion
-- **Hover Expand**: Service cards yang membesar saat hover
-- **Gradient Backgrounds**: Radial gradients di background
-
----
-
-### 5️⃣ **DETAIL LAYANAN** - `/layanan/detail`
-
-#### 📍 Tujuan
-Menampilkan penjelasan mendalam tentang setiap jenis layanan.
-
-#### 🎨 Tampilan & Layout
-- **Hero Section** dengan thumbnail layanan
-- **Service Overview**: Deskripsi komprehensif
-- **Details Points**: List keuntungan dan fitur dalam format bullet
-- **Gallery Section**: Galeri foto kegiatan servis
-- **Recommendations**: Layanan terkait yang direkomendasikan
-- **Contact Section**: Form atau link kontak
-
-#### ⚡ Fitur Utama
-- **Rich Content Display**: Teks terformat dengan heading dan paragraf
-- **Image Gallery**: Multiple images dalam carousel
-- **Recommendation Cards**: Link ke layanan terkait
-- **Process Steps**: Penjelasan step-by-step proses layanan
-- **Pricing Table**: Tabel harga (jika ada)
-- **Testimonials**: Review dari klien yang puas
-- **FAQ Section**: Pertanyaan umum dan jawaban
-
-#### ✨ Efek Visual
-- Fade-in animations saat page load
-- Image zoom on hover
-- Smooth scroll anchors
-- Gradient overlays pada images
-- Card transitions pada recommendation
-- Staggered animations untuk lists
-
----
-
-### 6️⃣ **TENTANG KAMI (About)** - `/tentang`
-
-#### 📍 Tujuan
-Menampilkan profil perusahaan, visi misi, sejarah, dan alamat kantor.
-
-#### 🎨 Tampilan & Layout
-- **Hero Section** dengan background image (`hero2.png`)
-- Gradient overlay untuk kontras
-- **Carousel Profile**: Slideshow dengan tombol prev/next
-- **Company Info**: Deskripsi dan nilai perusahaan
-- **History Timeline**: Timeline perkembangan perusahaan
-- **Office Locations**: Peta interaktif kantor-kantor
-- **Team Section**: Profil tim profesional (jika ada)
-
-#### ⚡ Fitur Utama
-- **About Carousel**: Slide carousel dengan 3-5 profil singkat
-- **Carousel Navigation**: Tombol prev/next untuk navigasi
-- **Slide Content**: Gambar + teks deskripsi setiap slide
-- **Map Display**: Peta Leaflet untuk lokasi kantor
-- **Timeline**: Timeline visual perkembangan perusahaan
-- **Statistics**: Angka-angka pencapaian perusahaan
-- **Contact Cards**: Informasi kantor dengan alamat dan kontak
-
-#### ✨ Efek Visual
-- **Hero Gradient Overlay**: Gradient linear yang sophisticated
-- **Carousel Transitions**: Smooth fade ani untuk slide changes
-- **Map Initialization**: Peta yang smooth pan & zoom
-- **Timeline Animation**: Animation saat scroll ke timeline
-- **Number Counter**: Animasi counting up untuk statistics
-- **Parallax Effect**: Background bergerak lebih lambat dari foreground
-- **Reveal on Scroll**: Elemen yang muncul sambil scroll
-
----
-
-### 7️⃣ **UNDUHAN (Download)** - `/unduhan`
-
-#### 📍 Tujuan
-Menyediakan file-file yang dapat di-download seperti brosur, katalog, dan datasheet.
-
-#### 🎨 Tampilan & Layout
-- **Grid Layout**: Kategori file dengan thumbnail preview
-- **Download Cards**: Kartu untuk setiap file yang dapat diunduh
-- **Search/Filter**: Search box untuk mencari file tertentu
-- **File Info**: Tipe file, ukuran, tanggal upload
-
-#### ⚡ Fitur Utama
-- **File Categories**: Organisasi file dalam kategori (Brosur, Katalog, Datasheet, dll)
-- **Download Buttons**: Tombol download dengan icon file
-- **File Preview**: Preview thumbnail untuk masing-masing file
-- **Sort Options**: Pengurutan berdasarkan tanggal, judul, atau kategori
-- **Metadata Display**: Menampilkan ukuran dan tipe file
-
-#### ✨ Efek Visual
-- Card hover animation dengan shadow increase
-- Download button pulse animation
-- File icons dengan color coding
-- Smooth grid layout transitions
-- Loading skeleton saat file preview loading
-
----
-
-### 8️⃣ **BERITA (News/Blog)** - `/berita`
-
-#### 📍 Tujuan
-Menampilkan artikel berita, update perusahaan, dan konten informatif.
-
-#### 🎨 Tampilan & Layout
-- **Article Grid**: Artikel dalam grid atau list format
-- **Article Cards**: Thumbnail + judul + excerpt + metadata
+Project ini masih dapat dikembangkan lebih lanjut, terutama pada bagian manajemen konten admin, validasi data, dan integrasi data berita atau unduhan dari database agar seluruh konten dapat dikelola secara penuh melalui dashboard.
 - **Featured Post**: Artikel terbaru/featured di atas
 - **Sidebar**: Kategori, tag cloud, atau recent posts
 - **Pagination**: Navigasi untuk halaman artikel

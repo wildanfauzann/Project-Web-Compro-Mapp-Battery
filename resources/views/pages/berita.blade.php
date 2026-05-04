@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Berita dan Artikel - PT. Multidaya Anugrah Perkasa</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="{{ asset('images/hero/hero4.png') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
-    <x-navbar />
+@extends('layouts.main')
 
+@section('title', 'Berita dan Artikel - PT. Multidaya Anugrah Perkasa')
+
+@push('head')
+    <link rel="preload" as="image" href="{{ asset('images/hero/hero4.png') }}">
+@endpush
+
+@section('content')
     <main>
         <section class="berita-hero-section relative overflow-hidden flex items-end md:items-center min-h-[100svh] md:min-h-[calc(100vh-140px)] pt-24 md:pt-10 pb-12 md:pb-10" style="background-image: linear-gradient(180deg, rgba(4, 11, 31, 0.32) 0%, rgba(5, 14, 38, 0.76) 74%, rgba(5, 14, 38, 0.92) 100%), url('{{ asset('images/hero/hero4.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
             <div class="max-w-7xl mx-auto px-4 md:px-8 w-full relative z-10">
@@ -110,7 +106,4 @@
             </div>
         </section>
     </main>
-
-    <x-footer />
-</body>
-</html>
+@endsection

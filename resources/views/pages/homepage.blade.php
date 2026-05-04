@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PT. Multidaya Anugrah Perkasa - Homepage</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+@extends('layouts.main')
+
+@section('title', 'PT. Multidaya Anugrah Perkasa - Homepage')
+
+@push('head')
     <link rel="preload" as="image" href="{{ asset('images/hero/hero1.png') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
+@endpush
+
+@section('content')
     @php
         $products = [
             [
@@ -85,8 +83,6 @@
             'description' => 'Video dokumentasi Microtex yang menampilkan aktivitas, produk, dan suasana pameran secara langsung. lorem ipsum dolor sit amet lorem ipsum dolor sit amet.',
         ];
     @endphp
-
-    <x-navbar />
 
     <main>
         <section id="beranda" class="scroll-fade-section in-view hero-bg-extended relative overflow-hidden bg-cover bg-center" data-nav-gradient="linear-gradient(120deg, #ffe082 0%, #f2cd00 32%, #ff9f1c 100%)" data-nav-glow="rgba(242, 205, 0, 0.45)" style="background-image: url('{{ asset('images/hero/hero1.png') }}');">
@@ -506,6 +502,4 @@
         </div>
     </div>
 
-    <x-footer />
-</body>
-</html>
+@endsection

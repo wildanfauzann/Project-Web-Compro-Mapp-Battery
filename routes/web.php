@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\DetailProduk;
+use App\Models\Kategori;
+use App\Models\Produk;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
@@ -81,8 +85,31 @@ Route::get('/berita/{slug}', function (string $slug) {
     ]);
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+        $stats = [
+            'produk' => Produk::count(),
+            'kategori' => Kategori::count(),
+            'detail' => DetailProduk::count(),
+            'tanpa_gambar' => Produk::whereNull('img')->count(),
+        ];
+
+        $recentProduks = Produk::query()
+            ->with('kategori')
+            ->latest()
+            ->take(5)
+            ->get();
+
+        return view('admin.dashboard', compact('stats', 'recentProduks'));
+    })->name('dashboard');
+
     Route::resource('kategori', KategoriController::class);
     Route::resource('produk', ProdukController::class);
     Route::resource('detail-produk', DetailProdukController::class);
+
+    Route::view('/layanan', 'admin.service.index')->name('layanan.index');
+    Route::view('/berita', 'admin.news.index')->name('berita.index');
+    Route::view('/unduhan', 'admin.download.index')->name('unduhan.index');
+    Route::view('/testimoni', 'admin.testimoni.index')->name('testimoni.index');
+    Route::view('/kontak-sales', 'admin.contact.index')->name('kontak-sales.index');
 });

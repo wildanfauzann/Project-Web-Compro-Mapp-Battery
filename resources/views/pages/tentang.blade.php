@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tentang Kami - PT. Multidaya Anugrah Perkasa</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+@extends('layouts.main')
+
+@section('title', 'Tentang Kami - PT. Multidaya Anugrah Perkasa')
+
+@push('head')
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link rel="preload" as="image" href="{{ asset('images/hero/hero2.png') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
-    <x-navbar />
+@endpush
 
+@section('content')
     <main>
         <!-- Hero Section -->
         <section class="reveal-on-scroll hero-bg-extended relative overflow-hidden min-h-[calc(78svh-var(--navbar-height,0px))] md:min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center" style="background-image: url('{{ asset('images/hero/hero2.png') }}'); background-size: cover; background-position: center;">
@@ -353,8 +349,6 @@
         </section>
     </main>
 
-    <x-footer />
-
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -461,5 +455,4 @@
             setActiveOffice(initialOfficeIndex);
         });
     </script>
-</body>
-</html>
+@endsection

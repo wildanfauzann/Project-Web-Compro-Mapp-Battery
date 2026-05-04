@@ -111,6 +111,10 @@ body.mobile-nav-lock {
     overflow: hidden;
 }
 
+body.admin-sidebar-lock {
+    overflow: hidden;
+}
+
 .section-block {
     @apply py-16 md:py-24;
 }
@@ -318,6 +322,73 @@ body.mobile-nav-lock {
 
 .interactive-press {
     @apply active:scale-95 transition-transform duration-150;
+}
+
+.admin-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.admin-sidebar.is-open {
+    transform: translateX(0);
+}
+
+@media (min-width: 1024px) {
+    .admin-sidebar {
+        transform: translateX(0);
+    }
+}
+
+.admin-backdrop {
+    opacity: 0;
+    transition: opacity 0.22s ease;
+}
+
+.admin-backdrop.is-visible {
+    display: block;
+    opacity: 1;
+}
+
+.admin-toast {
+    transform: translateY(-10px) translateX(18px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.admin-toast.is-visible {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+}
+
+.admin-reveal,
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.admin-reveal.is-visible,
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.admin-modal {
+    opacity: 0;
+    transition: opacity 0.18s ease;
+}
+
+.admin-modal.is-open {
+    opacity: 1;
+}
+
+.admin-modal-panel {
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.18s ease;
+}
+
+.admin-modal.is-open .admin-modal-panel {
+    transform: translateY(0) scale(1);
 }
 
 .navbar-link {

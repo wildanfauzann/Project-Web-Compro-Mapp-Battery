@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Layanan - PT. Multidaya Anugrah Perkasa</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="{{ asset('images/layanan/layanan1.png') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
-    <x-navbar />
+@extends('layouts.main')
 
+@section('title', 'Layanan - PT. Multidaya Anugrah Perkasa')
+
+@push('head')
+    <link rel="preload" as="image" href="{{ asset('images/layanan/layanan1.png') }}">
+@endpush
+
+@section('content')
     <main>
         <!-- Hero Section -->
         <section class="layanan-hero-section reveal-on-scroll min-h-[calc(100vh-140px)] flex items-center justify-center">
@@ -213,8 +209,6 @@
         </section>
     </main>
 
-    <x-footer />
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const layananData = @json($services);
@@ -387,5 +381,4 @@
             }
         });
     </script>
-</body>
-</html>
+@endsection

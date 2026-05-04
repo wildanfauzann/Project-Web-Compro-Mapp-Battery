@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Unduhan - PT. Multidaya Anugrah Perkasa</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
-    <x-navbar />
+@extends('layouts.main')
 
+@section('title', 'Unduhan - PT. Multidaya Anugrah Perkasa')
+
+@section('content')
     <main>
         <!-- Hero Section -->
         <section class="layanan-hero-section reveal-on-scroll min-h-[calc(100vh-140px)] flex items-center justify-center">
@@ -110,6 +103,4 @@
         </section>
     </main>
 
-    <x-footer />
-</body>
-</html>
+@endsection
