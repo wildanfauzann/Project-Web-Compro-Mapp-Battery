@@ -210,7 +210,10 @@ class ArtikelSeeder extends Seeder
         ];
 
         foreach ($articles as $article) {
-            Artikel::create($article);
+            Artikel::updateOrCreate(
+                ['judul' => $article['judul']],
+                $article
+            );
         }
     }
 }

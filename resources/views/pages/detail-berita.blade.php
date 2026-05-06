@@ -1,0 +1,93 @@
+@extends('layouts.main')
+
+@section('title', $article->judul . ' - PT. Multidaya Anugrah Perkasa')
+
+@section('content')
+    <main>
+        <section class="relative overflow-hidden min-h-[70svh] md:min-h-[78vh] flex items-end" style="background-image: linear-gradient(180deg, rgba(4, 11, 31, 0.24) 0%, rgba(5, 14, 38, 0.74) 78%, rgba(5, 14, 38, 0.9) 100%), url('{{ $article->gambar_utama ? asset($article->gambar_utama) : asset('images/placeholder.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+            <div class="max-w-7xl mx-auto px-4 md:px-8 pb-12 md:pb-16 w-full relative z-10">
+                <a href="{{ route('berita.index') }}" class="inline-flex items-center gap-2 text-xs md:text-sm text-white/90 hover:text-[#f2cd00] transition-colors">
+                    <span aria-hidden="true">←</span> Kembali ke Berita
+                </a>
+
+                <div class="mt-4 max-w-4xl">
+                    <span class="inline-flex items-center rounded-full bg-[#f2cd00] px-4 py-1.5 text-[11px] md:text-xs font-bold uppercase tracking-[0.18em] text-[#0f1733]">
+                        {{ $article->kategori_artikel }}
+                    </span>
+
+                    <h1 class="mt-4 text-[clamp(2rem,4.5vw,4rem)] leading-[1.06] font-bold tracking-tight text-white">
+                        {{ $article->judul }}
+                    </h1>
+
+                    <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs md:text-sm text-[#d5e1ff]">
+                        <span>{{ $article->created_at->format('d M Y') }}</span>
+                        <span class="h-1.5 w-1.5 rounded-full bg-[#f2cd00]"></span>
+                        <span>5 min read</span>
+                        <span class="h-1.5 w-1.5 rounded-full bg-[#f2cd00]"></span>
+                        <span>PT. Multidaya Anugrah Perkasa</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_340px] gap-10 md:gap-12">
+                    <article class="min-w-0">
+                        <div class="mt-8 space-y-6 text-[15px] md:text-[17px] leading-relaxed text-[#2b3854]">
+                            {!! nl2br(e($article->deskripsi)) !!}
+                        </div>
+
+                        <div class="mt-10 rounded-2xl border border-[#d9e5ff] bg-[#f6f9ff] p-5 md:p-6">
+                            <h3 class="text-base md:text-lg font-bold text-[#0f1733]">Rangkuman Nilai Utama</h3>
+                            <ul class="mt-4 grid gap-3 text-sm md:text-base text-[#33415e]">
+                                <li class="flex items-start gap-2"><span class="mt-2 h-2 w-2 rounded-full bg-[#f2cd00]"></span><span>Pendekatan berbasis data lapangan untuk keputusan teknis yang lebih akurat.</span></li>
+                                <li class="flex items-start gap-2"><span class="mt-2 h-2 w-2 rounded-full bg-[#f2cd00]"></span><span>Fokus pada kestabilan performa baterai forklift dan efisiensi operasional.</span></li>
+                                <li class="flex items-start gap-2"><span class="mt-2 h-2 w-2 rounded-full bg-[#f2cd00]"></span><span>Komitmen layanan jangka panjang melalui pendampingan teknis berkelanjutan.</span></li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <aside class="lg:sticky lg:top-28 self-start space-y-6">
+                        <div class="rounded-2xl border border-[#dbe6ff] bg-white p-5 md:p-6 shadow-[0_10px_28px_rgba(15,23,51,0.08)]">
+                            <h3 class="text-base md:text-lg font-bold text-[#0f1733]">Butuh Konsultasi Teknis?</h3>
+                            <p class="mt-2 text-sm md:text-[15px] leading-relaxed text-[#566584]">
+                                Tim kami siap membantu evaluasi kebutuhan baterai forklift Anda dengan pendekatan yang relevan untuk kondisi operasional lapangan.
+                            </p>
+                            <a href="{{ url('/layanan') }}" class="mt-4 inline-flex items-center gap-2 rounded-full bg-[#f2cd00] px-5 py-2.5 text-sm font-bold text-[#0f1733] hover:bg-[#ffda2f] transition-colors">
+                                Lihat Layanan <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+
+                        <div class="rounded-2xl border border-[#dbe6ff] bg-white p-5 md:p-6 shadow-[0_10px_28px_rgba(15,23,51,0.08)]">
+                            <h3 class="text-base md:text-lg font-bold text-[#0f1733]">Berita Terkait</h3>
+                            <div class="mt-4 space-y-4">
+                                @forelse ($relatedArticles as $related)
+                                    <a href="{{ route('berita.show', $related->slug) }}" class="group block rounded-xl border border-[#e6eeff] p-3 hover:border-[#bfd3ff] hover:bg-[#f7faff] transition-colors">
+                                        <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#2f4a99]">{{ $related->kategori_artikel }}</p>
+                                        <p class="mt-1 text-sm font-semibold leading-snug text-[#0f1733] group-hover:text-[#2f4a99]">{{ $related->judul }}</p>
+                                    </a>
+                                @empty
+                                    <p class="text-sm text-[#66728c]">Belum ada berita terkait.</p>
+                                @endforelse
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-16" style="background: linear-gradient(135deg, #0f1733 0%, #1a2548 50%, #2f4a99 100%);">
+            <div class="max-w-5xl mx-auto px-4 md:px-8 text-center">
+                <h2 class="text-[clamp(1.8rem,3.5vw,3rem)] leading-tight font-bold text-white">Ingin Mendapatkan Insight Lainnya?</h2>
+                <p class="mt-3 text-sm md:text-base text-[#d6e1ff]">
+                    Jelajahi berita dan artikel terbaru kami untuk melihat praktik terbaik layanan baterai forklift di berbagai sektor industri.
+                </p>
+                <a href="{{ url('/berita') }}" class="mt-6 inline-flex items-center gap-2 rounded-full bg-[#f2cd00] px-6 py-3 text-sm md:text-base font-bold text-[#0f1733] transition-transform hover:-translate-y-0.5 hover:bg-[#ffda2f]">
+                    Kembali ke Semua Berita <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+@endsection

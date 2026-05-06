@@ -3,7 +3,7 @@
         <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4 md:gap-6 lg:gap-5">
             <div>
                 <div class="flex items-center gap-2.5">
-                    <img src="{{ asset('images/logo/LOGO_MAP-removebg-preview 1.png') }}" alt="PT MAP" class="h-7 w-7 object-contain" />
+                    <img src="{{ asset('images/logo/LOGO_MAP-removebg-preview 1.png') }}" alt="PT MAP" class="h-7 w-7 object-contain" width="112" height="112" loading="lazy" decoding="async" />
                     <div>
                         <p class="text-sm font-bold leading-none text-white">PT. MAP</p>
                         <p class="text-[10px] font-semibold tracking-[0.14em] text-[#f2cd00] uppercase">Industrial Solutions</p>
@@ -64,3 +64,5 @@
         </div>
     </div>
 </footer>
+
+<x-floating-contact />

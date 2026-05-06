@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Detail Layanan - PT. Multidaya Anugrah Perkasa</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
-    <x-navbar />
+@extends('layouts.main')
 
+@section('title', 'Detail Layanan - PT. Multidaya Anugrah Perkasa')
+
+@section('content')
     <main>
         <!-- Section 1: Hero -->
         <section class="py-8 md:py-12 bg-white reveal-on-scroll">
@@ -27,7 +20,7 @@
             <div class="max-w-7xl mx-auto px-4 md:px-8">
                 <div class="flex items-center justify-center gap-3 md:gap-6">
                     <button type="button" class="slider-nav text-xl md:text-2xl" id="service-detail-prev" aria-label="Gambar sebelumnya">‹</button>
-                    <div class="flex-1 max-w-2xl h-56 md:h-72 bg-white rounded-lg shimmer" id="service-detail-image"></div>
+                    <div class="flex-1 w-full max-w-2xl aspect-[16/9] bg-white rounded-lg shimmer" id="service-detail-image"></div>
                     <button type="button" class="slider-nav text-xl md:text-2xl" id="service-detail-next" aria-label="Gambar berikutnya">›</button>
                 </div>
             </div>
@@ -48,7 +41,7 @@
                     </div>
 
                     <!-- Right: Image -->
-                    <div class="h-48 md:h-56 bg-slate-300 rounded-lg shimmer"></div>
+                    <div class="aspect-[4/3] w-full bg-slate-300 rounded-lg shimmer"></div>
                 </div>
             </div>
         </section>
@@ -61,7 +54,7 @@
                 <div class="grid md:grid-cols-2 gap-4 md:gap-6 max-w-3xl mx-auto">
                     @for ($i = 0; $i < 2; $i++)
                         <div class="bg-white rounded-xl overflow-hidden">
-                            <div class="h-32 md:h-40 bg-slate-200 shimmer"></div>
+                            <div class="aspect-[4/3] w-full bg-slate-200 shimmer"></div>
                             <div class="p-4 md:p-5">
                                 <p class="text-xs md:text-sm leading-5 mb-3 text-slate-700">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -80,8 +73,6 @@
             </div>
         </section>  
     </main>
-
-    <x-footer />
 
     <script>
         // Service Detail Image Carousel
@@ -121,5 +112,4 @@
             }
         });
     </script>
-</body>
-</html>
+@endsection

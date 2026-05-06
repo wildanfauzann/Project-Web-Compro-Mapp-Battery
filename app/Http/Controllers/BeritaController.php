@@ -9,22 +9,26 @@ class BeritaController extends Controller
 {
     public function index()
     {
-        $editorialMoments = Artikel::where('kategori_artikel', 'editorial')->get();
-        $visitStories = Artikel::where('kategori_artikel', 'visit')->get();
-        $principalStories = Artikel::where('kategori_artikel', 'principal')->get();
-        $exhibitionStories = Artikel::where('kategori_artikel', 'exhibition')->get();
-        $installationStory = Artikel::where('kategori_artikel', 'installation')->first();
-        $trainingStories = Artikel::where('kategori_artikel', 'training')->get();
-        $unitTestingStory = Artikel::where('kategori_artikel', 'unit_testing')->first();
+        $articles = Artikel::latest()->get();
+        return view('pages.berita', compact('articles'));
+    }
+    public function show($slug)
+    {
+        $article = Artikel::where('slug', $slug)->firstOrFail();
+        
+        $relatedArticles = Artikel::where('kategori_artikel', $article->kategori_artikel)
+            ->where('id', '!=', $article->id)
+            ->take(3)
+            ->get();
 
-        return view('pages.berita', compact(
-            'editorialMoments',
-            'visitStories',
-            'principalStories',
-            'exhibitionStories',
-            'installationStory',
-            'trainingStories',
-            'unitTestingStory'
-        ));
+        if ($relatedArticles->count() < 3) {
+            $additional = Artikel::where('id', '!=', $article->id)
+                ->whereNotIn('id', $relatedArticles->pluck('id'))
+                ->take(3 - $relatedArticles->count())
+                ->get();
+            $relatedArticles = $relatedArticles->merge($additional);
+        }
+
+        return view('pages.detail-berita', compact('article', 'relatedArticles'));
     }
 }

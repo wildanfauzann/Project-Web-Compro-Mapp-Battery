@@ -17,4 +17,9 @@ class Produk extends Model
     {
         return $this->hasOne(DetailProduk::class);
     }
+
+    public function getImgUrlAttribute()
+    {
+        return $this->img ? asset($this->img) : null;
+    }
 }

@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Detail Produk - PT. Multidaya Anugrah Perkasa</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
-    <x-navbar />
+@extends('layouts.main')
 
+@section('title', 'Detail Produk - PT. Multidaya Anugrah Perkasa')
+
+@section('content')
     @php
         $categoryName = $produk->kategori ? $produk->kategori->nama_kategori : 'Ungategorized';
         
@@ -35,7 +28,7 @@
     @endphp
 
     <main>
-        <section class="reveal-on-scroll bg-[#eceef2] py-3 md:py-4 min-h-[calc(100svh-var(--navbar-height,0px))]">
+        <section class="reveal-on-scroll bg-[#eceef2] py-3 md:py-4 min-h-[auto] md:min-h-[calc(100svh-var(--navbar-height,0px))]">
             <div class="max-w-400 mx-auto px-4 md:px-8">
                 <div class="grid gap-4 lg:grid-cols-[286px_minmax(0,1fr)] xl:grid-cols-[300px_minmax(0,1fr)]">
                     <aside class="space-y-3 lg:sticky lg:top-[calc(var(--navbar-height,0px)+0.8rem)] lg:self-start">
@@ -95,14 +88,14 @@
                                 <div class="bg-[#f3f5fa] p-3 md:p-4 flex flex-col">
                                     <div class="relative rounded-3xl border border-[#dfe4ef] bg-white p-3 md:p-4">
                                         <button type="button" id="detail-prev" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-[#d0d8e8] bg-white px-3 py-2 text-xl text-[#c62828] shadow-sm hover:bg-[#fff5f5]" aria-label="Gambar sebelumnya">‹</button>
-                                        <img id="detail-main-image" src="{{ $galleryPhotos[0] }}" alt="{{ $produk->nama_produk }}" class="mx-auto h-full max-h-105 w-full object-contain" />
+                                        <img id="detail-main-image" src="{{ $galleryPhotos[0] }}" alt="{{ $produk->nama_produk }}" class="mx-auto aspect-square h-full max-h-105 w-full object-contain" width="960" height="960" loading="eager" fetchpriority="high" decoding="async" />
                                         <button type="button" id="detail-next" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-[#d0d8e8] bg-white px-3 py-2 text-xl text-[#c62828] shadow-sm hover:bg-[#fff5f5]" aria-label="Gambar berikutnya">›</button>
                                     </div>
 
-                                    <div class="mt-3 flex items-center gap-2">
+                                    <div class="mt-3 flex flex-wrap items-center gap-2">
                                         @foreach ($galleryPhotos as $galleryImage)
                                             <button type="button" class="detail-thumb {{ $loop->first ? 'border-[#de2d2d]' : 'border-[#d8dde8]' }} h-14 w-14 overflow-hidden rounded-xl border bg-white p-1.5 transition hover:border-[#de2d2d]" data-image="{{ $galleryImage }}" aria-label="Thumbnail {{ $loop->iteration }}">
-                                                <img src="{{ $galleryImage }}" alt="Thumbnail {{ $produk->nama_produk }} {{ $loop->iteration }}" class="h-full w-full object-contain" />
+                                                <img src="{{ $galleryImage }}" alt="Thumbnail {{ $produk->nama_produk }} {{ $loop->iteration }}" class="h-full w-full object-contain" width="128" height="128" loading="lazy" decoding="async" />
                                             </button>
                                         @endforeach
                                     </div>
@@ -159,7 +152,7 @@
                                     @endphp
                                     <a href="{{ url('/produk/detail?item=' . $recommendedProduct->kode_produk) }}" class="group overflow-hidden rounded-2xl border border-[#d8dde8] bg-[#f8fbff] shadow-[0_8px_18px_rgba(15,23,51,0.08)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_14px_24px_rgba(15,23,51,0.12)]">
                                         <div class="aspect-4/3 overflow-hidden bg-white p-3">
-                                            <img src="{{ $recImg }}" alt="{{ $recommendedProduct->nama_produk }}" class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.04]" />
+                                            <img src="{{ $recImg }}" alt="{{ $recommendedProduct->nama_produk }}" class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.04]" width="640" height="480" loading="lazy" decoding="async" />
                                         </div>
                                         <div class="border-t border-[#e2e7f1] p-3">
                                             <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a96aa]">{{ $recCatName }}</p>
@@ -211,8 +204,6 @@
             </div>
         </section>
     </main>
-
-    <x-footer />
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -346,5 +337,4 @@
             renderImage();
         });
     </script>
-</body>
-</html>
+@endsection

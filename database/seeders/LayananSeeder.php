@@ -76,7 +76,10 @@ class LayananSeeder extends Seeder
         ];
 
         foreach ($services as $service) {
-            \App\Models\Layanan::create($service);
+            \App\Models\Layanan::updateOrCreate(
+                ['slug' => $service['slug']],
+                $service
+            );
         }
     }
 }

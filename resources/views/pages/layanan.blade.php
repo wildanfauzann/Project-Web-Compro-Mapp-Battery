@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Layanan - PT. Multidaya Anugrah Perkasa</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="font-['IBM_Plex_Sans'] bg-slate-50 text-slate-900 selection:bg-slate-800 selection:text-white">
-    <x-navbar />
+@extends('layouts.main')
 
+@section('title', 'Layanan - PT. Multidaya Anugrah Perkasa')
+
+@push('head')
+    <link rel="preload" as="image" href="{{ asset('images/layanan/layanan1.png') }}">
+@endpush
+
+@section('content')
     <main>
         <!-- Hero Section -->
         <section class="layanan-hero-section reveal-on-scroll min-h-[calc(100vh-140px)] flex items-center justify-center">
@@ -18,9 +15,9 @@
             <div class="layanan-hero-grid" aria-hidden="true"></div>
 
             <div class="max-w-7xl mx-auto px-4 md:px-8 py-14 md:py-20 w-full">
-                <div class="layanan-hero-shell relative mx-auto max-w-4xl overflow-hidden rounded-4xl border border-slate-200/80 bg-white/82 px-5 py-14 md:px-12 md:py-16 shadow-[0_24px_70px_rgba(15,23,42,0.12)] backdrop-blur-md">
+                <div class="layanan-hero-shell relative mx-auto max-w-4xl overflow-hidden rounded-4xl border border-[#d4deef] bg-[#f8fbff]/92 px-5 py-14 md:px-12 md:py-16 shadow-[0_18px_46px_rgba(15,23,42,0.10)] backdrop-blur-md">
                     <div class="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-[#b9c9e6] to-transparent"></div>
-                    <div class="absolute inset-x-12 top-6 h-20 rounded-full bg-[#f2cd00]/12 blur-3xl"></div>
+                    <div class="absolute inset-x-12 top-6 h-16 rounded-full bg-[#f2cd00]/6 blur-2xl"></div>
 
                     <div class="relative text-center">
                         <h1 class="layanan-hero-title text-[clamp(2rem,4vw,3.75rem)] font-bold leading-[1.05] tracking-tight text-slate-900">
@@ -33,6 +30,7 @@
                 </div>
             </div>
         </section>
+
 
 
         <!-- Section 2: Layanan Showcase -->
@@ -49,7 +47,7 @@
                 <div class="grid gap-3 md:gap-4 lg:grid-cols-3">
                     @foreach ($services as $service)
                         <article class="layanan-card-trigger produk-showcase-card group relative overflow-hidden rounded-[1.6rem] border border-[#31479a] bg-[#0d173b] min-h-60 md:min-h-72 shadow-[0_16px_34px_rgba(0,0,0,0.22)] cursor-pointer" data-service-slug="{{ $service['slug'] }}" role="button" tabindex="0" aria-label="Buka detail {{ $service['title'] }}">
-                            <img src="{{ $service['image'] }}" alt="{{ $service['title'] }}" class="produk-showcase-image absolute inset-0 h-full w-full object-cover" />
+                            <img src="{{ $service['image'] }}" alt="{{ $service['title'] }}" class="produk-showcase-image absolute inset-0 h-full w-full object-cover" width="640" height="480" loading="lazy" decoding="async" />
                             <div class="absolute inset-0 bg-linear-to-t from-[#081027f7] via-[#0d1a45b2] to-[#0f17331f]"></div>
 
                             <div class="produk-showcase-content relative z-10 h-full flex flex-col justify-end p-4 md:p-5">
@@ -68,16 +66,17 @@
             </div>
         </section>
 
-        <section id="layanan-detail-section" class="hidden py-8 md:py-12 bg-[linear-gradient(180deg,#f5f8ff_0%,#e9f0ff_100%)]">
+        <section id="layanan-detail-section" class="py-8 md:py-12 bg-[linear-gradient(180deg,#f5f8ff_0%,#e9f0ff_100%)]">
             <div class="max-w-7xl mx-auto px-4 md:px-8">
                 <div id="layanan-detail-card" class="layanan-detail-card relative overflow-hidden rounded-4xl border border-[#3555ac] bg-[linear-gradient(145deg,#081a5a_0%,#0c014c_52%,#114aa8_100%)] shadow-[0_24px_52px_rgba(8,18,48,0.32)]">
-                    <button type="button" id="layanan-detail-close-top" class="layanan-detail-close absolute right-4 top-4 z-20 inline-flex items-center justify-center rounded-full border border-[#b8cdf7] bg-white/90 px-4 py-1.5 text-xs md:text-sm font-semibold text-[#16306f] transition-colors hover:bg-white" aria-label="Tutup detail layanan">
-                        Tutup
-                    </button>
-
+                    <div class="pointer-events-none absolute inset-x-4 top-4 z-20 flex items-center justify-between md:inset-x-8 md:top-5">
+                        <button type="button" id="layanan-service-prev" class="pointer-events-auto inline-flex items-center gap-1 rounded-full border border-[#b7cdf7] bg-white/90 px-3 py-1.5 text-[10px] md:text-xs font-semibold uppercase tracking-wide text-[#16306f] transition-colors hover:bg-white" aria-label="Layanan sebelumnya">‹ Sebelumnya</button>
+                        <button type="button" id="layanan-service-next" class="pointer-events-auto inline-flex items-center gap-1 rounded-full border border-[#b7cdf7] bg-white/90 px-3 py-1.5 text-[10px] md:text-xs font-semibold uppercase tracking-wide text-[#16306f] transition-colors hover:bg-white" aria-label="Layanan berikutnya">Berikutnya ›</button>
+                    </div>
                     <div class="px-5 pt-12 pb-8 md:px-10 md:pt-12 md:pb-10 text-center">
                         <h3 id="layanan-detail-title" class="text-2xl md:text-4xl font-bold tracking-tight text-white"></h3>
                         <p id="layanan-detail-intro" class="mx-auto mt-3 max-w-3xl text-sm md:text-base leading-relaxed text-[#d8e5ff]"></p>
+                        <p id="layanan-detail-counter" class="mt-5 text-[10px] md:text-xs font-semibold uppercase tracking-[0.14em] text-[#c7d6f8]"></p>
                     </div>
 
                     <div class="px-5 py-7 md:px-10 md:py-10">
@@ -112,17 +111,6 @@
                             </div>
                         </div>
 
-                        <div class="mt-8 border-t border-[#3959b3] pt-6">
-                            <h4 class="layanan-detail-reco-title text-lg md:text-2xl font-bold text-white">Rekomendasi Layanan</h4>
-                            <div id="layanan-detail-recommendations" class="mt-4 grid gap-4 md:grid-cols-2"></div>
-                        </div>
-
-                        <div class="mt-8 text-center">
-                            <button type="button" id="layanan-detail-close-bottom" class="layanan-detail-close inline-flex items-center justify-center gap-2 rounded-full border border-[#b8cdf7] bg-white/90 px-6 py-2.5 text-sm font-bold text-[#16306f] transition-all hover:bg-white">
-                                Tutup Detail
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -158,8 +146,6 @@
         </section>
     </main>
 
-    <x-footer />
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const layananData = @json($services);
@@ -174,18 +160,20 @@
             const pointsEl = document.getElementById('layanan-detail-points');
             const sideImageEl = document.getElementById('layanan-detail-side-image');
             const carouselImageEl = document.getElementById('layanan-detail-carousel-image');
-            const recommendationsEl = document.getElementById('layanan-detail-recommendations');
+            const detailCounterEl = document.getElementById('layanan-detail-counter');
 
             const triggerButtons = Array.from(document.querySelectorAll('.layanan-detail-trigger'));
             const cardTriggers = Array.from(document.querySelectorAll('.layanan-card-trigger'));
-            const closeTopButton = document.getElementById('layanan-detail-close-top');
-            const closeBottomButton = document.getElementById('layanan-detail-close-bottom');
             const prevButton = document.getElementById('layanan-detail-prev');
             const nextButton = document.getElementById('layanan-detail-next');
+            const servicePrevButton = document.getElementById('layanan-service-prev');
+            const serviceNextButton = document.getElementById('layanan-service-next');
 
             let activeServiceSlug = null;
+            let activeServiceIndex = 0;
             let activeGallery = [];
             let activeGalleryIndex = 0;
+            const serviceOrder = layananData.map((service) => service.slug);
 
             const getNavbarOffset = () => {
                 const cssValue = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) || 0;
@@ -211,47 +199,6 @@
                 carouselImageEl.src = activeGallery[activeGalleryIndex];
             };
 
-            const renderRecommendations = (service) => {
-                if (!recommendationsEl) {
-                    return;
-                }
-
-                const recommendationSlugs = (service.recommendations || []).filter((slug) => dataMap[slug]);
-                const fallback = layananData.filter((item) => item.slug !== service.slug).slice(0, 2).map((item) => item.slug);
-                const finalSlugs = recommendationSlugs.length > 0 ? recommendationSlugs : fallback;
-
-                recommendationsEl.innerHTML = finalSlugs
-                    .map((slug) => {
-                        const item = dataMap[slug];
-                        if (!item) {
-                            return '';
-                        }
-
-                        return `
-                            <article class="layanan-reco-card group overflow-hidden rounded-2xl border border-[#4362b8] bg-[linear-gradient(150deg,#0f2a70_0%,#153687_100%)] shadow-[0_10px_24px_rgba(0,0,0,0.26)]">
-                                <div class="relative h-40 overflow-hidden bg-[#10245f]">
-                                    <img src="${item.image}" alt="${item.title}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                                </div>
-                                <div class="p-4 md:p-5">
-                                    <h5 class="text-base md:text-lg font-bold text-white">${item.title}</h5>
-                                    <p class="mt-1 text-xs md:text-sm leading-relaxed text-[#d5e2ff] line-clamp-3">${item.description}</p>
-                                    <button type="button" class="layanan-reco-trigger mt-3 inline-flex items-center gap-2 rounded-full border border-[#f2cd00] px-3.5 py-1.5 text-[11px] md:text-xs font-semibold uppercase tracking-wide text-[#f2cd00] transition-all hover:bg-[#f2cd00] hover:text-[#0f1733]" data-service-slug="${item.slug}">Buka Detail <span aria-hidden="true">→</span></button>
-                                </div>
-                            </article>
-                        `;
-                    })
-                    .join('');
-
-                recommendationsEl.querySelectorAll('.layanan-reco-trigger').forEach((button) => {
-                    button.addEventListener('click', () => {
-                        const slug = button.getAttribute('data-service-slug');
-                        if (slug) {
-                            openDetail(slug, true);
-                        }
-                    });
-                });
-            };
-
             const openDetail = (slug, shouldScroll = true) => {
                 const service = dataMap[slug];
                 if (!service || !detailSection) {
@@ -259,6 +206,7 @@
                 }
 
                 activeServiceSlug = slug;
+                activeServiceIndex = serviceOrder.indexOf(slug);
                 activeGallery = Array.isArray(service.gallery) && service.gallery.length > 0 ? service.gallery : [service.image];
                 activeGalleryIndex = 0;
 
@@ -274,9 +222,9 @@
                 }
 
                 renderGallery();
-                renderRecommendations(service);
-
-                detailSection.classList.remove('hidden');
+                if (detailCounterEl && activeServiceIndex >= 0) {
+                    detailCounterEl.textContent = `Layanan ${activeServiceIndex + 1} / ${serviceOrder.length}`;
+                }
 
                 if (shouldScroll) {
                     requestAnimationFrame(() => {
@@ -285,17 +233,15 @@
                 }
             };
 
-            const closeDetail = () => {
-                if (!detailSection) {
+            const openDetailByIndex = (index, shouldScroll = false) => {
+                if (serviceOrder.length === 0) {
                     return;
                 }
 
-                detailSection.classList.add('hidden');
-                activeServiceSlug = null;
-
-                if (layananSection) {
-                    const top = layananSection.getBoundingClientRect().top + window.scrollY - getNavbarOffset() - 10;
-                    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+                const normalizedIndex = (index + serviceOrder.length) % serviceOrder.length;
+                const slug = serviceOrder[normalizedIndex];
+                if (slug) {
+                    openDetail(slug, shouldScroll);
                 }
             };
 
@@ -333,8 +279,13 @@
                 });
             });
 
-            closeTopButton?.addEventListener('click', closeDetail);
-            closeBottomButton?.addEventListener('click', closeDetail);
+            servicePrevButton?.addEventListener('click', () => {
+                openDetailByIndex(activeServiceIndex - 1, false);
+            });
+
+            serviceNextButton?.addEventListener('click', () => {
+                openDetailByIndex(activeServiceIndex + 1, false);
+            });
 
             prevButton?.addEventListener('click', () => {
                 if (activeGallery.length === 0) {
@@ -362,8 +313,9 @@
                 openDetail(requestedService, true);
             } else if (hashTarget === 'layanan-detail-section' && layananData[0]?.slug) {
                 openDetail(layananData[0].slug, true);
+            } else if (layananData[0]?.slug) {
+                openDetail(layananData[0].slug, false);
             }
         });
     </script>
-</body>
-</html>
+@endsection
