@@ -2,155 +2,200 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produk;
-use App\Models\Kategori;
 use App\Models\DetailProduk;
+use App\Models\Kategori;
+use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ProdukController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        $search = $request->query('q');
-        $kategoriId = $request->query('kategori', 'all');
+        $search = trim((string) request('q', ''));
+        $kategoriId = request('kategori', 'all');
 
-        $query = Produk::with('kategori')->latest();
+        $kategoriOptions = Kategori::query()
+            ->orderBy('nama_kategori')
+            ->get();
 
-        if ($search) {
-            $query->where(function ($q) use ($search) {
-                $q->where('nama_produk', 'like', "%{$search}%")
-                  ->orWhere('kode_produk', 'like', "%{$search}%");
-            });
-        }
+        $produks = Produk::query()
+            ->with(['kategori', 'detailProduk'])
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($nestedQuery) use ($search) {
+                    $nestedQuery
+                        ->where('nama_produk', 'like', '%' . $search . '%')
+                        ->orWhere('kode_produk', 'like', '%' . $search . '%');
+                });
+            })
+            ->when($kategoriId !== 'all', function ($query) use ($kategoriId) {
+                $query->where('kategori_id', $kategoriId);
+            })
+            ->latest()
+            ->paginate(8)
+            ->withQueryString();
 
-        if ($kategoriId !== 'all') {
-            $query->where('kategori_id', $kategoriId);
-        }
-
-        $produks = $query->paginate(10)->withQueryString();
-        $kategoriOptions = Kategori::all();
-
-        return view('admin.product.index', compact('produks', 'search', 'kategoriId', 'kategoriOptions'));
+        return view('admin.product.index', compact('produks', 'kategoriOptions', 'search', 'kategoriId'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        $kategoriOptions = Kategori::all();
+        $kategoriOptions = Kategori::query()
+            ->orderBy('nama_kategori')
+            ->get();
+
         return view('admin.product.create', compact('kategoriOptions'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nama_produk' => 'required|string|max:255',
-            'kode_produk' => 'required|string|max:255|unique:produks',
-            'kategori_id' => 'required|exists:kategoris,id',
-            'deskripsi' => 'nullable|string',
-            'img' => 'nullable|image|max:2048',
-            'deskripsi_lengkap_produk' => 'required|string',
-            'tipe' => 'required|string|max:255',
-            'voltase' => 'required|string|max:255',
-            'kapasitas' => 'required|string|max:255',
-            'siklus_hidup' => 'required|string|max:255',
-        ]);
+        $validated = $this->validateProduct($request);
 
-        if ($request->hasFile('img')) {
-            $file = $request->file('img');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('images/products'), $filename);
-            $validated['img'] = 'images/products/' . $filename;
-        }
+        $imagePath = $this->storeImage($request);
 
         $produk = Produk::create([
-            'nama_produk' => $validated['nama_produk'],
-            'kode_produk' => $validated['kode_produk'],
             'kategori_id' => $validated['kategori_id'],
+            'kode_produk' => $validated['kode_produk'],
+            'nama_produk' => $validated['nama_produk'],
+            'img' => $imagePath,
             'deskripsi' => $validated['deskripsi'] ?? null,
-            'img' => $validated['img'] ?? null,
         ]);
 
-        DetailProduk::create([
-            'produk_id' => $produk->id,
-            'deskripsi_lengkap_produk' => $validated['deskripsi_lengkap_produk'],
-            'tipe' => $validated['tipe'],
-            'voltase' => $validated['voltase'],
-            'kapasitas' => $validated['kapasitas'],
-            'siklus_hidup' => $validated['siklus_hidup'],
-        ]);
+        $this->syncDetailProduk($produk, $validated);
 
-        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil ditambahkan.');
+        return redirect()
+            ->route('admin.produk.index')
+            ->with('success', 'Produk berhasil ditambahkan.');
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(Produk $produk)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(Produk $produk)
     {
-        $produk->load('detailProduk');
-        $kategoriOptions = Kategori::all();
+        $produk->load('detailProduk', 'kategori');
+
+        $kategoriOptions = Kategori::query()
+            ->orderBy('nama_kategori')
+            ->get();
+
         return view('admin.product.edit', compact('produk', 'kategoriOptions'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, Produk $produk)
     {
-        $validated = $request->validate([
-            'nama_produk' => 'required|string|max:255',
-            'kode_produk' => 'required|string|max:255|unique:produks,kode_produk,' . $produk->id,
-            'kategori_id' => 'required|exists:kategoris,id',
-            'deskripsi' => 'nullable|string',
-            'img' => 'nullable|image|max:2048',
-            'deskripsi_lengkap_produk' => 'required|string',
-            'tipe' => 'required|string|max:255',
-            'voltase' => 'required|string|max:255',
-            'kapasitas' => 'required|string|max:255',
-            'siklus_hidup' => 'required|string|max:255',
+        $validated = $this->validateProduct($request, $produk->id);
+
+        $imagePath = $this->storeImage($request);
+
+        if ($imagePath) {
+            $this->deleteStoredImage($produk->img);
+            $produk->img = $imagePath;
+        }
+
+        $produk->fill([
+            'kategori_id' => $validated['kategori_id'],
+            'kode_produk' => $validated['kode_produk'],
+            'nama_produk' => $validated['nama_produk'],
+            'deskripsi' => $validated['deskripsi'] ?? null,
         ]);
 
-        $updateData = [
-            'nama_produk' => $validated['nama_produk'],
-            'kode_produk' => $validated['kode_produk'],
-            'kategori_id' => $validated['kategori_id'],
-            'deskripsi' => $validated['deskripsi'] ?? null,
-        ];
+        $produk->save();
 
-        if ($request->hasFile('img')) {
-            if ($produk->img && file_exists(public_path($produk->img))) {
-                @unlink(public_path($produk->img));
-            }
-            $file = $request->file('img');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('images/products'), $filename);
-            $updateData['img'] = 'images/products/' . $filename;
-        }
+        $this->syncDetailProduk($produk, $validated);
 
-        $produk->update($updateData);
-
-        if ($produk->detailProduk) {
-            $produk->detailProduk->update([
-                'deskripsi_lengkap_produk' => $validated['deskripsi_lengkap_produk'],
-                'tipe' => $validated['tipe'],
-                'voltase' => $validated['voltase'],
-                'kapasitas' => $validated['kapasitas'],
-                'siklus_hidup' => $validated['siklus_hidup'],
-            ]);
-        } else {
-            DetailProduk::create([
-                'produk_id' => $produk->id,
-                'deskripsi_lengkap_produk' => $validated['deskripsi_lengkap_produk'],
-                'tipe' => $validated['tipe'],
-                'voltase' => $validated['voltase'],
-                'kapasitas' => $validated['kapasitas'],
-                'siklus_hidup' => $validated['siklus_hidup'],
-            ]);
-        }
-
-        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil diperbarui.');
+        return redirect()
+            ->route('admin.produk.index')
+            ->with('success', 'Produk berhasil diperbarui.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Produk $produk)
     {
-        if ($produk->img && file_exists(public_path($produk->img))) {
-            @unlink(public_path($produk->img));
-        }
+        $this->deleteStoredImage($produk->img);
         $produk->detailProduk()->delete();
         $produk->delete();
-        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus.');
+
+        return back()->with('success', 'Produk berhasil dihapus.');
+    }
+
+    private function validateProduct(Request $request, ?int $produkId = null): array
+    {
+        return $request->validate([
+            'kategori_id' => ['required', 'exists:kategoris,id'],
+            'kode_produk' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('produks', 'kode_produk')->ignore($produkId),
+            ],
+            'nama_produk' => ['required', 'string', 'max:255'],
+            'deskripsi' => ['nullable', 'string'],
+            'img' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+            'deskripsi_lengkap_produk' => ['required', 'string'],
+            'tipe' => ['nullable', 'string', 'max:255'],
+            'voltase' => ['nullable', 'string', 'max:255'],
+            'kapasitas' => ['nullable', 'string', 'max:255'],
+            'siklus_hidup' => ['nullable', 'string', 'max:255'],
+        ]);
+    }
+
+    private function syncDetailProduk(Produk $produk, array $validated): void
+    {
+        $kategori = Kategori::find($validated['kategori_id']);
+
+        $produk->detailProduk()->updateOrCreate(
+            ['produk_id' => $produk->id],
+            [
+                'nama_kategori' => $kategori?->nama_kategori,
+                'kode_produk' => $validated['kode_produk'],
+                'deskripsi_lengkap_produk' => $validated['deskripsi_lengkap_produk'],
+                'tipe' => $validated['tipe'] ?? null,
+                'voltase' => $validated['voltase'] ?? null,
+                'kapasitas' => $validated['kapasitas'] ?? null,
+                'siklus_hidup' => $validated['siklus_hidup'] ?? null,
+            ]
+        );
+    }
+
+    private function storeImage(Request $request): ?string
+    {
+        if (! $request->hasFile('img')) {
+            return null;
+        }
+
+        return $request->file('img')->store('produk', 'public');
+    }
+
+    private function deleteStoredImage(?string $imagePath): void
+    {
+        if (! $imagePath || ! str_starts_with($imagePath, 'produk/')) {
+            return;
+        }
+
+        Storage::disk('public')->delete($imagePath);
     }
 }
