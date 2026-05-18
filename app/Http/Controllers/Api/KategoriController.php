@@ -42,7 +42,11 @@ class KategoriController extends Controller
 
     public function destroy(Kategori $kategori)
     {
-        $kategori->delete();
-        return response()->json(null, 204);
+        try {
+            $kategori->delete();
+            return response()->json(['message' => 'Kategori berhasil dihapus'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Gagal menghapus kategori: ' . $e->getMessage()], 500);
+        }
     }
 }

@@ -48,8 +48,13 @@
                         <div class="mb-4 rounded-2xl border border-[#d8dde8] bg-white px-5 py-4 shadow-sm md:px-6 md:py-5">
                             <div class="flex flex-col gap-3">
                                 <div>
-                                    <h1 id="selected-category-title" class="text-[clamp(1.1rem,1.8vw,1.8rem)] font-bold uppercase tracking-tight text-[#10215a]">Kategori: Semua Produk Forklift</h1>
-                                    <p class="mt-1 text-xs md:text-sm font-semibold text-[#7b889f]">Menampilkan <span id="visible-product-count">{{ count($produks) }}</span> produk unggulan untuk kebutuhan operasional Anda.</p>
+                                    @if(request('search'))
+                                        <h1 id="selected-category-title" class="text-[clamp(1.1rem,1.8vw,1.8rem)] font-bold uppercase tracking-tight text-[#10215a]" data-search="{{ request('search') }}">Hasil Pencarian: "{{ request('search') }}"</h1>
+                                        <p class="mt-1 text-xs md:text-sm font-semibold text-[#7b889f]">Menemukan <span id="visible-product-count">{{ count($produks) }}</span> produk untuk pencarian Anda.</p>
+                                    @else
+                                        <h1 id="selected-category-title" class="text-[clamp(1.1rem,1.8vw,1.8rem)] font-bold uppercase tracking-tight text-[#10215a]">Kategori: Semua Produk Forklift</h1>
+                                        <p class="mt-1 text-xs md:text-sm font-semibold text-[#7b889f]">Menampilkan <span id="visible-product-count">{{ count($produks) }}</span> produk unggulan untuk kebutuhan operasional Anda.</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -126,8 +131,13 @@
                     if (shouldShow) totalVisible += 1;
                 });
 
-                const titleLabel = categoryValue === 'all' ? 'Semua Produk Forklift' : categoryLabel;
-                selectedCategoryTitle.textContent = 'Kategori: ' + titleLabel;
+                const searchQuery = selectedCategoryTitle.getAttribute('data-search');
+                if (searchQuery && categoryValue === 'all') {
+                    selectedCategoryTitle.textContent = 'Hasil Pencarian: "' + searchQuery + '"';
+                } else {
+                    const titleLabel = categoryValue === 'all' ? 'Semua Produk Forklift' : categoryLabel;
+                    selectedCategoryTitle.textContent = 'Kategori: ' + titleLabel;
+                }
                 visibleProductCount.textContent = String(totalVisible);
             }
 

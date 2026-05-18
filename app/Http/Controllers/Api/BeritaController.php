@@ -41,16 +41,13 @@ class BeritaController extends Controller
         return response()->json($artikel, 201);
     }
 
-    public function show($id)
+    public function show(Artikel $artikel)
     {
-        $artikel = Artikel::findOrFail($id);
         return response()->json($artikel);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Artikel $artikel)
     {
-        $artikel = Artikel::findOrFail($id);
-        
         $validated = $request->validate([
             'kategori_artikel' => 'sometimes|required|string',
             'judul' => 'sometimes|required|string|max:255',
@@ -79,13 +76,16 @@ class BeritaController extends Controller
         return response()->json($artikel);
     }
 
-    public function destroy($id)
+    public function destroy(Artikel $artikel)
     {
-        $artikel = Artikel::findOrFail($id);
-        if ($artikel->gambar_utama && file_exists(public_path($artikel->gambar_utama))) {
-            @unlink(public_path($artikel->gambar_utama));
+        try {
+            if ($artikel->gambar_utama && file_exists(public_path($artikel->gambar_utama))) {
+                @unlink(public_path($artikel->gambar_utama));
+            }
+            $artikel->delete();
+            return response()->json(['message' => 'Berita berhasil dihapus'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Gagal menghapus berita: ' . $e->getMessage()], 500);
         }
-        $artikel->delete();
-        return response()->json(null, 204);
     }
 }

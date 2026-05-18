@@ -20,8 +20,19 @@ Route::get('/tentang', function () {
     return view('pages.tentang');
 });
 
-Route::get('/produk', function () {
-    $produks = \App\Models\Produk::with('kategori')->get();
+Route::get('/produk', function (Request $request) {
+    $query = \App\Models\Produk::with('kategori');
+
+    if ($request->has('search') && $request->search != '') {
+        $search = $request->search;
+        $query->where('nama_produk', 'like', '%' . $search . '%')
+              ->orWhere('kode_produk', 'like', '%' . $search . '%')
+              ->orWhereHas('kategori', function($q) use ($search) {
+                  $q->where('nama_kategori', 'like', '%' . $search . '%');
+              });
+    }
+
+    $produks = $query->get();
     return view('pages.produk', compact('produks'));
 });
 

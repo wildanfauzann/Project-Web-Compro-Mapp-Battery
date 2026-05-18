@@ -65,8 +65,12 @@ class KontakSalesController extends Controller
 
     public function destroy(KontakSales $kontakSale)
     {
-        if ($kontakSale->foto && file_exists(public_path($kontakSale->foto))) @unlink(public_path($kontakSale->foto));
-        $kontakSale->delete();
-        return response()->json(['message' => 'Deleted']);
+        try {
+            if ($kontakSale->foto && file_exists(public_path($kontakSale->foto))) @unlink(public_path($kontakSale->foto));
+            $kontakSale->delete();
+            return response()->json(['message' => 'Kontak sales berhasil dihapus'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Gagal menghapus kontak sales: ' . $e->getMessage()], 500);
+        }
     }
 }

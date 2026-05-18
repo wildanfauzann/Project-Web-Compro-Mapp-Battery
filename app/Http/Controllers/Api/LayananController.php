@@ -48,18 +48,16 @@ class LayananController extends Controller
         return response()->json($layanan, 201);
     }
 
-    public function show($id)
+    public function show(Layanan $layanan)
     {
-        $layanan = Layanan::findOrFail($id);
         return response()->json($layanan);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Layanan $layanan)
     {
-        $layanan = Layanan::findOrFail($id);
 
         $validated = $request->validate([
-            'slug' => 'nullable|string|unique:layanans,slug,' . $id,
+            'slug' => 'nullable|string|unique:layanans,slug,' . $layanan->id,
             'title' => 'sometimes|required|string|max:255',
             'image' => 'nullable|image|max:2048',
             'description' => 'nullable|string',
@@ -96,16 +94,19 @@ class LayananController extends Controller
         return response()->json($layanan);
     }
 
-    public function destroy($id)
+    public function destroy(Layanan $layanan)
     {
-        $layanan = Layanan::findOrFail($id);
-        if ($layanan->image && file_exists(public_path($layanan->image))) {
-            @unlink(public_path($layanan->image));
+        try {
+            if ($layanan->image && file_exists(public_path($layanan->image))) {
+                @unlink(public_path($layanan->image));
+            }
+            if ($layanan->side_image && file_exists(public_path($layanan->side_image))) {
+                @unlink(public_path($layanan->side_image));
+            }
+            $layanan->delete();
+            return response()->json(['message' => 'Layanan berhasil dihapus'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Gagal menghapus layanan: ' . $e->getMessage()], 500);
         }
-        if ($layanan->side_image && file_exists(public_path($layanan->side_image))) {
-            @unlink(public_path($layanan->side_image));
-        }
-        $layanan->delete();
-        return response()->json(null, 204);
     }
 }

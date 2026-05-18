@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Produk;
 use App\Models\DetailProduk;
+use App\Models\Kategori;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -44,8 +45,12 @@ class ProdukController extends Controller
             'img' => $validated['img'] ?? null,
         ]);
 
+        $kategori = Kategori::find($validated['kategori_id']);
+
         DetailProduk::create([
             'produk_id' => $produk->id,
+            'kode_produk' => $validated['kode_produk'],
+            'nama_kategori' => $kategori ? $kategori->nama_kategori : null,
             'deskripsi_lengkap_produk' => $validated['deskripsi_lengkap_produk'],
             'tipe' => $validated['tipe'],
             'voltase' => $validated['voltase'],
@@ -88,14 +93,32 @@ class ProdukController extends Controller
 
         $produk->update($validated);
 
+        $detailData = [
+            'kode_produk' => $validated['kode_produk'] ?? $produk->kode_produk,
+            'nama_kategori' => $produk->kategori?->nama_kategori,
+        ];
+
+        if (isset($validated['deskripsi_lengkap_produk'])) {
+            $detailData['deskripsi_lengkap_produk'] = $validated['deskripsi_lengkap_produk'];
+        }
+        if (isset($validated['tipe'])) {
+            $detailData['tipe'] = $validated['tipe'];
+        }
+        if (isset($validated['voltase'])) {
+            $detailData['voltase'] = $validated['voltase'];
+        }
+        if (isset($validated['kapasitas'])) {
+            $detailData['kapasitas'] = $validated['kapasitas'];
+        }
+        if (isset($validated['siklus_hidup'])) {
+            $detailData['siklus_hidup'] = $validated['siklus_hidup'];
+        }
+
         if ($produk->detailProduk) {
-            $produk->detailProduk->update($validated);
-        } else {
-            if (isset($validated['deskripsi_lengkap_produk'])) {
-                $detailData = $validated;
-                $detailData['produk_id'] = $produk->id;
-                DetailProduk::create($detailData);
-            }
+            $produk->detailProduk->update($detailData);
+        } elseif (! empty($detailData['deskripsi_lengkap_produk'])) {
+            $detailData['produk_id'] = $produk->id;
+            DetailProduk::create($detailData);
         }
 
         return response()->json($produk->load(['kategori', 'detailProduk']));
@@ -103,11 +126,15 @@ class ProdukController extends Controller
 
     public function destroy(Produk $produk)
     {
-        if ($produk->img && file_exists(public_path($produk->img))) {
-            @unlink(public_path($produk->img));
+        try {
+            if ($produk->img && file_exists(public_path($produk->img))) {
+                @unlink(public_path($produk->img));
+            }
+            $produk->detailProduk()->delete();
+            $produk->delete();
+            return response()->json(['message' => 'Produk berhasil dihapus'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Gagal menghapus produk: ' . $e->getMessage()], 500);
         }
-        $produk->detailProduk()->delete();
-        $produk->delete();
-        return response()->json(null, 204);
     }
 }

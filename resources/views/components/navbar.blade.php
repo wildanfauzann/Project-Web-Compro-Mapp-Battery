@@ -126,4 +126,28 @@
     </div>
 
     <button type="button" id="mobile-nav-backdrop" class="mobile-nav-backdrop md:hidden" aria-label="Tutup menu navigasi"></button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('produk-search');
+            if (searchInput) {
+                searchInput.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const keyword = this.value.trim();
+                        if (keyword) {
+                            window.location.href = '/produk?search=' + encodeURIComponent(keyword);
+                        } else {
+                            window.location.href = '/produk';
+                        }
+                    }
+                });
+                
+                const params = new URLSearchParams(window.location.search);
+                if (params.has('search')) {
+                    searchInput.value = params.get('search');
+                }
+            }
+        });
+    </script>
 </nav>
