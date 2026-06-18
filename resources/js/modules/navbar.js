@@ -305,7 +305,7 @@ export function initNavbarInteractions() {
 		],
 		tentang: [
 			{ text: 'Mengenal lebih dekat perjalanan perusahaan kami dalam menghadirkan nilai untuk pelanggan.', imageUrl: '/images/hero/hero2.png' },
-			{ text: 'Kami tumbuh dengan komitmen integritas, inovasi, dan kolaborasi jangka panjang bersama mitra.', imageUrl: '/images/layanan/layanan1.png' },
+			{ text: 'Kami tumbuh dengan komitmen integritas, inovasi, dan kolaborasi jangka panjang bersama mitra.', imageUrl: '/images/hero/AfterSalesHero.jpg' },
 			{ text: 'Setiap langkah pengembangan kami berfokus pada layanan yang relevan dengan kebutuhan industri.', imageUrl: '/images/product/battery1.png' },
 			{ text: 'Didukung sumber daya manusia berpengalaman, kami memastikan kualitas layanan selalu terjaga.', imageUrl: '/images/product/charger1.png' },
 			{ text: 'Budaya kerja adaptif membuat kami siap menjawab tantangan bisnis dari waktu ke waktu.', imageUrl: '/images/product/accesoris.png' },
@@ -318,7 +318,7 @@ export function initNavbarInteractions() {
 			{ text: 'Setiap varian produk tersedia dengan dokumentasi teknis agar mudah diintegrasikan di lapangan.', imageUrl: '/images/product/connector.png' },
 		],
 		layanan: [
-			{ text: 'Layanan konsultasi, implementasi, dan purna jual yang dirancang untuk mendukung performa bisnis.', imageUrl: '/images/layanan/layanan1.png' },
+			{ text: 'Layanan konsultasi, implementasi, dan purna jual yang dirancang untuk mendukung performa bisnis.', imageUrl: '/images/hero/AfterSalesHero.jpg' },
 			{ text: 'Tim kami siap membantu mulai dari perencanaan hingga pemeliharaan dengan pendekatan profesional.', imageUrl: '/images/product/watertank.png' },
 			{ text: 'Layanan yang cepat, tepat, dan terukur agar kebutuhan operasional Anda tetap terjaga.', imageUrl: '/images/product/chargerlow.png' },
 			{ text: 'Penjadwalan layanan yang fleksibel memastikan proses bisnis Anda tetap berjalan tanpa hambatan.', imageUrl: '/images/testimoni/kiatananda.png' },

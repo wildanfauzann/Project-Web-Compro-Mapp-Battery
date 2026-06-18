@@ -12,7 +12,7 @@ export function initHomePage() {
 	const heroVideoModalPlayer = document.getElementById('hero-video-modal-player');
 	const heroVideoModalClose = document.getElementById('hero-video-modal-close');
 	const heroStage = heroSection.querySelector('.hero-stage');
-	let revealHeroEmbeddedOnInteraction = false;
+	let revealHeroEmbeddedOnInteraction = true;
 	const compactViewportQuery = window.matchMedia('(max-width: 768px)');
 	const nonDesktopViewportQuery = window.matchMedia('(max-width: 1024px)');
 
@@ -54,17 +54,14 @@ export function initHomePage() {
 	};
 
 	const activateHeroEmbeddedReveal = () => {
-		if (revealHeroEmbeddedOnInteraction) {
+		if (!heroStage) {
 			return;
 		}
 
 		revealHeroEmbeddedOnInteraction = true;
-		heroStage?.classList.add('hero-activated');
+		heroStage.classList.add('hero-activated');
 		playHeroEmbeddedVideo();
 		updateHeroScrollLift();
-		window.removeEventListener('click', activateHeroEmbeddedReveal);
-		window.removeEventListener('touchstart', activateHeroEmbeddedReveal);
-		window.removeEventListener('keydown', activateHeroEmbeddedReveal);
 	};
 
 	const updateHeroScrollLift = () => {
@@ -75,18 +72,9 @@ export function initHomePage() {
 		const isCompactViewport = compactViewportQuery.matches;
 		const isNonDesktopViewport = nonDesktopViewportQuery.matches;
 
-		if (isNonDesktopViewport) {
-			revealHeroEmbeddedOnInteraction = true;
-			heroStage?.classList.add('hero-activated');
-		}
-
 		const heroTop = heroSection.offsetTop;
 		const liftRange = Math.max(window.innerHeight * (isCompactViewport ? 0.48 : 0.65), 1);
 		const progress = Math.min(Math.max((window.scrollY - heroTop) / liftRange, 0), 1);
-
-		if (!isNonDesktopViewport && !revealHeroEmbeddedOnInteraction && window.scrollY > (isCompactViewport ? 24 : 4)) {
-			activateHeroEmbeddedReveal();
-		}
 
 		const baseActivatedLift = revealHeroEmbeddedOnInteraction ? (isCompactViewport ? 8 : 18) : 0;
 		const maxLift = isCompactViewport ? 20 : 44;
@@ -94,7 +82,7 @@ export function initHomePage() {
 
 		if (heroEmbeddedSection) {
 			const revealThreshold = 0.05;
-			const isRevealed = isNonDesktopViewport || revealHeroEmbeddedOnInteraction || progress >= revealThreshold;
+			const isRevealed = true;
 			heroEmbeddedSection.classList.toggle('is-revealed', isRevealed);
 			if (isRevealed) {
 				playHeroEmbeddedVideo();
@@ -192,11 +180,9 @@ export function initHomePage() {
 
 
 
+	activateHeroEmbeddedReveal();
 	updateHeroScrollLift();
 	window.addEventListener('scroll', updateHeroScrollLift, { passive: true });
-	window.addEventListener('click', activateHeroEmbeddedReveal, { passive: true });
-	window.addEventListener('touchstart', activateHeroEmbeddedReveal, { passive: true });
-	window.addEventListener('keydown', activateHeroEmbeddedReveal, { passive: true });
 
 	const faqTriggers = document.querySelectorAll('.faq-trigger');
 	faqTriggers.forEach((trigger) => {

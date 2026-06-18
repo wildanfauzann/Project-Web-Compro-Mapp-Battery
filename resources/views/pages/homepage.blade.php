@@ -18,13 +18,13 @@
             [
                 'name' => 'CHARGER',
                 'category' => 'charger',
-                'image' => asset('images/product/charger1.png'),
+                'image' => asset('images/hero/Battery Hero.png'),
                 'description' => 'Pengisian cepat, aman, dan efisien untuk performa optimal.',
             ],
             [
                 'name' => 'ACCESSORIES',
                 'category' => 'accessories',
-                'image' => asset('images/product/accesoris.png'),
+                'image' => asset('images/hero/AccesoriesHero.jpeg'),
                 'description' => 'Pelengkap berkualitas untuk meningkatkan kinerja dan keamanan.',
             ],
         ];
@@ -92,71 +92,55 @@
                     <div class="scroll-fade-content hero-scroll-copy hero-copy-wrap w-full">
                         <div class="hero-copy-shell">
                             <h1 class="hero-heading font-bold text-white mb-2 drop-shadow-lg">PT. Multidaya Anugrah Perkasa</h1>
-                            <p class="hero-tagline max-w-xl font-semibold uppercase tracking-wide text-slate-100 drop-shadow">POWERING MOBILITY ENERGIZING THE FUTURE</p>
+                            <p class="hero-tagline font-semibold uppercase tracking-wide text-slate-100 drop-shadow">POWERING MOBILITY ENERGIZING THE FUTURE</p>
                             <p class="hero-lead text-slate-100 drop-shadow">
                                 Kami memberikan yang terbaik untuk konsumen, dalam bentuk solusi yang efektif dan efisien untuk seluruh kebutuhan energy terbarukan.
                             </p>
-                            <a href="#produk" class="hero-mobile-cta md:hidden inline-flex items-center gap-2 rounded-full bg-[#d60812] px-4 py-2 text-[11px] font-semibold text-white">
-                                <span class="inline-block h-2.5 w-2.5 rounded-full bg-[#f2cd00]"></span>
-                                Selamat datang di Multidaya Anugerah Perkasa
-                            </a>
                         </div>
                     </div>
 
                     <section id="tentang" class="scroll-fade-section scroll-fade-content hero-embedded-section" data-nav-gradient="linear-gradient(120deg, #fff9c4 0%, #f4f4f4 50%, #c8e6c9 100%)" data-nav-glow="rgba(185, 246, 202, 0.38)">
-                        <div class="hero-embedded-panel rounded-2xl border border-white/25 bg-white/92 p-3.5 md:p-4 backdrop-blur-sm shadow-[0_16px_42px_-26px_rgba(0,0,0,0.65)]">
-                            <div class="mb-3 flex flex-col items-center gap-1.5 text-center">
-                                {{-- <h2 class="text-sm md:text-base font-bold text-[#0f1733]">Video Microtex</h2> --}}
-                            </div>
+                        <div class="about-carousel-panel relative mx-auto w-full max-w-md lg:max-w-lg">
+                            <div class="rounded-2xl border border-[#d9e3ff] bg-white p-3 md:p-4 shadow-[0_18px_34px_rgba(10,23,61,0.28)]">
+                                <div class="relative overflow-hidden rounded-xl border border-[#d3def8]">
+                                    <video
+                                        class="hero-video-player aspect-video h-full w-full object-cover"
+                                        data-hero-embedded-video
+                                        src="{{ $heroVideo['video'] }}"
+                                        muted
+                                        loop
+                                        playsinline
+                                        preload="metadata"
+                                        controls
+                                    ></video>
 
-                            <figure class="hero-video-card overflow-hidden rounded-xl border border-[#d5d5d5] bg-[#0b1026] shadow-lg">
-                                <div class="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-                                    <div class="relative bg-black">
-                                        <div class="hero-metrics md:hidden">
-                                            <div class="hero-metric-card">
-                                                <strong>500+</strong>
-                                                <span>Produk</span>
-                                            </div>
-                                            <div class="hero-metric-card">
-                                                <strong>Ready</strong>
-                                                <span>Stok Gudang</span>
-                                            </div>
-                                        </div>
-                                        <video
-                                            class="hero-video-player aspect-video h-full w-full object-cover"
-                                            data-hero-embedded-video
-                                            src="{{ $heroVideo['video'] }}"
-                                            muted
-                                            loop
-                                            playsinline
-                                            preload="metadata"
-                                            controls
-                                        ></video>
-
-                                        <button
-                                            type="button"
-                                            class="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full bg-black/55 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-white backdrop-blur-sm transition-colors hover:bg-black/75"
-                                            data-hero-video-expand
-                                        >
-                                            Perbesar Video
-                                        </button>
-                                    </div>
-
-                                    <figcaption class="hero-video-caption flex h-full flex-col justify-center gap-2 bg-[#0b1026] px-4 py-4 text-left text-white md:px-5">
-                                        <div class="hero-video-badges">
-                                            <span class="inline-flex w-fit items-center rounded-full bg-[#f2cd00] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#0f1733]">Microtex</span>
-                                            <span class="hero-video-badge-extra md:hidden inline-flex w-fit items-center rounded-full border border-white/25 bg-white/8 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white">Highlight</span>
-                                        </div>
-                                        <h3 class="text-sm md:text-base font-bold leading-tight">{{ $heroVideo['title'] }}</h3>
-                                        <p class="text-[10px] md:text-[11px] leading-5 text-[#d9e4ff] line-clamp-5">{{ $heroVideo['description'] }}</p>
-                                    </figcaption>
+                                    <button
+                                        type="button"
+                                        class="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full bg-black/55 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-white backdrop-blur-sm transition-colors hover:bg-black/75"
+                                        data-hero-video-expand
+                                    >
+                                        Perbesar Video
+                                    </button>
                                 </div>
-                            </figure>
+
+                                <div class="mt-3 rounded-xl bg-[#f6f9ff] p-3 md:p-4">
+                                    <div class="hero-video-badges mb-2">
+                                        <span class="inline-flex w-fit items-center rounded-full bg-[#f2cd00] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#0f1733]">Microtex</span>
+                                    </div>
+                                    <h3 class="text-sm md:text-base font-bold leading-tight text-[#0f1733] mb-1.5">{{ $heroVideo['title'] }}</h3>
+                                    <p class="text-xs md:text-sm leading-relaxed text-[#33415f] line-clamp-3">
+                                        {{ $heroVideo['description'] }}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </section>
                 </div>
             </div>
         </section>
+
+
+        {{-- Section 2 --}}
 
         <section class="scroll-fade-section layanan-showcase-section bg-[#0C014C] py-7 md:py-9 min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="scroll-fade-content max-w-7xl mx-auto px-4 md:px-8 w-full">
@@ -221,6 +205,9 @@
             </div>
         </section>
 
+
+        {{-- Section 3 --}}
+
         <section id="produk" class="scroll-fade-section in-view produk-showcase-section bg-white py-6 md:py-7 min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f2f4f8 55%, #e9edf5 100%)" data-nav-glow="rgba(120, 144, 156, 0.28)" style="background-color:#ffffff;">
             <div class="scroll-fade-content produk-showcase-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="text-center max-w-4xl mx-auto mb-4 md:mb-5">
@@ -253,6 +240,9 @@
             </div>
         </section>
 
+
+        {{-- Section 4 --}}
+
         <section id="layanan" class="scroll-fade-section layanan-showcase-section py-6 md:py-7 min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="scroll-fade-content produk-showcase-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="text-center max-w-4xl mx-auto mb-4 md:mb-5">
@@ -268,19 +258,19 @@
                         [
                             'slug' => 'after-sales-services',
                             'title' => 'After Sales Services',
-                            'image' => asset('images/layanan/layanan1.png'),
+                            'image' => asset('images/hero/AfterSalesHero.jpg'),
                             'description' => 'Program purnajual 3 kali per tahun (setiap 4 bulan) mencakup preventive maintenance, cek level air aki, pembersihan korosi, cek voltase serta BJ, termasuk monitoring data pengisian dan evaluasi umur baterai untuk menekan risiko downtime.',
                         ],
                         [
                             'slug' => 'training-battery',
                             'title' => 'Training Battery',
-                            'image' => asset('images/artikel/artikel2.png'),
+                            'image' => asset('images/hero/TrainingHero.jpg'),
                             'description' => 'Pelatihan teknis dan kebiasaan kerja operator untuk pengisian, perawatan, dan penggunaan baterai yang benar agar umur pakai lebih panjang, performa stabil, dan biaya operasional gudang lebih terkendali.',
                         ],
                         [
                             'slug' => 'trade-in',
                             'title' => 'Trade In',
-                            'image' => asset('images/layanan/layanan1.png'),
+                            'image' => asset('images/hero/Trade.jpeg'),
                             'description' => 'Solusi tukar tambah baterai lama ke unit yang lebih siap pakai dengan proses evaluasi kondisi yang transparan, sehingga perencanaan anggaran penggantian aset menjadi lebih ringan dan terukur.',
                         ],
                     ];
@@ -308,14 +298,38 @@
             </div>
         </section>
 
+        {{-- Section 5 --}}
+
         <section id="testimoni" class="scroll-fade-section py-10 md:py-14 bg-white min-h-[auto] md:min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f2f6ff 55%, #e5edff 100%)" data-nav-glow="rgba(120, 144, 255, 0.2)">
             <div class="scroll-fade-content max-w-7xl mx-auto px-4 md:px-8 w-full">
                 @php
                     $testimonialClients = [
-                        ['name' => 'PT Sukanda Djaya', 'logo' => asset('images/testimoni/sukanda.png')],
-                        ['name' => 'Kiat Ananda Group', 'logo' => asset('images/testimoni/kiatananda.png')],
-                        ['name' => 'Wings Corporation', 'logo' => asset('images/testimoni/wings.png')],
+                        ['name' => 'ABC', 'logo' => asset('images/testimoni/ABC.png')],
+                        ['name' => 'Alfamidi', 'logo' => asset('images/testimoni/alfamidi.png')],
+                        ['name' => 'Berca', 'logo' => asset('images/testimoni/berca.png')],
+                        ['name' => 'BSP', 'logo' => asset('images/testimoni/bsp.png')],
+                        ['name' => 'Clariant', 'logo' => asset('images/testimoni/clariant.png')],
+                        ['name' => 'Diamond', 'logo' => asset('images/testimoni/diamond.png')],
+                        ['name' => 'Gajah', 'logo' => asset('images/testimoni/gajah.png')],
+                        ['name' => 'Indofood', 'logo' => asset('images/testimoni/indofood.png')],
+                        ['name' => 'Indogrosir', 'logo' => asset('images/testimoni/indogrosir.png')],
+                        ['name' => 'Indomart', 'logo' => asset('images/testimoni/indomart.png')],
+                        ['name' => 'Jawa Manis', 'logo' => asset('images/testimoni/jawamanis.png')],
+                        ['name' => 'Jotun', 'logo' => asset('images/testimoni/jotun.png')],
+                        ['name' => 'Kiat', 'logo' => asset('images/testimoni/kiat.png')],
                         ['name' => 'Mahle', 'logo' => asset('images/testimoni/mahle.png')],
+                        ['name' => 'Mayora', 'logo' => asset('images/testimoni/mayora.png')],
+                        ['name' => 'Padang Global', 'logo' => asset('images/testimoni/padangglobal.png')],
+                        ['name' => 'Roman', 'logo' => asset('images/testimoni/roman.png')],
+                        ['name' => 'Santos', 'logo' => asset('images/testimoni/santos.png')],
+                        ['name' => 'Soho', 'logo' => asset('images/testimoni/soho.png')],
+                        ['name' => 'Tempo', 'logo' => asset('images/testimoni/tempo.png')],
+                        ['name' => 'Toppan', 'logo' => asset('images/testimoni/toppan.png')],
+                        ['name' => 'Torabika', 'logo' => asset('images/testimoni/Torabika.png')],
+                        ['name' => 'Traktor', 'logo' => asset('images/testimoni/traktor.png')],
+                        ['name' => 'Wahana', 'logo' => asset('images/testimoni/wahana.png')],
+                        ['name' => 'Wilmar', 'logo' => asset('images/testimoni/wilmar.png')],
+                        ['name' => 'Wings', 'logo' => asset('images/testimoni/wings.png')],
                     ];
                 @endphp
 
@@ -344,6 +358,8 @@
                 </div>
             </div>
         </section>
+
+        {{-- Section 6 --}}
 
         <section id="berita" class="scroll-fade-section layanan-showcase-section py-6 md:py-7 bg-[#0C014C] min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="scroll-fade-content berita-fit-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">
@@ -413,6 +429,8 @@
             </div>
         </section>
 
+        {{-- Section 7 --}}
+
         <section class="scroll-fade-section py-8 md:py-10 bg-white min-h-[auto] md:min-h-[calc(102svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f7f9ff 55%, #e5ecff 100%)" data-nav-glow="rgba(120, 144, 255, 0.16)">
             <div class="scroll-fade-content max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="faq-header max-w-4xl mx-auto mb-6 md:mb-8 text-center">
@@ -465,6 +483,8 @@
                 </div>
             </div>
         </section>
+
+        {{-- Section 8 --}}
 
         <section id="unduhan" class="scroll-fade-section layanan-showcase-section relative overflow-hidden py-14 md:py-16 bg-[#0C014C] min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" style="background-image: radial-gradient(rgba(242, 205, 0, 0.18) 1px, transparent 1px); background-size: 24px 24px; background-position: 0 0;"></div>

@@ -3,7 +3,7 @@
 @section('title', 'Layanan - PT. Multidaya Anugrah Perkasa')
 
 @push('head')
-    <link rel="preload" as="image" href="{{ asset('images/layanan/layanan1.png') }}">
+    <link rel="preload" as="image" href="{{ asset('images/hero/AfterSalesHero.jpg') }}">
 @endpush
 
 @section('content')
@@ -24,7 +24,7 @@
                             PT. Multidaya Anugrah Perkasa
                         </h1>
                         <p class="layanan-hero-copy mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-lg md:leading-8">
-                            PT Multidaya Anugrah Perkasa hadir sebagai solusi terpercaya untuk kebutuhan forklift, dengan menghadirkan layanan terbaik seperti penyediaan barang baru maupun bekas berkualitas, dukungan teknisi profesional, serta berbagai solusi servis yang andal. Semua layanan ini dirancang untuk menjaga performa tetap optimal dan memastikan operasional berjalan lancar.
+                            PT. Multidaya Anugrah Perkasa hadir sebagai solusi terpercaya untuk kebutuhan forklift, dengan menghadirkan layanan terbaik seperti penyediaan barang baru maupun bekas berkualitas, dukungan teknisi profesional, serta berbagai solusi servis yang andal. Semua layanan ini dirancang untuk menjaga performa tetap optimal dan memastikan operasional berjalan lancar.
                         </p>
                     </div>
                 </div>

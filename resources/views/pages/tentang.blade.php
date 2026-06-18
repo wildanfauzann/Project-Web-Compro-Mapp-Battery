@@ -13,18 +13,19 @@
         <section class="reveal-on-scroll hero-bg-extended relative overflow-hidden min-h-[calc(78svh-var(--navbar-height,0px))] md:min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center" style="background-image: url('{{ asset('images/hero/hero2.png') }}'); background-size: cover; background-position: center;">
             <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(92deg,rgba(4,12,36,0.68)_0%,rgba(6,18,48,0.42)_42%,rgba(6,18,48,0.18)_68%,rgba(6,18,48,0.04)_100%)]"></div>
             <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
-                <div class="min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center py-4 md:py-6">
-                    <div class="grid gap-6 md:gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center w-full">
-                    <div class="max-w-2xl py-2 text-white">
-                        <h1 class="mt-3 text-[clamp(1.8rem,3.8vw,3.35rem)] font-bold leading-[1.08] tracking-tight drop-shadow-[0_3px_12px_rgba(0,0,0,0.36)]">
-                            PT. Multidaya Anugrah Perkasa
-                        </h1>
-                        <p class="mt-4 text-sm md:text-base leading-relaxed text-[#e6edff] drop-shadow-[0_2px_10px_rgba(0,0,0,0.28)]">
-                            Kami hadir sebagai mitra solusi industri yang mengutamakan kualitas produk, kecepatan layanan, dan ketepatan dukungan teknis untuk kebutuhan operasional bisnis Anda.
-                        </p>
-                        <p class="mt-3 text-sm md:text-base leading-relaxed text-[#d2ddff] drop-shadow-[0_2px_10px_rgba(0,0,0,0.26)]">
-                            Berpengalaman menangani beragam kebutuhan lapangan, kami berkomitmen memberikan layanan yang profesional, transparan, dan berorientasi pada hasil jangka panjang.
-                        </p>
+                <div class="hero-stage">
+                    <div class="hero-copy-wrap">
+                        <div class="hero-copy-shell">
+                            <h1 class="hero-heading font-bold text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.36)]">
+                                PT. Multidaya Anugrah Perkasa
+                            </h1>
+                            <p class="mt-4 text-sm md:text-base leading-relaxed text-[#e6edff] drop-shadow-[0_2px_10px_rgba(0,0,0,0.28)]">
+                                Kami hadir sebagai mitra solusi industri yang mengutamakan kualitas produk, kecepatan layanan, dan ketepatan dukungan teknis untuk kebutuhan operasional bisnis Anda.
+                            </p>
+                            <p class="mt-3 text-sm md:text-base leading-relaxed text-[#d2ddff] drop-shadow-[0_2px_10px_rgba(0,0,0,0.26)]">
+                                Berpengalaman menangani beragam kebutuhan lapangan, kami berkomitmen memberikan layanan yang profesional, transparan, dan berorientasi pada hasil jangka panjang.
+                            </p>
+                        </div>
                     </div>
 
                     <div id="about-hero-carousel" class="about-carousel-panel relative mx-auto w-full max-w-md lg:max-w-lg">
@@ -46,7 +47,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </section>
@@ -151,22 +151,22 @@
                         [
                             'name' => 'PT Sukanda Djaya',
                             'logo' => asset('images/testimoni/sukanda.png'),
-                            'quote' => 'Kami puas dengan kualitas baterai forklift serta layanan profesional dari PT Multidaya Anugrah Perkasa yang membantu menjaga operasional tetap lancar dan efisien.',
+                            'quote' => 'Kami puas dengan kualitas baterai forklift serta layanan profesional dari PT. Multidaya Anugrah Perkasa yang membantu menjaga operasional tetap lancar dan efisien.',
                         ],
                         [
                             'name' => 'Kiat Ananda Group',
                             'logo' => asset('images/testimoni/kiatananda.png'),
-                            'quote' => 'Kualitas baterai forklift dan layanan dari PT Multidaya Anugrah Perkasa sangat membantu meningkatkan kinerja operasional kami secara optimal dan terpercaya.',
+                            'quote' => 'Kualitas baterai forklift dan layanan dari PT. Multidaya Anugrah Perkasa sangat membantu meningkatkan kinerja operasional kami secara optimal dan terpercaya.',
                         ],
                         [
                             'name' => 'Wings Corporation',
                             'logo' => asset('images/testimoni/wings.png'),
-                            'quote' => 'Produk baterai forklift dan layanan dari PT Multidaya Anugrah Perkasa terbukti andal dalam mendukung kelancaran operasional kami secara konsisten.',
+                            'quote' => 'Produk baterai forklift dan layanan dari PT. Multidaya Anugrah Perkasa terbukti andal dalam mendukung kelancaran operasional kami secara konsisten.',
                         ],
                         [
                             'name' => 'Mahle',
                             'logo' => asset('images/testimoni/mahle.png'),
-                            'quote' => 'Produk baterai forklift dan layanan dari PT Multidaya Anugrah Perkasa memberikan performa yang stabil dan sangat mendukung efisiensi operasional kami.',
+                            'quote' => 'Produk baterai forklift dan layanan dari PT. Multidaya Anugrah Perkasa memberikan performa yang stabil dan sangat mendukung efisiensi operasional kami.',
                         ],
                     ];
                 @endphp

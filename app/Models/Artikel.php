@@ -21,6 +21,16 @@ class Artikel extends Model
         'galeri' => 'array',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::saving(function ($model) {
+            if (empty($model->slug) && !empty($model->judul)) {
+                $model->slug = \Illuminate\Support\Str::slug($model->judul);
+            }
+        });
+    }
+
     protected $appends = ['title', 'headline', 'excerpt', 'description', 'company', 'image', 'gallery'];
 
     public function getTitleAttribute() { return $this->judul; }

@@ -23,4 +23,14 @@ class Layanan extends Model
         'gallery' => 'array',
         'recommendations' => 'array',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::saving(function ($model) {
+            if (empty($model->slug) && !empty($model->title)) {
+                $model->slug = \Illuminate\Support\Str::slug($model->title);
+            }
+        });
+    }
 }

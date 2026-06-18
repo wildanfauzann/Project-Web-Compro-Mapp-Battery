@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', config('app.name', 'Laravel'))</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo/LOGO_MAP-removebg-preview 1.png') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     @stack('head')

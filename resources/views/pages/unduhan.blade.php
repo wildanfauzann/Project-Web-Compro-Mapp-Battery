@@ -33,7 +33,7 @@
                 <div class="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6">
                     <article class="border border-[#c8ccdb] bg-[#dfe3ef] p-3 md:p-4 shadow-[0_10px_22px_rgba(0,0,0,0.2)]">
                         <div class="aspect-4/3 w-full overflow-hidden border border-[#b6bccc] bg-[#cfd5e2]">
-                            <img src="{{ asset('images/layanan/layanan1.png') }}" alt="Layanan" class="h-full w-full object-cover" width="320" height="240" loading="lazy" decoding="async" />
+                            <img src="{{ asset('images/hero/AfterSalesHero.jpg') }}" alt="Layanan" class="h-full w-full object-cover" width="320" height="240" loading="lazy" decoding="async" />
                         </div>
                         <div class="mt-3 flex items-center justify-between gap-3">
                             <p class="text-[10px] md:text-[11px] font-semibold uppercase tracking-wide text-[#141414]">Layanan</p>

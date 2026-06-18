@@ -1,6 +1,6 @@
-# PT. Multidaya Anugrah Perkasa - Web Profile
+# PT. Multidaya Anugerah Perkasa - Web Profile
 
-Project ini adalah website profil perusahaan untuk PT. Multidaya Anugrah Perkasa yang berfokus pada penampilan informasi perusahaan, katalog produk, layanan, unduhan, dan berita dalam satu platform yang rapi dan responsif. Website ini dibangun dengan Laravel dan memanfaatkan Blade untuk tampilan halaman, sehingga mudah dikembangkan untuk kebutuhan company profile sekaligus katalog produk.
+Project ini adalah website profil perusahaan untuk PT. Multidaya Anugerah Perkasa yang berfokus pada penampilan informasi perusahaan, katalog produk, layanan, unduhan, dan berita dalam satu platform yang rapi dan responsif. Website ini dibangun dengan Laravel dan memanfaatkan Blade untuk tampilan halaman, sehingga mudah dikembangkan untuk kebutuhan company profile sekaligus katalog produk.
 
 ## Gambaran Project
 

@@ -58,7 +58,7 @@ export function initAboutPage() {
 		},
 		{
 			text: 'Dengan dukungan tim berpengalaman, kami memberikan pendampingan teknis dan layanan yang responsif sesuai kebutuhan lapangan.',
-			imageUrl: '/images/layanan/layanan1.png',
+			imageUrl: '/images/hero/AfterSalesHero.jpg',
 		},
 		{
 			text: 'Komitmen kami adalah menjaga kualitas, transparansi, dan kesinambungan layanan agar menjadi mitra jangka panjang yang dapat dipercaya.',
@@ -68,7 +68,7 @@ export function initAboutPage() {
 
 	let aboutSlideIndex = 0;
 	let aboutSliderTimer = null;
-	let isAboutCarouselRevealed = !aboutHeroCarousel;
+	let isAboutCarouselRevealed = true;
 
 	const renderAboutSlide = () => {
 		if (!aboutSliderText || !aboutSliderImage) {
@@ -81,54 +81,22 @@ export function initAboutPage() {
 	};
 
 	const revealAboutCarousel = () => {
-		if (!aboutHeroCarousel || isAboutCarouselRevealed) {
+		if (!aboutHeroCarousel) {
 			return;
 		}
 
 		isAboutCarouselRevealed = true;
 		aboutHeroCarousel.classList.add('is-revealed');
-		window.removeEventListener('click', revealAboutCarousel);
-		window.removeEventListener('touchstart', revealAboutCarousel);
-		window.removeEventListener('keydown', revealAboutCarousel);
-		window.removeEventListener('scroll', maybeRevealAboutCarouselOnScroll);
-	};
-
-	const maybeRevealAboutCarouselOnScroll = () => {
-		if (Math.abs(window.scrollY - aboutInitialScrollY) > aboutRevealScrollDelta) {
-			revealAboutCarousel();
-		}
-	};
-
-	const startAboutSliderAuto = () => {
-		if (aboutSliderTimer || aboutSlides.length < 2) {
-			return;
-		}
-
-		aboutSliderTimer = setInterval(() => {
-			aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
-			renderAboutSlide();
-		}, 4200);
-	};
-
-	const restartAboutSliderAuto = () => {
-		if (aboutSliderTimer) {
-			clearInterval(aboutSliderTimer);
-			aboutSliderTimer = null;
-		}
-
-		startAboutSliderAuto();
 	};
 
 	if (aboutPrevButton && aboutNextButton && aboutSliderText && aboutSliderImage) {
 		const handlePrev = () => {
-			revealAboutCarousel();
 			aboutSlideIndex = (aboutSlideIndex - 1 + aboutSlides.length) % aboutSlides.length;
 			renderAboutSlide();
 			restartAboutSliderAuto();
 		};
 
 		const handleNext = () => {
-			revealAboutCarousel();
 			aboutSlideIndex = (aboutSlideIndex + 1) % aboutSlides.length;
 			renderAboutSlide();
 			restartAboutSliderAuto();
@@ -146,14 +114,7 @@ export function initAboutPage() {
 		startAboutSliderAuto();
 
 		if (aboutHeroCarousel) {
-			if (aboutMobileMediaQuery.matches) {
-				revealAboutCarousel();
-			}
-
-			window.addEventListener('click', revealAboutCarousel, { passive: true });
-			window.addEventListener('touchstart', revealAboutCarousel, { passive: true });
-			window.addEventListener('keydown', revealAboutCarousel);
-			window.addEventListener('scroll', maybeRevealAboutCarouselOnScroll, { passive: true });
+			revealAboutCarousel();
 		}
 	}
 }

@@ -210,6 +210,9 @@ class ArtikelSeeder extends Seeder
         ];
 
         foreach ($articles as $article) {
+            if (!isset($article['slug'])) {
+                $article['slug'] = \Illuminate\Support\Str::slug($article['judul']);
+            }
             Artikel::updateOrCreate(
                 ['judul' => $article['judul']],
                 $article

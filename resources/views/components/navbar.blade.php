@@ -31,7 +31,7 @@
                             <img src="{{ asset('images/icon/image 25.png') }}" alt="Icon kantor" class="w-4 h-4 object-contain" width="16" height="16" loading="lazy" decoding="async" />
                             <span>Temukan Kantor Kami</span>
                         </button>
-                        <div class="dealer-dropdown absolute right-0 top-full mt-1 bg-white border border-slate-300 rounded shadow-lg w-56 opacity-0 invisible transition-all duration-200">
+                        <div class="dealer-dropdown absolute left-0 md:left-auto md:right-0 top-full mt-1 bg-white border border-slate-300 rounded shadow-lg w-56 opacity-0 invisible transition-all duration-200">
                             <a href="/tentang?office=bekasi#kantor-kami" class="block px-4 py-2 text-sm hover:bg-slate-100">Bekasi</a>
                             <a href="/tentang?office=sidoarjo#kantor-kami" class="block px-4 py-2 text-sm hover:bg-slate-100">Sidoarjo</a>
                         </div>
@@ -43,7 +43,7 @@
                             <img src="{{ asset('images/icon/image 26.png') }}" alt="Icon bahasa" class="w-4 h-4 object-contain" width="16" height="16" loading="lazy" decoding="async" />
                             <span id="language-label">Bahasa</span>
                         </button>
-                        <div class="language-dropdown absolute right-0 top-full mt-1 bg-white border border-slate-300 rounded shadow-lg w-32 opacity-0 invisible transition-all duration-200">
+                        <div class="language-dropdown absolute left-0 md:left-auto md:right-0 top-full mt-1 bg-white border border-slate-300 rounded shadow-lg w-32 opacity-0 invisible transition-all duration-200">
                             <button type="button" class="block w-full text-left px-4 py-2 text-sm hover:bg-slate-100" data-lang="id">Indonesia</button>
                             <button type="button" class="block w-full text-left px-4 py-2 text-sm hover:bg-slate-100" data-lang="en">English</button>
                         </div>
