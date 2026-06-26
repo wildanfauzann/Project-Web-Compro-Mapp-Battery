@@ -52,9 +52,23 @@
                         <span>Mobile: 0812 - 28 - 28 - 28 | Telephone: 021 - 8210 - 1141</span>
                     </li>
                     <li class="flex items-start gap-2.5">
-                        <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#f2cd00]"></span>
-                        <span>Email: marketing@map-battery.com | Media Sosial: @PT.MAP</span>
-                    </li>
+    <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#f2cd00]"></span>
+    <span>
+        Email:
+        <a href="mailto:marketing@map-battery.com"
+           class="text-[#f2cd00] hover:underline transition">
+            marketing@map-battery.com
+        </a>
+        |
+        Media Sosial:
+        <a href="https://instagram.com/multidaya.corp"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="text-[#f2cd00] hover:underline transition">
+            @multidaya.corp
+        </a>
+    </span>
+</li>
                 </ul>
             </div>
         </div>

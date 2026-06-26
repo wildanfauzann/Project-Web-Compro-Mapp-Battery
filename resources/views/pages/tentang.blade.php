@@ -150,23 +150,43 @@
                     $aboutTestimonials = [
                         [
                             'name' => 'PT Sukanda Djaya',
-                            'logo' => asset('images/testimoni/sukanda.png'),
-                            'quote' => 'Kami puas dengan kualitas baterai forklift serta layanan profesional dari PT. Multidaya Anugrah Perkasa yang membantu menjaga operasional tetap lancar dan efisien.',
+                            'logo' => asset('images/testimoni/diamond.png'),
+                            'quote' => 'PT. Multidaya Anugrah Perkasa telah menjadi mitra terpercaya dalam mendukung operasional forklift kami. Kualitas baterai yang andal serta layanan purnajual yang responsif membantu menjaga produktivitas dan meminimalkan downtime operasional.',
                         ],
                         [
                             'name' => 'Kiat Ananda Group',
-                            'logo' => asset('images/testimoni/kiatananda.png'),
-                            'quote' => 'Kualitas baterai forklift dan layanan dari PT. Multidaya Anugrah Perkasa sangat membantu meningkatkan kinerja operasional kami secara optimal dan terpercaya.',
+                            'logo' => asset('images/testimoni/kiat.png'),
+                            'quote' => 'Produk dan layanan yang diberikan selalu memenuhi kebutuhan operasional kami. Dukungan teknis yang profesional serta performa baterai yang konsisten memberikan nilai tambah bagi efisiensi kerja di lapangan.',
                         ],
                         [
                             'name' => 'Wings Corporation',
                             'logo' => asset('images/testimoni/wings.png'),
-                            'quote' => 'Produk baterai forklift dan layanan dari PT. Multidaya Anugrah Perkasa terbukti andal dalam mendukung kelancaran operasional kami secara konsisten.',
+                            'quote' => 'Kami merasakan peningkatan keandalan operasional sejak menggunakan solusi baterai dari PT. Multidaya Anugrah Perkasa. Performa yang stabil dan layanan yang cepat menjadikan mereka salah satu mitra yang dapat diandalkan.',
                         ],
                         [
                             'name' => 'Mahle',
                             'logo' => asset('images/testimoni/mahle.png'),
-                            'quote' => 'Produk baterai forklift dan layanan dari PT. Multidaya Anugrah Perkasa memberikan performa yang stabil dan sangat mendukung efisiensi operasional kami.',
+                            'quote' => 'Kualitas produk yang baik, didukung dengan tim yang berpengalaman dan responsif. Solusi yang diberikan membantu kami menjaga kelancaran operasional sekaligus mengoptimalkan biaya perawatan baterai.',
+                        ],
+                         [
+                            'name' => 'Indofood',
+                            'logo' => asset('images/testimoni/indofood.png'),
+                            'quote' => 'Baterai forklift yang kami gunakan memiliki daya tahan yang sangat baik untuk mendukung aktivitas operasional yang intensif. Dukungan after-sales service yang rutin juga menjadi nilai lebih yang kami apresiasi.',
+                        ],
+                         [
+                            'name' => 'Mayora',
+                            'logo' => asset('images/testimoni/mayora.png'),
+                            'quote' => 'Kerja sama dengan PT. Multidaya Anugrah Perkasa memberikan pengalaman yang positif. Produk berkualitas, layanan profesional, dan komitmen terhadap kepuasan pelanggan menjadi alasan kami mempercayakan kebutuhan baterai industri kepada mereka.',
+                        ],
+                         [
+                            'name' => 'Wilmar International',
+                            'logo' => asset('images/testimoni/wilmar.png'),
+                            'quote' => 'Kami membutuhkan solusi energi yang andal untuk menunjang operasional harian. PT. Multidaya Anugrah Perkasa mampu memberikan produk dan dukungan teknis yang sesuai dengan kebutuhan kami secara konsisten.',
+                        ],
+                        [
+                            'name' => 'Jotun Indonesia',
+                            'logo' => asset('images/testimoni/jotun.png'),
+                            'quote' => 'Tidak hanya menyediakan produk berkualitas, tetapi juga memberikan edukasi dan pendampingan yang membantu kami memaksimalkan umur pakai baterai. Pelayanan yang profesional membuat kerja sama berjalan dengan sangat baik.',
                         ],
                     ];
                 @endphp
@@ -188,11 +208,7 @@
                     @endforeach
                 </div>
 
-                <div class="mt-4 md:mt-5 flex justify-end">
-                    <a href="#" class="about-testimoni-cta inline-flex items-center gap-2 rounded-full bg-[#f2cd00] px-3.5 md:px-4 py-1.5 text-[11px] md:text-xs font-semibold text-[#0f1733] shadow-[0_8px_16px_rgba(242,205,0,0.2)] transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#ffd42b]">
-                        Selengkapnya <span aria-hidden="true">→</span>
-                    </a>
-                </div>
+
             </div>
         </section>
 
@@ -298,8 +314,8 @@
                             'category' => 'Umum',
                             'date' => '2026-03-18 06:56:34',
                             'image' => asset('images/artikel/artikel1.png'),
-                            'title' => 'Hak Anak dan Nafkah Pasca Perceraian: Panduan Praktis',
-                            'description' => 'Memahami hak anak pasca perceraian membutuhkan informasi yang tepat agar proses pemenuhan nafkah berjalan adil dan berkelanjutan.',
+                            'title' => 'Mengutamakan Keselamatan: Standar K3 Sebagai Pilar Keberhasilan Operasional',
+                            'description' => 'Memahami bagaimana penerapan budaya Keselamatan dan Kesehatan Kerja (K3) yang ketat tidak hanya melindungi karyawan, tetapi juga meningkatkan efisiensi jangka panjang.',
                         ],
                         [
                             'category' => 'Jasa',
@@ -347,6 +363,35 @@
                 </div>
             </div>
         </section>
+
+        <section id="cta" class="scroll-fade-section layanan-cta-section relative overflow-hidden py-14 md:py-16 min-h-[calc(100svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #ffffff 0%, #f2f6ff 55%, #e5edff 100%)" data-nav-glow="rgba(120, 144, 255, 0.2)">
+            <div class="pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" style="background-image: radial-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px); background-size: 24px 24px; background-position: 0 0;"></div>
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.06),transparent_34%),radial-gradient(circle_at_20%_25%,rgba(242,205,0,0.14),transparent_18%),radial-gradient(circle_at_80%_75%,rgba(47,128,237,0.08),transparent_24%)]" aria-hidden="true"></div>
+            <div class="scroll-fade-content relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
+                <div class="mx-auto flex max-w-4xl flex-col items-center text-center px-4 md:px-6 py-10 md:py-14">
+                    <span class="inline-flex items-center rounded-full border border-[#b9c9e6] bg-white px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.18em] text-[#1d4ed8] shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
+                        Konsultasi & Dukungan
+                    </span>
+                    <h2 class="mt-4 text-[clamp(2rem,4vw,3.9rem)] font-bold leading-[1.05] tracking-tight text-[#0f1733]">
+                        Jangan Biarkan Kendala Operasional
+                        <span class="block text-[#1d4ed8]">Menghambat Produktivitas Anda.</span>
+                    </h2>
+                    <p class="mt-5 max-w-2xl text-sm md:text-lg leading-relaxed text-[#4f5f7e]">
+                        Dapatkan solusi yang sesuai kebutuhan bersama tim kami. Kami siap membantu dari konsultasi awal hingga rekomendasi langkah terbaik untuk bisnis Anda.
+                    </p>
+                    <a href="#" data-open-contact class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#f2cd00] px-6 py-3 text-sm md:text-base font-bold text-[#0f1733] shadow-[0_14px_30px_rgba(242,205,0,0.28)] transition-transform hover:-translate-y-0.5 hover:bg-[#ffda2f]">
+                        Konsultasi Lebih Lanjut
+                        <span aria-hidden="true" class="text-base">→</span>
+                    </a>
+                    <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] md:text-sm text-[#5f6f8f]">
+                        <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-[#f2cd00]"></span>Respon cepat dan ramah</span>
+                        <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-[#f2cd00]"></span>Konsultasi sesuai kebutuhan</span>
+                        <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-[#f2cd00]"></span>Solusi yang relevan</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

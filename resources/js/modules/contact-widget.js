@@ -55,9 +55,19 @@ export function initContactWidget() {
 		});
 
 		document.addEventListener('click', (event) => {
-			if (!contactWidget.contains(event.target)) {
+			if (!contactWidget.contains(event.target) && !event.target.closest('[data-open-contact]')) {
 				closeContactPanel();
 			}
+		});
+
+		// Listen for external open triggers (e.g. "Konsultasi Lebih Lanjut" buttons)
+		const openTriggers = document.querySelectorAll('[data-open-contact]');
+		openTriggers.forEach((trigger) => {
+			trigger.addEventListener('click', (event) => {
+				event.preventDefault();
+				event.stopPropagation();
+				openContactPanel();
+			});
 		});
 	}
 

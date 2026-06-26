@@ -132,7 +132,7 @@
                     <p class="mt-5 max-w-2xl text-sm md:text-lg leading-relaxed text-[#4f5f7e]">
                         Dapatkan solusi yang sesuai kebutuhan bersama tim kami. Kami siap membantu dari konsultasi awal hingga rekomendasi langkah terbaik untuk bisnis Anda.
                     </p>
-                    <a href="/layanan" class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#f2cd00] px-6 py-3 text-sm md:text-base font-bold text-[#0f1733] shadow-[0_14px_30px_rgba(242,205,0,0.28)] transition-transform hover:-translate-y-0.5 hover:bg-[#ffda2f]">
+                    <a href="#" data-open-contact class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#f2cd00] px-6 py-3 text-sm md:text-base font-bold text-[#0f1733] shadow-[0_14px_30px_rgba(242,205,0,0.28)] transition-transform hover:-translate-y-0.5 hover:bg-[#ffda2f]">
                         Konsultasi Lebih Lanjut
                         <span aria-hidden="true" class="text-base">→</span>
                     </a>

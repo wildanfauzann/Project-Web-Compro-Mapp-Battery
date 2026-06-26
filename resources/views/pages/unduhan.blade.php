@@ -17,10 +17,10 @@
 
                     <div class="relative text-center">
                         <h1 class="layanan-hero-title text-[clamp(2rem,4vw,3.75rem)] font-bold leading-[1.05] tracking-tight text-slate-900">
-                            Heading Unduhan
+                            Pusat Unduhan
                         </h1>
                         <p class="layanan-hero-copy mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-lg md:leading-8">
-                            Akses katalog, brosur, dan dokumen teknis PT. Multidaya Anugrah Perkasa dalam satu tempat. Semua materi disusun agar tim Anda dapat menemukan informasi penting dengan cepat untuk kebutuhan presentasi, evaluasi produk, dan operasional harian.
+                            Temukan berbagai dokumen resmi PT. Multidaya Anugrah Perkasa dalam satu halaman. Unduh katalog produk, brosur layanan, materi presentasi, dan dokumen pendukung lainnya untuk membantu Anda mengenal solusi baterai industri kami secara lebih lengkap dan profesional.
                         </p>
                     </div>
                 </div>

@@ -59,26 +59,6 @@
             </div>
         </section>
 
-        <section class="berita-newsletter-section py-12 md:py-16 bg-gradient-to-br from-[#0f1733] to-[#1a2548]">
-            <div class="max-w-4xl mx-auto px-4 md:px-8">
-                <div class="text-center">
-                    <h2 class="text-2xl md:text-3xl font-bold text-white">Dapatkan Update Terbaru</h2>
-                    <p class="mt-2 text-sm md:text-base text-[#cbd5e6]">
-                        Berlangganan newsletter kami untuk menerima artikel terbaru, insight industri, dan update perkembangan langsung ke inbox Anda.
-                    </p>
-                    <div class="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                        <input
-                            type="email"
-                            placeholder="Masukkan email Anda"
-                            class="flex-1 px-4 py-3 rounded-lg bg-white text-[#0f1733] placeholder-[#9ca3af] focus:outline-none focus:ring-2 focus:ring-[#f2cd00]"
-                        />
-                        <button class="px-6 py-3 rounded-lg bg-[#f2cd00] text-[#0f1733] font-semibold transition-all hover:bg-[#ffda2f] shadow-[0_8px_16px_rgba(242,205,0,0.24)]">
-                            Subscribe
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section class="berita-cta-section relative overflow-hidden py-12 md:py-16 flex items-center" style="background: linear-gradient(135deg, #0f1733 0%, #1a2548 45%, #2f4a99 100%);">
             <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
@@ -93,7 +73,7 @@
                     <p class="mt-5 max-w-2xl text-sm md:text-lg leading-relaxed text-[#d7def6]">
                         Dapatkan solusi yang sesuai kebutuhan bersama tim kami. Kami siap membantu dari konsultasi awal hingga rekomendasi langkah terbaik untuk bisnis Anda.
                     </p>
-                    <a href="/layanan" class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#f2cd00] px-6 py-3 text-sm md:text-base font-bold text-[#0f1733] shadow-[0_14px_30px_rgba(242,205,0,0.28)] transition-transform hover:-translate-y-0.5 hover:bg-[#ffda2f]">
+                    <a href="#" data-open-contact class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#f2cd00] px-6 py-3 text-sm md:text-base font-bold text-[#0f1733] shadow-[0_14px_30px_rgba(242,205,0,0.28)] transition-transform hover:-translate-y-0.5 hover:bg-[#ffda2f]">
                         Konsultasi Lebih Lanjut
                         <span aria-hidden="true" class="text-base">→</span>
                     </a>

@@ -12,7 +12,7 @@
             [
                 'name' => 'BATTERY',
                 'category' => 'battery',
-                'image' => asset('images/product/battery1.png'),
+                'image' => asset('images/products/HeroProduct.jpg'),
                 'description' => 'Dirancang khusus untuk aplikasi penggerak (traction) pada kendaraan listrik industri seperti forklift, scissor lift dll.',
             ],
             [
@@ -78,10 +78,10 @@
         ];
 
         $heroVideo = [
-            'title' => 'Microtex Exhibition March 2024',
-            'video' => asset('videos/Microtex Exhibition March 2024.mp4'),
-            'description' => 'Video dokumentasi Microtex yang menampilkan aktivitas, produk, dan suasana pameran secara langsung. lorem ipsum dolor sit amet lorem ipsum dolor sit amet.',
-        ];
+    'title' => 'MAP Battery Exhibition',
+    'youtube' =>'https://www.youtube.com/embed/CVDtXs1KACw?autoplay=1&mute=1&loop=1&playlist=CVDtXs1KACw',
+    'description' => 'Saksikan momen partisipasi MAP Battery dalam pameran industri, menampilkan inovasi produk, teknologi baterai terkini, serta komitmen kami dalam mendukung kebutuhan energi industri yang lebih efisien dan berkelanjutan.',
+];
     @endphp
 
     <main>
@@ -94,7 +94,7 @@
                             <h1 class="hero-heading font-bold text-white mb-2 drop-shadow-lg">PT. Multidaya Anugrah Perkasa</h1>
                             <p class="hero-tagline font-semibold uppercase tracking-wide text-slate-100 drop-shadow">POWERING MOBILITY ENERGIZING THE FUTURE</p>
                             <p class="hero-lead text-slate-100 drop-shadow">
-                                Kami memberikan yang terbaik untuk konsumen, dalam bentuk solusi yang efektif dan efisien untuk seluruh kebutuhan energy terbarukan.
+                                Menyediakan traction battery, charger, dan layanan pendukung berkualitas tinggi untuk forklift dan peralatan material handling. Membantu bisnis Anda mengurangi downtime, meningkatkan produktivitas, dan menjaga operasional tetap berjalan optimal.
                             </p>
                         </div>
                     </div>
@@ -103,24 +103,15 @@
                         <div class="about-carousel-panel relative mx-auto w-full max-w-md lg:max-w-lg">
                             <div class="rounded-2xl border border-[#d9e3ff] bg-white p-3 md:p-4 shadow-[0_18px_34px_rgba(10,23,61,0.28)]">
                                 <div class="relative overflow-hidden rounded-xl border border-[#d3def8]">
-                                    <video
-                                        class="hero-video-player aspect-video h-full w-full object-cover"
-                                        data-hero-embedded-video
-                                        src="{{ $heroVideo['video'] }}"
-                                        muted
-                                        loop
-                                        playsinline
-                                        preload="metadata"
-                                        controls
-                                    ></video>
-
-                                    <button
-                                        type="button"
-                                        class="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full bg-black/55 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-white backdrop-blur-sm transition-colors hover:bg-black/75"
-                                        data-hero-video-expand
-                                    >
-                                        Perbesar Video
-                                    </button>
+                                    <div class="relative aspect-video overflow-hidden rounded-2xl">
+    <iframe
+        class="absolute inset-0 h-full w-full"
+        src="{{ $heroVideo['youtube'] }}"
+        title="{{ $heroVideo['title'] }}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+</div>
                                 </div>
 
                                 <div class="mt-3 rounded-xl bg-[#f6f9ff] p-3 md:p-4">
@@ -146,10 +137,9 @@
             <div class="scroll-fade-content max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="max-w-4xl mx-auto text-center mb-5 md:mb-6">
                     <span class="inline-flex items-center rounded-full bg-[#f2cd00] text-[#0f1733] px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.15em]">Keunggulan Kami</span>
-                    <h2 class="mt-3 text-[clamp(1.6rem,3.25vw,2.6rem)] leading-tight font-bold text-white">Mengapa Memilih Produk Kami?</h2>
+                    <h2 class="mt-3 text-[clamp(1.6rem,3.25vw,2.6rem)] leading-tight font-bold text-white">Mengapa Perusahaan Industri Mempercayai Kami?</h2>
                     <p class="mt-2.5 text-[clamp(0.84rem,1.15vw,1.08rem)] leading-relaxed text-[#d9e4ff] max-w-3xl mx-auto">
-                        Solusi energi industri kami dirancang untuk performa tinggi, keandalan jangka panjang, dan operasional yang efisien di berbagai kondisi kerja.
-                    </p>
+                        Produk dan layanan kami dirancang untuk mendukung operasional industri yang menuntut keandalan tinggi, efisiensi biaya, serta produktivitas yang konsisten setiap hari.</p>
                 </div>
 
                 <div class="grid gap-3 md:gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -157,40 +147,36 @@
                         <div class="keunggulan-icon-box w-12 h-12 rounded-xl bg-[#0f1733] grid place-items-center mb-3.5 shadow-md">
                             <svg viewBox="0 0 24 24" class="keunggulan-icon w-6 h-6 text-[#f2cd00]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h5m6 0h5M7 9v6m10-6v6M9 6h6v12H9z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
-                        <h3 class="keunggulan-title text-2xl md:text-[1.55rem] font-bold text-[#0f1733] leading-none">Efficient</h3>
+                        <h3 class="keunggulan-title text-2xl md:text-[1.55rem] font-bold text-[#0f1733] leading-none">Efisiensi Energi Maksimal</h3>
                         <p class="keunggulan-desc mt-2.5 text-xs md:text-[0.89rem] leading-6 text-[#3f4f6b]">
-                            Konsumsi daya lebih optimal dengan performa stabil, sehingga operasional harian menjadi hemat energi dan tetap produktif.
-                        </p>
+                            Mengoptimalkan penggunaan daya untuk membantu menekan biaya operasional tanpa mengorbankan performa kerja.</p>
                     </article>
 
                     <article class="keunggulan-card rounded-2xl bg-[#f1f1f1] border border-[#d8d8d8] shadow-[0_8px_20px_rgba(0,0,0,0.12)] p-4 md:p-5">
                         <div class="keunggulan-icon-box w-12 h-12 rounded-xl bg-[#0f1733] grid place-items-center mb-3.5 shadow-md">
                             <svg viewBox="0 0 24 24" class="keunggulan-icon w-6 h-6 text-[#f2cd00]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.8 12.2l1.7 1.7 2.8-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
-                        <h3 class="keunggulan-title text-2xl md:text-[1.55rem] font-bold text-[#0f1733] leading-none">Reliable</h3>
+                        <h3 class="keunggulan-title text-2xl md:text-[1.55rem] font-bold text-[#0f1733] leading-none">Keandalan yang Teruji</h3>
                         <p class="keunggulan-desc mt-2.5 text-xs md:text-[0.89rem] leading-6 text-[#3f4f6b]">
-                            Komponen berkualitas tinggi memastikan daya tahan lebih lama dan kinerja yang dapat diandalkan untuk kebutuhan industri berat.
-                        </p>
+                            Dirancang untuk menghadapi penggunaan intensif dengan performa yang stabil dan umur pakai yang lebih panjang.</p>
                     </article>
 
                     <article class="keunggulan-card rounded-2xl bg-[#f1f1f1] border border-[#d8d8d8] shadow-[0_8px_20px_rgba(0,0,0,0.12)] p-4 md:p-5">
                         <div class="keunggulan-icon-box w-12 h-12 rounded-xl bg-[#0f1733] grid place-items-center mb-3.5 shadow-md">
                             <svg viewBox="0 0 24 24" class="keunggulan-icon w-6 h-6 text-[#f2cd00]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="17" r="3" stroke="currentColor" stroke-width="1.8"/></svg>
                         </div>
-                        <h3 class="keunggulan-title text-2xl md:text-[1.55rem] font-bold text-[#0f1733] leading-none">Transparent</h3>
+                        <h3 class="keunggulan-title text-2xl md:text-[1.55rem] font-bold text-[#0f1733] leading-none">Informasi yang Transparan</h3>
                         <p class="keunggulan-desc mt-2.5 text-xs md:text-[0.89rem] leading-6 text-[#3f4f6b]">
-                            Spesifikasi produk, estimasi performa, serta dukungan teknis disampaikan secara jelas agar keputusan pembelian lebih tepat.
-                        </p>
+                            Mulai dari spesifikasi produk hingga layanan purnajual, kami memberikan informasi yang jelas dan dapat dipercaya.</p>
                     </article>
 
                     <article class="keunggulan-card rounded-2xl bg-[#f1f1f1] border border-[#d8d8d8] shadow-[0_8px_20px_rgba(0,0,0,0.12)] p-4 md:p-5">
                         <div class="keunggulan-icon-box w-12 h-12 rounded-xl bg-[#0f1733] grid place-items-center mb-3.5 shadow-md">
                             <svg viewBox="0 0 24 24" class="keunggulan-icon w-6 h-6 text-[#f2cd00]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16M4 12h16M7.8 7.8l8.4 8.4M16.2 7.8l-8.4 8.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
-                        <h3 class="keunggulan-title text-2xl md:text-[1.55rem] font-bold text-[#0f1733] leading-none">Innovative</h3>
+                        <h3 class="keunggulan-title text-2xl md:text-[1.55rem] font-bold text-[#0f1733] leading-none">Teknologi yang Terus Berkembang</h3>
                         <p class="keunggulan-desc mt-2.5 text-xs md:text-[0.89rem] leading-6 text-[#3f4f6b]">
-                            Teknologi terus diperbarui agar solusi baterai kami selalu relevan dengan perkembangan industri dan target efisiensi modern.
-                        </p>
+                            Menghadirkan solusi energi modern yang mengikuti kebutuhan industri dan perkembangan teknologi terkini.</p>
                     </article>
                 </div>
 
@@ -212,10 +198,9 @@
             <div class="scroll-fade-content produk-showcase-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="text-center max-w-4xl mx-auto mb-4 md:mb-5">
                     <span class="inline-flex items-center rounded-full bg-[#0f1733] text-[#f2cd00] px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.16em]">Produk Unggulan</span>
-                    <h2 class="mt-2.5 text-[clamp(1.4rem,2.7vw,2.25rem)] leading-tight font-bold text-[#0f1733]">Baterai, Charger, dan Aksesoris untuk Kebutuhan Operasional</h2>
+                    <h2 class="mt-2.5 text-[clamp(1.4rem,2.7vw,2.25rem)] leading-tight font-bold text-[#0f1733]">Solusi Lengkap untuk Sistem Energi Forklift dan Material Handling</h2>
                     <p class="mt-1.5 text-[clamp(0.78rem,0.95vw,0.92rem)] leading-relaxed text-[#4b5976]">
-                        Kami menyediakan tiga kategori utama yang saling melengkapi, mulai dari Baterai sebagai sumber tenaga, Charger untuk pengisian optimal, hingga Aksesoris pendukung agar operasional lebih aman, stabil, dan efisien.
-                    </p>
+                        Mulai dari traction battery, charger industri, hingga aksesoris pendukung, kami menyediakan solusi terintegrasi untuk menjaga produktivitas dan keandalan operasional bisnis Anda.</p>
                 </div>
 
                 <div class="grid gap-2.5 md:gap-3.5 md:grid-cols-3">
@@ -247,10 +232,9 @@
             <div class="scroll-fade-content produk-showcase-wrap max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="text-center max-w-4xl mx-auto mb-4 md:mb-5">
                     <span class="inline-flex items-center rounded-full bg-[#f2cd00] text-[#0f1733] px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.16em]">Layanan Unggulan</span>
-                    <h2 class="mt-2.5 text-[clamp(1.4rem,2.7vw,2.25rem)] leading-tight font-bold text-white">Tiga Layanan Utama untuk Operasional Gudang</h2>
+                    <h2 class="mt-2.5 text-[clamp(1.4rem,2.7vw,2.25rem)] leading-tight font-bold text-white">Layanan Profesional untuk Menjaga Produktivitas Operasional</h2>
                     <p class="mt-1.5 text-[clamp(0.78rem,0.95vw,0.92rem)] leading-relaxed text-[#cfd9ff]">
-                        Fokus pada keberlanjutan performa baterai forklift melalui layanan purnajual terjadwal, edukasi operator, dan skema trade in yang lebih efisien.
-                    </p>
+                        Kami tidak hanya menyediakan produk, tetapi juga memastikan investasi Anda tetap optimal melalui layanan purnajual, pelatihan operator, dan solusi trade-in yang terencana.</p>
                 </div>
 
                 @php
@@ -336,8 +320,8 @@
                 <div class="homepage-testi-shell mx-auto max-w-5xl rounded-2xl bg-gradient-to-b from-[#0f1733] to-[#1a2548] px-6 py-10 md:px-8 md:py-12 shadow-[0_12px_30px_rgba(15,23,51,0.16)]">
                     <div class="text-center mb-8 md:mb-10">
                         <p class="text-[11px] md:text-xs font-bold uppercase tracking-[0.28em] text-[#f2cd00]">Klien Terpercaya</p>
-                        <h2 class="mt-2 text-[clamp(2rem,3.5vw,3rem)] font-bold tracking-tight text-white">Dipercaya Berbagai Perusahaan</h2>
-                        <p class="mt-2 text-sm md:text-base text-[#cbd5e6] max-w-2xl mx-auto">Solusi energi kami telah membantu meningkatkan produktivitas operasional berbagai mitra industri.</p>
+                        <h2 class="mt-2 text-[clamp(2rem,3.5vw,3rem)] font-bold tracking-tight text-white">Dipercaya oleh Berbagai Industri di Indonesia</h2>
+                        <p class="mt-2 text-sm md:text-base text-[#cbd5e6] max-w-2xl mx-auto">Berkolaborasi dengan perusahaan nasional dan multinasional dari berbagai sektor industri untuk mendukung operasional yang lebih produktif dan berkelanjutan.</p>
                     </div>
 
                     <div class="homepage-logo-loop" data-logo-loop data-speed="96" data-direction="left" data-hover-speed="0" aria-label="Logo klien PT MAP">
@@ -367,8 +351,8 @@
                     <div class="flex flex-col gap-4 items-center text-center w-full">
                         <div class="w-full">
                             <span class="inline-flex items-center rounded-full bg-[#f2cd00] text-[#0f1733] px-4 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.14em] text-center">Blog & Edukasi</span>
-                            <h2 class="mt-2 text-[clamp(1.3rem,2.2vw,1.9rem)] leading-tight font-bold text-white text-center">Wawasan Industri dan Update Terbaru</h2>
-                            <p class="mt-1.5 text-xs md:text-sm leading-relaxed text-[#d6ddf8] text-center">Informasi, tips operasional, dan pembaruan kegiatan terbaru untuk mendukung keputusan yang lebih tepat.</p>
+                            <h2 class="mt-2 text-[clamp(1.3rem,2.2vw,1.9rem)] leading-tight font-bold text-white text-center">Insight Industri, Teknologi, dan Perawatan Baterai</h2>
+                            <p class="mt-1.5 text-xs md:text-sm leading-relaxed text-[#d6ddf8] text-center">Temukan artikel, tips operasional, dan wawasan industri terbaru untuk membantu meningkatkan efisiensi serta umur pakai sistem energi perusahaan Anda.</p>
                         </div>
                     </div>
                 </div>
@@ -379,8 +363,8 @@
                             'category' => 'Umum',
                             'date' => '2026-03-18 06:56:34',
                             'image' => asset('images/artikel/artikel1.png'),
-                            'title' => 'Hak Anak dan Nafkah Pasca Perceraian: Panduan Praktis',
-                            'description' => 'Memahami hak anak pasca perceraian membutuhkan informasi yang tepat agar proses pemenuhan nafkah berjalan adil dan berkelanjutan.',
+                            'title' => 'Mengutamakan Keselamatan: Standar K3 Sebagai Pilar Keberhasilan Operasional',
+                            'description' => 'Memahami bagaimana penerapan budaya Keselamatan dan Kesehatan Kerja (K3) yang ketat tidak hanya melindungi karyawan, tetapi juga meningkatkan efisiensi jangka panjang.',
                         ],
                         [
                             'category' => 'Jasa',
@@ -441,8 +425,7 @@
                         Pertanyaan yang Sering Diajukan
                     </h2>
                     <p class="mx-auto mt-2 max-w-2xl text-sm md:text-[0.95rem] leading-relaxed text-[#5a6784]">
-                        Ringkasan jawaban untuk membantu Anda memahami layanan, proses, dan hal-hal penting yang sering ditanyakan.
-                    </p>
+                        Berikut beberapa pertanyaan yang paling sering diajukan terkait baterai forklift, charger industri, dan layanan kami. </p>
                 </div>
                 @php
                     $faqs = [
@@ -484,7 +467,7 @@
             </div>
         </section>
 
-        {{-- Section 8 --}}
+        {{-- Section 8 Call to Action --}}
 
         <section id="unduhan" class="scroll-fade-section layanan-showcase-section relative overflow-hidden py-14 md:py-16 bg-[#0C014C] min-h-[auto] md:min-h-[calc(112svh-var(--navbar-height,0px))] flex items-center" data-nav-gradient="linear-gradient(120deg, #1e3a8a 0%, #0C014C 45%, #1565c0 100%)" data-nav-glow="rgba(59, 130, 246, 0.34)">
             <div class="pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" style="background-image: radial-gradient(rgba(242, 205, 0, 0.18) 1px, transparent 1px); background-size: 24px 24px; background-position: 0 0;"></div>
@@ -501,7 +484,7 @@
                     <p class="mt-5 max-w-2xl text-sm md:text-lg leading-relaxed text-[#d7def6]">
                         Dapatkan solusi yang sesuai kebutuhan bersama tim kami. Kami siap membantu dari konsultasi awal hingga rekomendasi langkah terbaik untuk bisnis Anda.
                     </p>
-                    <a href="/layanan" class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#f2cd00] px-6 py-3 text-sm md:text-base font-bold text-[#0f1733] shadow-[0_14px_30px_rgba(242,205,0,0.28)] transition-transform hover:-translate-y-0.5 hover:bg-[#ffda2f]">
+                    <a href="#" data-open-contact class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#f2cd00] px-6 py-3 text-sm md:text-base font-bold text-[#0f1733] shadow-[0_14px_30px_rgba(242,205,0,0.28)] transition-transform hover:-translate-y-0.5 hover:bg-[#ffda2f]">
                         Konsultasi Lebih Lanjut
                         <span aria-hidden="true" class="text-base">→</span>
                     </a>
@@ -515,11 +498,5 @@
         </section>
     </main>
 
-    <div id="hero-video-modal" class="fixed inset-0 z-70 hidden items-center justify-center bg-black/80 px-4 py-6 backdrop-blur-sm">
-        <div class="relative w-full max-w-5xl overflow-hidden rounded-2xl border border-white/15 bg-[#0b1026] shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
-            <button type="button" id="hero-video-modal-close" class="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/12 text-white transition-colors hover:bg-white/20" aria-label="Tutup video">×</button>
-            <video id="hero-video-modal-player" class="h-full w-full max-h-[78vh] object-contain bg-black" src="{{ $heroVideo['video'] }}" controls playsinline preload="metadata"></video>
-        </div>
-    </div>
 
 @endsection
